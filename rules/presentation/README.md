@@ -34,10 +34,11 @@ Le workflow suppose que la présentation se trouve dans **`rules/presentation/`*
 
 ### 4. URL du site
 
-Une fois le déploiement terminé :
+**Important :** le contenu de `rules/presentation/` est déployé **à la racine** du site. Ne pas ajouter `/rules/presentation` à l’URL.
 
-- **Dépôt public** : `https://<username>.github.io/<repo>/`
-- **Dépôt avec un custom domain** : l’URL configurée dans **Settings → Pages**.
+| ✅ Bonne URL | ❌ Mauvaise URL (404) |
+|--------------|------------------------|
+| `https://<username>.github.io/<repo>/` | `https://<username>.github.io/<repo>/rules/presentation` |
 
-Exemple : si le dépôt s’appelle `Formations`, l’URL sera  
-`https://ton-username.github.io/Formations/`.
+Exemple pour le dépôt `formations` :  
+**👉 `https://davidthibaulttlm.github.io/formations/`**

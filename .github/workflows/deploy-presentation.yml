@@ -48,3 +48,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Show site URL
+        run: |
+          echo "::notice title=Presentation live ::Your presentation is at the ROOT of the site, not under /rules/presentation"
+          echo "👉 Open: ${{ steps.deployment.outputs.page_url }}"
+          echo "❌ Wrong (404): ${{ steps.deployment.outputs.page_url }}rules/presentation"
