@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 10</span>
+        <span class="slide-counter" id="slideCounter">1 / 11</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -540,8 +540,86 @@ paths:
       </div>
     </section>
 
-    <!-- SLIDE 8 : Migration -->
-    <section class="slide slide--migration" data-slide="8">
+    <!-- SLIDE 8 : Symlinks — Zéro duplication -->
+    <section class="slide slide--symlink" data-slide="8">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Zéro Duplication</div>
+        <h2 class="slide-title animate-slide-up">Symlinks : une seule rule, deux outils</h2>
+
+        <div class="symlink-layout">
+          <div class="symlink-problem animate-card" style="--delay: 0.15s">
+            <div class="symlink-header bad">❌ Sans symlinks</div>
+            <div class="symlink-body">
+              <div class="file-tree">
+                <div class="file-tree-item root"><span class="file-icon-tree">📁</span> .cursor/rules/</div>
+                <div class="file-tree-item indent">├── code-style.mdc</div>
+                <div class="file-tree-item indent">├── testing.mdc</div>
+                <div class="file-tree-item indent">└── api-patterns.mdc</div>
+                <div class="file-tree-item root" style="margin-top:0.5rem"><span class="file-icon-tree">📁</span> .claude/rules/</div>
+                <div class="file-tree-item indent">├── code-style.md</div>
+                <div class="file-tree-item indent">├── testing.md</div>
+                <div class="file-tree-item indent">└── api-patterns.md</div>
+              </div>
+              <div class="symlink-warn">6 fichiers, 3 règles — contenu dupliqué, désynchronisation garantie</div>
+            </div>
+          </div>
+
+          <div class="symlink-solution animate-card" style="--delay: 0.3s">
+            <div class="symlink-header good">✅ Avec symlinks</div>
+            <div class="symlink-body">
+              <div class="file-tree">
+                <div class="file-tree-item root"><span class="file-icon-tree">📁</span> .cursor/rules/</div>
+                <div class="file-tree-item indent">├── <span class="file-highlight">📄 code-style.mdc</span> <span class="real-tag">fichier réel</span></div>
+                <div class="file-tree-item indent">├── <span class="file-highlight">📄 testing.mdc</span> <span class="real-tag">fichier réel</span></div>
+                <div class="file-tree-item indent">└── <span class="file-highlight">📄 api-patterns.mdc</span> <span class="real-tag">fichier réel</span></div>
+                <div class="file-tree-item root" style="margin-top:0.5rem"><span class="file-icon-tree">📁</span> .claude/rules/</div>
+                <div class="file-tree-item indent">├── <span class="file-highlight-cc">🔗 code-style.md</span> <span class="link-tag">symlink</span></div>
+                <div class="file-tree-item indent">├── <span class="file-highlight-cc">🔗 testing.md</span> <span class="link-tag">symlink</span></div>
+                <div class="file-tree-item indent">└── <span class="file-highlight-cc">🔗 api-patterns.md</span> <span class="link-tag">symlink</span></div>
+              </div>
+              <div class="symlink-ok">3 fichiers réels, 3 symlinks — un seul contenu à maintenir</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="symlink-how animate-fade-in" style="--delay: 0.5s">
+          <h3>Comment créer les symlinks</h3>
+          <div class="symlink-cmds">
+            <div class="sol-cmd">
+              <span class="sol-os">Linux / Mac</span>
+              <code>cd .claude/rules</code>
+            </div>
+            <div class="sol-cmd">
+              <span class="sol-os"></span>
+              <code>ln -s ../../.cursor/rules/code-style.mdc code-style.md</code>
+            </div>
+            <div class="sol-cmd">
+              <span class="sol-os"></span>
+              <code>ln -s ../../.cursor/rules/testing.mdc testing.md</code>
+            </div>
+            <div class="sol-cmd" style="margin-top:0.5rem">
+              <span class="sol-os">Windows</span>
+              <code>cd .claude\rules</code>
+            </div>
+            <div class="sol-cmd">
+              <span class="sol-os"></span>
+              <code>mklink code-style.md ..\..\..\.cursor\rules\code-style.mdc</code>
+            </div>
+            <div class="sol-cmd">
+              <span class="sol-os"></span>
+              <code>mklink testing.md ..\..\..\.cursor\rules\testing.mdc</code>
+            </div>
+          </div>
+        </div>
+
+        <div class="symlink-note animate-fade-in" style="--delay: 0.7s">
+          💡 Les deux outils lisent du Markdown. Le frontmatter (<code>globs:</code> pour Cursor, <code>paths:</code> pour Claude Code) est silencieusement ignoré par l'autre outil. Le contenu de la rule fonctionne partout.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 : Migration -->
+    <section class="slide slide--migration" data-slide="9">
       <div class="slide-content">
         <div class="section-label animate-pop">Migration</div>
         <h2 class="slide-title animate-slide-up">Migration depuis un CLAUDE.md monolithique</h2>
@@ -602,8 +680,8 @@ paths:
       </div>
     </section>
 
-    <!-- SLIDE 9 : User Rules -->
-    <section class="slide slide--user" data-slide="9">
+    <!-- SLIDE 10 : User Rules -->
+    <section class="slide slide--user" data-slide="10">
       <div class="slide-content">
         <div class="section-label animate-pop">User Rules</div>
         <h2 class="slide-title animate-slide-up">Préférences personnelles partout</h2>
@@ -675,8 +753,8 @@ paths:
       </div>
     </section>
 
-    <!-- SLIDE 10 : Bonnes Pratiques + Conclusion -->
-    <section class="slide slide--best" data-slide="10">
+    <!-- SLIDE 11 : Bonnes Pratiques + Conclusion -->
+    <section class="slide slide--best" data-slide="11">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 7 règles d'or</h2>
