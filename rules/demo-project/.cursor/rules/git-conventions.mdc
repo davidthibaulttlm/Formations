@@ -1,0 +1,29 @@
+---
+description: Conventions Git pour les commits et branches
+alwaysApply: true
+---
+
+# Conventions Git
+
+## Messages de Commit
+- Format : `type(scope): description`
+- Types autorisés : `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `style`
+- Scope : nom du module concerné (`auth`, `tasks`, `api`, `ui`)
+- Description en minuscules, sans point final
+- Exemples :
+  - `feat(tasks): ajouter le filtre par priorité`
+  - `fix(auth): corriger la redirection après login`
+  - `refactor(api): extraire la validation dans un middleware`
+
+## Branches
+- `main` — production, protégée
+- `develop` — intégration
+- `feature/description-courte` — nouvelles fonctionnalités
+- `fix/description-courte` — corrections de bugs
+- `refactor/description-courte` — refactoring
+
+## Règles
+- Ne jamais push directement sur `main`
+- Toujours créer une Pull Request
+- Un reviewer minimum avant merge
+- Squash merge de préférence

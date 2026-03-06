@@ -1,0 +1,52 @@
+---
+paths:
+  - "**/*.ts"
+  - "**/*.tsx"
+---
+
+# Conventions de Code
+
+## TypeScript
+- Mode strict activé partout
+- Utiliser `const` plutôt que `let` sauf si réassignation nécessaire
+- Préférer les early returns pour réduire l'imbrication
+- Noms de variables descriptifs — pas de variables d'une lettre (sauf `i`, `j` dans les boucles)
+- Utiliser des named exports, jamais de default exports
+
+## React
+- Composants fonctionnels uniquement (pas de classes)
+- Un composant par fichier
+- Props typées avec une interface `Props` en haut du fichier
+- Hooks personnalisés dans `src/hooks/`
+- Fichiers de composants < 200 lignes — extraire si plus grand
+
+## Exemple de composant conforme
+
+```tsx
+interface Props {
+  title: string;
+  onComplete: (id: string) => void;
+  isActive?: boolean;
+}
+
+export function TaskCard({ title, onComplete, isActive = false }: Props) {
+  if (!title) {
+    return null;
+  }
+
+  const handleClick = () => {
+    onComplete(title);
+  };
+
+  return (
+    <div className={`task-card ${isActive ? 'active' : ''}`}>
+      <h3>{title}</h3>
+      <button onClick={handleClick}>Terminer</button>
+    </div>
+  );
+}
+```
+
+## Imports
+- Grouper les imports : 1) React/libs externes, 2) composants internes, 3) hooks, 4) types
+- Séparer les groupes par une ligne vide

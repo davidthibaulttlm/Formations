@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Rules — Cursor & Claude Code — Formation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav class="slide-nav" id="slideNav">
+    <div class="nav-inner">
+      <span class="nav-title">Rules — Cursor & Claude Code</span>
+      <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="slide-counter" id="slideCounter">1 / 10</span>
+        <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <button class="nav-btn fullscreen-btn" id="fullscreenBtn" aria-label="Plein écran">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="slides-container" id="slidesContainer">
+
+    <!-- SLIDE 1 : Titre -->
+    <section class="slide slide--hero active" data-slide="1">
+      <div class="slide-content">
+        <div class="hero-badge animate-pop">Formation</div>
+        <h1 class="hero-title">
+          <span class="animate-slide-up" style="--delay: 0.1s">Les <span class="gradient-text">Rules</span></span>
+          <span class="animate-slide-up hero-tools" style="--delay: 0.25s">
+            <span class="tool-tag tool-tag--cursor">Cursor</span>
+            <span class="tool-amp">&</span>
+            <span class="tool-tag tool-tag--claude">Claude Code</span>
+          </span>
+        </h1>
+        <p class="hero-subtitle animate-fade-in" style="--delay: 0.5s">
+          Arrêtez de vous répéter.<br>
+          Donnez des instructions persistantes à votre IA.
+        </p>
+        <div class="hero-keys animate-fade-in" style="--delay: 0.8s">
+          <kbd>→</kbd> ou <kbd>Espace</kbd> pour avancer
+        </div>
+      </div>
+      <div class="hero-bg-grid"></div>
+    </section>
+
+    <!-- SLIDE 2 : Le Problème -->
+    <section class="slide slide--problem" data-slide="2">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Le Problème</div>
+        <h2 class="slide-title animate-slide-up">Sans Rules, c'est le chaos</h2>
+        <div class="problem-grid">
+          <div class="problem-card animate-card" style="--delay: 0.2s">
+            <div class="problem-icon">🔄</div>
+            <h3>Répétition</h3>
+            <p>Vous retapez les mêmes instructions à chaque session — dans Cursor comme dans Claude Code</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.35s">
+            <div class="problem-icon">👥</div>
+            <h3>Incohérence</h3>
+            <p>Chaque dev, chaque outil, des instructions différentes — code incohérent</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.5s">
+            <div class="problem-icon">📉</div>
+            <h3>Qualité variable</h3>
+            <p>Le code généré ne respecte pas vos conventions, ni dans l'IDE ni dans le terminal</p>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.8s">
+          <span class="solution-arrow">→</span>
+          Les Rules = des instructions <strong>persistantes</strong>, <strong>versionnées</strong> et <strong>partagées</strong> — dans les deux outils
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 : Importance en équipe -->
+    <section class="slide slide--team" data-slide="3">
+      <div class="slide-content">
+        <div class="section-label animate-pop">En Équipe</div>
+        <h2 class="slide-title animate-slide-up">Pourquoi les Rules sont essentielles</h2>
+        <div class="team-comparison">
+          <div class="team-col team-col--bad animate-card" style="--delay: 0.2s">
+            <div class="team-col-header bad">
+              <span class="team-icon">✗</span>
+              Sans Rules
+            </div>
+            <div class="team-col-body">
+              <div class="team-dev">
+                <div class="avatar">A</div>
+                <div class="speech-bubble"><span class="tool-micro cursor">Cursor</span> "Utilise des classes React"</div>
+              </div>
+              <div class="team-dev">
+                <div class="avatar">B</div>
+                <div class="speech-bubble"><span class="tool-micro cc">CLI</span> "Préfère les fonctions"</div>
+              </div>
+              <div class="team-dev">
+                <div class="avatar">C</div>
+                <div class="speech-bubble"><span class="tool-micro cursor">Cursor</span> "Default exports partout"</div>
+              </div>
+              <div class="result bad">→ Code incohérent 💥</div>
+            </div>
+          </div>
+          <div class="team-col team-col--good animate-card" style="--delay: 0.4s">
+            <div class="team-col-header good">
+              <span class="team-icon">✓</span>
+              Avec Rules
+            </div>
+            <div class="team-col-body">
+              <div class="rules-center">
+                <div class="rules-file-group">
+                  <div class="rules-file">
+                    <span class="file-icon">📄</span>
+                    CLAUDE.md
+                  </div>
+                  <div class="rules-file-small">+ .cursor/rules/ &nbsp;+ .claude/rules/</div>
+                </div>
+                <div class="rules-arrow-group">
+                  <span class="rules-arrow">↓</span>
+                  <span class="rules-arrow">↓</span>
+                  <span class="rules-arrow">↓</span>
+                </div>
+              </div>
+              <div class="team-dev-row">
+                <div class="avatar">A</div>
+                <div class="avatar">B</div>
+                <div class="avatar">C</div>
+              </div>
+              <div class="result good">→ Code cohérent ✨</div>
+            </div>
+          </div>
+        </div>
+        <div class="analogy animate-fade-in" style="--delay: 0.7s">
+          💡 <strong>CLAUDE.md</strong> = la base commune lue par les deux outils. Les rules sont comme un <strong>ESLint / Prettier pour l'IA</strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 : Cursor vs Claude Code Architecture -->
+    <section class="slide slide--versus" data-slide="4">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Architecture</div>
+        <h2 class="slide-title animate-slide-up">Deux outils, deux approches</h2>
+        <div class="versus-grid">
+          <div class="versus-col animate-card" style="--delay: 0.2s">
+            <div class="versus-header cursor-header">
+              <span class="versus-logo">⚡</span>
+              Cursor
+              <span class="versus-sub">IDE graphique</span>
+            </div>
+            <div class="versus-body">
+              <div class="versus-item">
+                <span class="versus-label">Rules</span>
+                <code>.cursor/rules/*.mdc</code>
+              </div>
+              <div class="versus-item">
+                <span class="versus-label">Format</span>
+                YAML frontmatter + Markdown
+              </div>
+              <div class="versus-item">
+                <span class="versus-label">Ciblage</span>
+                <code>globs</code> + 4 types
+              </div>
+              <div class="versus-item">
+                <span class="versus-label">Types</span>
+                <div class="versus-types">
+                  <span class="vt vt--green">Always</span>
+                  <span class="vt vt--purple">Intelligently</span>
+                  <span class="vt vt--blue">Specific Files</span>
+                  <span class="vt vt--orange">Manually</span>
+                </div>
+              </div>
+              <div class="versus-item">
+                <span class="versus-label">User Rules</span>
+                Settings → Rules
+              </div>
+              <div class="versus-item">
+                <span class="versus-label">Skills</span>
+                <code>.cursor/skills/</code>
+              </div>
+            </div>
+          </div>
+
+          <div class="versus-center animate-fade-in" style="--delay: 0.4s">
+            <div class="shared-box">
+              <div class="shared-title">En commun</div>
+              <div class="shared-items">
+                <div class="shared-item">📄 Lit <strong>CLAUDE.md</strong></div>
+                <div class="shared-item">📄 Lit <strong>AGENTS.md</strong></div>
+                <div class="shared-item">📁 Rules modulaires</div>
+                <div class="shared-item">🔀 Versionnées Git</div>
+                <div class="shared-item">📝 Format Markdown</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="versus-col animate-card" style="--delay: 0.3s">
+            <div class="versus-header cc-header">
+              <span class="versus-logo">▶</span>
+              Claude Code
+              <span class="versus-sub">CLI terminal</span>
+            </div>
+            <div class="versus-body">
+              <div class="versus-item">
+                <span class="versus-label">Rules</span>
+                <code>.claude/rules/*.md</code>
+              </div>
+              <div class="versus-item">
+                <span class="versus-label">Format</span>
+                YAML frontmatter + Markdown
+              </div>
+              <div class="versus-item">
+                <span class="versus-label">Ciblage</span>
+                <code>paths</code> (globs)
+              </div>
+              <div class="versus-item">
+                <span class="versus-label">Hiérarchie</span>
+                <div class="versus-hierarchy">
+                  <span class="vh">1. Managed Policy</span>
+                  <span class="vh">2. Project CLAUDE.md</span>
+                  <span class="vh">3. .claude/rules/</span>
+                  <span class="vh">4. ~/.claude/CLAUDE.md</span>
+                  <span class="vh">5. CLAUDE.local.md</span>
+                  <span class="vh">6. Auto Memory</span>
+                </div>
+              </div>
+              <div class="versus-item">
+                <span class="versus-label">User Rules</span>
+                <code>~/.claude/CLAUDE.md</code>
+              </div>
+              <div class="versus-item">
+                <span class="versus-label">Mémoire auto</span>
+                <code>/memory</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 : Comment créer -->
+    <section class="slide slide--create" data-slide="5">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Création</div>
+        <h2 class="slide-title animate-slide-up">Comment créer des Rules</h2>
+        <div class="create-dual">
+          <div class="create-col animate-card" style="--delay: 0.2s">
+            <div class="create-col-header cursor-header">⚡ Cursor</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> → <code>New Cursor Rule</code></div>
+              <div class="cs"><span class="cs-num">2</span> Nommez la rule (ex: <code>react-patterns</code>)</div>
+              <div class="cs"><span class="cs-num">3</span> Choisissez le type d'application</div>
+              <div class="cs"><span class="cs-num">4</span> Rédigez en Markdown</div>
+            </div>
+            <div class="create-result">
+              <code>.cursor/rules/react-patterns.mdc</code>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-frontmatter">---
+description: Conventions React
+globs: "**/*.tsx"
+alwaysApply: true
+---</span>
+<span class="code-heading"># Conventions React</span>
+- Composants fonctionnels
+- Named exports uniquement</code></pre>
+            </div>
+          </div>
+
+          <div class="create-col animate-card" style="--delay: 0.35s">
+            <div class="create-col-header cc-header">▶ Claude Code</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Créez <code>CLAUDE.md</code> à la racine du projet</div>
+              <div class="cs"><span class="cs-num">2</span> Créez <code>.claude/rules/</code></div>
+              <div class="cs"><span class="cs-num">3</span> Ajoutez des fichiers <code>.md</code> avec frontmatter</div>
+              <div class="cs"><span class="cs-num">4</span> Utilisez <code>/memory</code> pour la mémoire auto</div>
+            </div>
+            <div class="create-result">
+              <code>.claude/rules/react-patterns.md</code>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-frontmatter">---
+paths:
+  - "**/*.tsx"
+---</span>
+<span class="code-heading"># Conventions React</span>
+- Composants fonctionnels
+- Named exports uniquement</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.6s">
+          💡 Le contenu des rules est identique — seul le format du frontmatter change : <code>globs</code> (Cursor) vs <code>paths</code> (Claude Code)
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 : Comparatif complet -->
+    <section class="slide slide--compare" data-slide="6">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Comparatif</div>
+        <h2 class="slide-title animate-slide-up">Le grand tableau comparatif</h2>
+        <div class="compare-table-wrapper animate-fade-in" style="--delay: 0.3s">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th><span class="col-badge col--cursor-rules">Cursor Rules<br><small>.cursor/rules/</small></span></th>
+                <th><span class="col-badge col--cc-rules">Claude Code Rules<br><small>.claude/rules/</small></span></th>
+                <th><span class="col-badge col--claude">CLAUDE.md</span></th>
+                <th><span class="col-badge col--agents">AGENTS.md</span></th>
+                <th><span class="col-badge col--skills">Skills</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="row-label">Outil</td>
+                <td>Cursor</td>
+                <td>Claude Code</td>
+                <td>Les deux</td>
+                <td>Universel</td>
+                <td>Cursor</td>
+              </tr>
+              <tr>
+                <td class="row-label">Format</td>
+                <td><code>.mdc</code></td>
+                <td><code>.md</code></td>
+                <td>Markdown</td>
+                <td>Markdown</td>
+                <td><code>.md</code></td>
+              </tr>
+              <tr>
+                <td class="row-label">Ciblage fichiers</td>
+                <td class="check"><code>globs:</code></td>
+                <td class="check"><code>paths:</code></td>
+                <td class="cross">✗ Global</td>
+                <td class="cross">✗ Global</td>
+                <td class="cross">✗ @mention</td>
+              </tr>
+              <tr>
+                <td class="row-label">Mémoire auto</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ /memory</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+              </tr>
+              <tr>
+                <td class="row-label">Fichier local perso</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ CLAUDE.local.md</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+              </tr>
+              <tr>
+                <td class="row-label">Versionné Git</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+              </tr>
+              <tr>
+                <td class="row-label">Idéal pour</td>
+                <td>Règles ciblées + UI intégrée</td>
+                <td>Hiérarchie + mémoire auto</td>
+                <td>Base commune universelle</td>
+                <td>Compat multi-outils</td>
+                <td>Workflows réutilisables</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="compare-summary animate-fade-in" style="--delay: 0.6s">
+          <div class="summary-item">
+            <span class="summary-dot dot--claude"></span>
+            <strong>CLAUDE.md</strong> = la base, lu par les deux
+          </div>
+          <div class="summary-item">
+            <span class="summary-dot dot--cursor-rules"></span>
+            <strong>.cursor/rules/</strong> = ciblage Cursor
+          </div>
+          <div class="summary-item">
+            <span class="summary-dot dot--cc-rules"></span>
+            <strong>.claude/rules/</strong> = hiérarchie Claude Code
+          </div>
+          <div class="summary-item">
+            <span class="summary-dot dot--agents"></span>
+            <strong>AGENTS.md</strong> = universel
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 : Exemples Pratiques -->
+    <section class="slide slide--examples" data-slide="7">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Exemples</div>
+        <h2 class="slide-title animate-slide-up">Même règle, deux formats</h2>
+        <div class="examples-tabs">
+          <button class="tab-btn active" data-tab="style">Code Style</button>
+          <button class="tab-btn" data-tab="test">Testing</button>
+          <button class="tab-btn" data-tab="api">API</button>
+        </div>
+        <div class="examples-content">
+          <div class="tab-panel active" id="tab-style">
+            <div class="dual-code">
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-filename">⚡ .cursor/rules/code-style.mdc</span>
+                  <span class="code-lang cursor-lang">Cursor</span>
+                </div>
+                <pre><code><span class="code-frontmatter">---
+description: Conventions TypeScript/React
+globs: "**/*.{ts,tsx}"
+alwaysApply: true
+---</span>
+
+<span class="code-heading"># Conventions de Code</span>
+- Mode strict activé partout
+- <span class="code-highlight">Named exports</span> uniquement
+- Préférer les <span class="code-highlight">early returns</span>
+- Composants fonctionnels React
+- Props typées avec <span class="code-keyword">interface Props</span></code></pre>
+              </div>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-filename">▶ .claude/rules/code-style.md</span>
+                  <span class="code-lang cc-lang">Claude Code</span>
+                </div>
+                <pre><code><span class="code-frontmatter">---
+paths:
+  - "**/*.ts"
+  - "**/*.tsx"
+---</span>
+
+<span class="code-heading"># Conventions de Code</span>
+- Mode strict activé partout
+- <span class="code-highlight">Named exports</span> uniquement
+- Préférer les <span class="code-highlight">early returns</span>
+- Composants fonctionnels React
+- Props typées avec <span class="code-keyword">interface Props</span></code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="tab-test">
+            <div class="dual-code">
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-filename">⚡ .cursor/rules/testing.mdc</span>
+                  <span class="code-lang cursor-lang">Cursor</span>
+                </div>
+                <pre><code><span class="code-frontmatter">---
+description: Standards de tests Vitest
+globs: "**/*.test.{ts,tsx}"
+alwaysApply: false
+---</span>
+
+<span class="code-heading"># Standards de Tests</span>
+- <span class="code-keyword">describe</span> / <span class="code-keyword">it</span> (pas test)
+- Noms en français
+- Mocker les appels API
+- <span class="code-keyword">screen.getByRole()</span> plutôt
+  que getByTestId()
+- Coverage &gt; 80%</code></pre>
+              </div>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-filename">▶ .claude/rules/testing.md</span>
+                  <span class="code-lang cc-lang">Claude Code</span>
+                </div>
+                <pre><code><span class="code-frontmatter">---
+paths:
+  - "**/*.test.ts"
+  - "**/*.test.tsx"
+---</span>
+
+<span class="code-heading"># Standards de Tests</span>
+- <span class="code-keyword">describe</span> / <span class="code-keyword">it</span> (pas test)
+- Noms en français
+- Mocker les appels API
+- <span class="code-keyword">screen.getByRole()</span> plutôt
+  que getByTestId()
+- Coverage &gt; 80%</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="tab-api">
+            <div class="dual-code">
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-filename">⚡ .cursor/rules/api-patterns.mdc</span>
+                  <span class="code-lang cursor-lang">Cursor</span>
+                </div>
+                <pre><code><span class="code-frontmatter">---
+description: Conventions API Express
+globs: "src/api/**/*.ts"
+alwaysApply: false
+---</span>
+
+<span class="code-heading"># Conventions API</span>
+- Verbes REST
+- Validation avec <span class="code-keyword">Zod</span>
+- Réponse : <span class="code-string">{ success, data }</span>
+- Middleware d'erreur centralisé</code></pre>
+              </div>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-filename">▶ .claude/rules/api-patterns.md</span>
+                  <span class="code-lang cc-lang">Claude Code</span>
+                </div>
+                <pre><code><span class="code-frontmatter">---
+paths:
+  - "src/api/**/*.ts"
+---</span>
+
+<span class="code-heading"># Conventions API</span>
+- Verbes REST
+- Validation avec <span class="code-keyword">Zod</span>
+- Réponse : <span class="code-string">{ success, data }</span>
+- Middleware d'erreur centralisé</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="example-note animate-fade-in" style="--delay: 0.5s">
+          ✨ Le contenu est <strong>identique</strong> — seul le frontmatter diffère. Vous pouvez maintenir les deux en parallèle !
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 : Migration -->
+    <section class="slide slide--migration" data-slide="8">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Migration</div>
+        <h2 class="slide-title animate-slide-up">Migration depuis un CLAUDE.md monolithique</h2>
+        <div class="migration-flow">
+          <div class="migration-before animate-card" style="--delay: 0.2s">
+            <h3 class="migration-label bad">❌ Avant</h3>
+            <div class="file-tree">
+              <div class="file-tree-item root">
+                <span class="file-icon-tree">📄</span>
+                CLAUDE.md
+                <span class="file-size bad">~500 lignes</span>
+              </div>
+              <div class="file-tree-item indent">├── Style de code</div>
+              <div class="file-tree-item indent">├── Tests</div>
+              <div class="file-tree-item indent">├── API</div>
+              <div class="file-tree-item indent">├── Architecture</div>
+              <div class="file-tree-item indent">├── Git</div>
+              <div class="file-tree-item indent">└── ...tout mélangé 😵</div>
+            </div>
+            <div class="warning-badge">⚠️ &gt;300 lignes = l'IA ignore des instructions</div>
+          </div>
+          <div class="migration-arrow animate-fade-in" style="--delay: 0.45s">
+            <svg width="60" height="60" viewBox="0 0 60 60"><path d="M10 30 L45 30 M35 20 L45 30 L35 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          </div>
+          <div class="migration-after animate-card" style="--delay: 0.5s">
+            <h3 class="migration-label good">✅ Après</h3>
+            <div class="file-tree">
+              <div class="file-tree-item root">
+                <span class="file-icon-tree">📄</span>
+                CLAUDE.md
+                <span class="file-size good">~50 lignes</span>
+              </div>
+              <div class="file-tree-item indent light">Stack + Commandes + Fichiers clés</div>
+              <div class="file-tree-item root" style="margin-top: 0.5rem">
+                <span class="file-icon-tree">📁</span>
+                .cursor/rules/
+                <span class="file-size" style="background:rgba(108,92,231,0.15);color:var(--accent-light)">Cursor</span>
+              </div>
+              <div class="file-tree-item indent">├── <span class="file-highlight">code-style.mdc</span></div>
+              <div class="file-tree-item indent">├── <span class="file-highlight">testing.mdc</span></div>
+              <div class="file-tree-item indent">└── <span class="file-highlight">api-patterns.mdc</span></div>
+              <div class="file-tree-item root" style="margin-top: 0.5rem">
+                <span class="file-icon-tree">📁</span>
+                .claude/rules/
+                <span class="file-size" style="background:rgba(0,184,148,0.15);color:var(--green)">Claude Code</span>
+              </div>
+              <div class="file-tree-item indent">├── <span class="file-highlight-cc">code-style.md</span></div>
+              <div class="file-tree-item indent">├── <span class="file-highlight-cc">testing.md</span></div>
+              <div class="file-tree-item indent">└── <span class="file-highlight-cc">api-patterns.md</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="migration-steps animate-fade-in" style="--delay: 0.8s">
+          <div class="m-step"><span class="m-step-num">1</span> Identifier les catégories dans votre CLAUDE.md</div>
+          <div class="m-step"><span class="m-step-num">2</span> Extraire dans <code>.cursor/rules/</code> et/ou <code>.claude/rules/</code></div>
+          <div class="m-step"><span class="m-step-num">3</span> Garder uniquement l'essentiel dans CLAUDE.md</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 : User Rules -->
+    <section class="slide slide--user" data-slide="9">
+      <div class="slide-content">
+        <div class="section-label animate-pop">User Rules</div>
+        <h2 class="slide-title animate-slide-up">Préférences personnelles partout</h2>
+        <div class="user-rules-layout">
+          <div class="user-rules-left animate-card" style="--delay: 0.2s">
+            <h3>Vos préférences, tous vos projets</h3>
+            <div class="user-tool-section">
+              <div class="user-tool-header cursor-header">⚡ Cursor</div>
+              <div class="user-path">
+                <code>Settings → Rules → User Rules</code>
+              </div>
+              <div class="user-path-note">Texte libre dans les paramètres</div>
+            </div>
+            <div class="user-tool-section">
+              <div class="user-tool-header cc-header">▶ Claude Code</div>
+              <div class="user-path">
+                <code>~/.claude/CLAUDE.md</code>
+              </div>
+              <div class="user-path-note">Fichier Markdown à la maison</div>
+              <div class="user-path" style="margin-top:0.35rem">
+                <code>CLAUDE.local.md</code>
+                <span class="local-badge">perso / gitignored</span>
+              </div>
+            </div>
+            <div class="user-examples">
+              <div class="user-example">"Réponds toujours en français"</div>
+              <div class="user-example">"Sois concis, pas d'explications sauf si demandé"</div>
+              <div class="user-example">"Préfère les early returns"</div>
+            </div>
+          </div>
+          <div class="user-rules-right animate-card" style="--delay: 0.4s">
+            <div class="user-diagram">
+              <div class="user-center">
+                <div class="user-icon">👤</div>
+                <span>User Rules</span>
+              </div>
+              <div class="user-projects">
+                <div class="user-project">
+                  <div class="project-dot"></div>
+                  Projet A
+                </div>
+                <div class="user-project">
+                  <div class="project-dot"></div>
+                  Projet B
+                </div>
+                <div class="user-project">
+                  <div class="project-dot"></div>
+                  Projet C
+                </div>
+              </div>
+              <svg class="user-lines" viewBox="0 0 300 200">
+                <line x1="150" y1="60" x2="60" y2="150" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5,5"/>
+                <line x1="150" y1="60" x2="150" y2="150" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5,5"/>
+                <line x1="150" y1="60" x2="240" y2="150" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5,5"/>
+              </svg>
+            </div>
+            <div class="precedence-box">
+              <div class="precedence-row">
+                <span class="prec-tool">Cursor</span>
+                <span class="prec-order">Team > Project > User</span>
+              </div>
+              <div class="precedence-row">
+                <span class="prec-tool prec-cc">Claude Code</span>
+                <span class="prec-order">Policy > Project > Rules > User > Local > Auto</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 : Bonnes Pratiques + Conclusion -->
+    <section class="slide slide--best" data-slide="10">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Bonnes Pratiques</div>
+        <h2 class="slide-title animate-slide-up">Les 7 règles d'or</h2>
+        <div class="best-practices-grid">
+          <div class="bp-card animate-card" style="--delay: 0.1s">
+            <div class="bp-number">1</div>
+            <h3>Versionner dans Git</h3>
+            <p>L'équipe en profite automatiquement</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.175s">
+            <div class="bp-number">2</div>
+            <h3>Commencer petit</h3>
+            <p>Ajouter une rule quand l'agent fait 2× la même erreur</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.25s">
+            <div class="bp-number">3</div>
+            <h3>Être spécifique</h3>
+            <p><code>"Named exports"</code> plutôt que <code>"Clean code"</code></p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.325s">
+            <div class="bp-number">4</div>
+            <h3>Inclure le pourquoi</h3>
+            <p>L'IA suit mieux quand elle comprend la raison</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.4s">
+            <div class="bp-number">5</div>
+            <h3>Max 500 lignes</h3>
+            <p>Par fichier de rule — diviser si plus</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.475s">
+            <div class="bp-number">6</div>
+            <h3>Penser multi-outils</h3>
+            <p>CLAUDE.md comme base + rules spécifiques</p>
+          </div>
+          <div class="bp-card bp-card--wide animate-card" style="--delay: 0.55s">
+            <div class="bp-number">7</div>
+            <h3>Tester dans les deux outils</h3>
+            <p>Vérifier que l'agent respecte les rules dans Cursor ET Claude Code</p>
+          </div>
+        </div>
+        <div class="conclusion-box animate-fade-in" style="--delay: 0.8s">
+          <h2>🎯 Récapitulatif</h2>
+          <div class="conclusion-items">
+            <div class="conclusion-item">Les Rules = la clé d'un workflow IA cohérent, quel que soit l'outil</div>
+            <div class="conclusion-item">CLAUDE.md + AGENTS.md = la base commune entre Cursor et Claude Code</div>
+            <div class="conclusion-item">.cursor/rules/ et .claude/rules/ coexistent dans un même projet</div>
+            <div class="conclusion-item">User Rules pour vos préférences perso (Settings ou ~/.claude/CLAUDE.md)</div>
+          </div>
+          <div class="cta-box">
+            Créez votre première Rule dès aujourd'hui !<br>
+            <span class="cta-dual">
+              <span>⚡ <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> → <code>New Cursor Rule</code></span>
+              <span class="cta-sep">|</span>
+              <span>▶ <code>mkdir .claude/rules && touch CLAUDE.md</code></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

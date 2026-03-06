@@ -1,0 +1,39 @@
+---
+description: Architecture du projet et organisation des dossiers
+alwaysApply: true
+---
+
+# Architecture du Projet
+
+## Structure des Dossiers
+
+```
+src/
+├── api/              # Client API et routes
+│   ├── client.ts     # Client HTTP centralisé
+│   └── routes/       # Routes Express
+├── components/       # Composants React partagés
+│   ├── ui/           # Composants UI réutilisables (Button, Modal, Input)
+│   └── layout/       # Layout, Navbar, Sidebar
+├── features/         # Modules métier (feature-based)
+│   ├── tasks/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── utils/
+│   │   └── types.ts
+│   └── auth/
+│       ├── components/
+│       ├── hooks/
+│       └── types.ts
+├── hooks/            # Hooks partagés
+├── store/            # Stores Zustand
+├── utils/            # Utilitaires partagés
+└── types/            # Types globaux
+```
+
+## Principes
+- **Feature-based** : chaque fonctionnalité métier est autonome dans `src/features/`
+- **Pas d'imports circulaires** : les features ne s'importent pas entre elles
+- **Shared only** : les composants partagés vont dans `src/components/`
+- **Barrel exports** : chaque feature a un `index.ts` qui exporte son API publique
+- **Colocation** : tests, types et styles à côté du code qu'ils concernent
