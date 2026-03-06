@@ -1217,65 +1217,7 @@ code {
   opacity: 0;
 }
 
-/* SYMLINK SLIDE */
-.symlink-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.25rem;
-}
-
-.symlink-problem, .symlink-solution {
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-
-.symlink-header {
-  padding: 0.75rem 1.25rem;
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-.symlink-header.bad {
-  background: var(--red-bg);
-  color: var(--red);
-  border-bottom: 1px solid rgba(255, 107, 107, 0.2);
-}
-
-.symlink-header.good {
-  background: var(--green-bg);
-  color: var(--green);
-  border-bottom: 1px solid rgba(0, 184, 148, 0.2);
-}
-
-.symlink-body {
-  padding: 1.25rem;
-  background: var(--bg-card);
-}
-
-.symlink-warn {
-  margin-top: 0.75rem;
-  padding: 0.5rem 0.75rem;
-  background: rgba(253, 203, 110, 0.1);
-  border: 1px solid rgba(253, 203, 110, 0.2);
-  border-radius: var(--radius-sm);
-  font-size: 0.78rem;
-  color: var(--orange);
-  text-align: center;
-}
-
-.symlink-ok {
-  margin-top: 0.75rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--green-bg);
-  border: 1px solid rgba(0, 184, 148, 0.2);
-  border-radius: var(--radius-sm);
-  font-size: 0.78rem;
-  color: var(--green);
-  text-align: center;
-}
-
+/* SYMLINK TAGS */
 .real-tag, .link-tag {
   font-size: 0.6rem;
   font-weight: 700;
@@ -1287,65 +1229,6 @@ code {
 
 .real-tag { background: var(--cursor-bg); color: var(--cursor-color); }
 .link-tag { background: var(--cc-bg); color: var(--cc-color); }
-
-.symlink-how {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.symlink-how h3 {
-  font-size: 0.9rem;
-  margin-bottom: 0.75rem;
-}
-
-.symlink-cmds {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.sol-cmd {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #0d1117;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 0.4rem 0.75rem;
-  font-size: 0.72rem;
-}
-
-.sol-os {
-  font-size: 0.6rem;
-  font-weight: 700;
-  padding: 0.1rem 0.35rem;
-  border-radius: 3px;
-  background: var(--surface);
-  color: var(--text-dim);
-  flex-shrink: 0;
-  min-width: 60px;
-  text-align: center;
-}
-
-.sol-cmd code {
-  background: none;
-  padding: 0;
-  font-size: 0.72rem;
-  color: #7ee787;
-}
-
-.symlink-note {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 0.85rem 1.25rem;
-  font-size: 0.82rem;
-  color: var(--text-dim);
-  line-height: 1.45;
-}
 
 /* RESPONSIVE */
 @media (max-width: 1000px) {
@@ -1361,5 +1244,4 @@ code {
   .compare-summary { grid-template-columns: 1fr 1fr; }
   .migration-flow { flex-direction: column; }
   .migration-arrow { transform: rotate(90deg); }
-  .symlink-layout { grid-template-columns: 1fr; }
 }
