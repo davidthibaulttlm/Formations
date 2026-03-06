@@ -1,0 +1,47 @@
+# Deploy the Rules presentation to GitHub Pages
+# After pushing, enable Pages in repo Settings → Pages → Source: Deploy from a branch → Branch: gh-pages, / (root)
+
+name: Deploy presentation to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'rules/presentation/**'
+      - '.github/workflows/deploy-presentation.yml'
+  workflow_dispatch:  # Allow manual run from Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ format('github-{0}', 'pages') }}
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # If your repo root is the parent of Formations, use: Formations/rules/presentation
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Path to the folder containing index.html (contents become site root)
+          # If repo root is "Formations", use: rules/presentation
+          # If repo has a Formations/ subfolder, use: Formations/rules/presentation
+          path: 'rules/presentation'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
