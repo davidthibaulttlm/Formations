@@ -4,12 +4,16 @@ Site de présentation statique pour la formation. Hébergeable sur **GitHub Page
 
 ## Hébergement sur GitHub Pages
 
-### 1. Activer GitHub Pages (une seule fois)
+### 1. Activer GitHub Pages (obligatoire avant le premier déploiement)
+
+Sans cette étape, le workflow échoue avec : *"Get Pages site failed. Please verify that the repository has Pages enabled and configured to build using GitHub Actions"*.
 
 1. Sur GitHub, ouvre ton dépôt.
 2. Va dans **Settings** → **Pages** (menu de gauche).
 3. Dans **Build and deployment** :
-   - **Source** : choisis **GitHub Actions** (et non « Deploy from a branch »).
+   - **Source** : choisis **GitHub Actions** (pas « Deploy from a branch »).
+4. Enregistre (aucun bouton à cliquer si tu as juste changé le menu déroulant).
+5. Relance le workflow : **Actions** → **Deploy presentation to GitHub Pages** → **Run workflow**.
 
 ### 2. Déploiement automatique
 

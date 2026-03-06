@@ -1,5 +1,8 @@
 # Deploy the Rules presentation to GitHub Pages
-# After pushing, enable Pages in repo Settings → Pages → Source: Deploy from a branch → Branch: gh-pages, / (root)
+#
+# REQUIRED (one-time): Enable Pages before the first run:
+#   Repo → Settings → Pages → Build and deployment → Source: "GitHub Actions"
+# If you skip this, the "Setup Pages" step will fail with "Get Pages site failed".
 
 name: Deploy presentation to GitHub Pages
 
@@ -30,7 +33,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # If your repo root is the parent of Formations, use: Formations/rules/presentation
+      # Requires: Settings → Pages → Source = "GitHub Actions" (one-time)
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
