@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 12</span>
+        <span class="slide-counter" id="slideCounter">1 / 14</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -215,41 +215,29 @@ Contexte : <span class="code-keyword">!`gh issue view $0`</span>
       <div class="slide-content">
         <div class="section-label animate-pop">Standard Ouvert</div>
         <h2 class="slide-title animate-slide-up">Skills — Le niveau supérieur</h2>
-        <div class="diff-grid">
-          <div class="diff-card animate-card" style="--delay: 0.2s">
-            <div class="diff-icon">⌨️</div>
-            <h3>Commandes</h3>
-            <p>Vous les déclenchez manuellement<br>avec <code>/nom</code></p>
-          </div>
-          <div class="diff-card animate-card" style="--delay: 0.35s">
-            <div class="diff-icon">🧠</div>
-            <h3>Skills</h3>
-            <p>L'IA les <strong>découvre et active</strong><br>automatiquement quand c'est pertinent</p>
-          </div>
-        </div>
         <div class="standard-features">
-          <div class="standard-feature animate-card" style="--delay: 0.45s">
+          <div class="standard-feature animate-card" style="--delay: 0.2s">
             <div class="sf-icon">🌐</div>
             <h4>Standard ouvert</h4>
             <p>agentskills.io — publié par Anthropic (déc. 2025)</p>
           </div>
-          <div class="standard-feature animate-card" style="--delay: 0.5s">
+          <div class="standard-feature animate-card" style="--delay: 0.3s">
             <div class="sf-icon">🔄</div>
             <h4>Portable</h4>
             <p>Fonctionne dans Cursor, Claude Code, Codex</p>
           </div>
-          <div class="standard-feature animate-card" style="--delay: 0.55s">
+          <div class="standard-feature animate-card" style="--delay: 0.4s">
             <div class="sf-icon">📦</div>
             <h4>Modulaire</h4>
             <p>Un dossier avec SKILL.md + scripts + assets</p>
           </div>
-          <div class="standard-feature animate-card" style="--delay: 0.6s">
+          <div class="standard-feature animate-card" style="--delay: 0.5s">
             <div class="sf-icon">⚡</div>
             <h4>Progressif</h4>
             <p>Chargement à la demande — contexte efficace</p>
           </div>
         </div>
-        <div class="create-note animate-fade-in" style="--delay: 0.75s">
+        <div class="create-note animate-fade-in" style="--delay: 0.65s">
           💡 Les commandes custom de Claude Code ont été <strong>fusionnées</strong> dans les skills. <code>.claude/commands/</code> fonctionne toujours, mais les skills sont recommandées. Cursor v2.4 (janv. 2026) a introduit les skills + <code>/migrate-to-skills</code>.
         </div>
       </div>
@@ -587,79 +575,182 @@ les scripts fournis.
             </tbody>
           </table>
         </div>
-        <div class="compare-summary animate-fade-in" style="--delay: 0.6s">
-          <div class="summary-item">
-            <span class="summary-dot dot--rules"></span>
-            <strong>Rules</strong> = la base (savoir)
+      </div>
+    </section>
+
+    <!-- SLIDE 11 : Quand utiliser quoi ? -->
+    <section class="slide slide--decision" data-slide="11">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Guide de Décision</div>
+        <h2 class="slide-title animate-slide-up">Quand utiliser quoi ?</h2>
+        <div class="decision-grid">
+
+          <div class="decision-card animate-card" style="--delay: 0.15s">
+            <div class="decision-header decision-header--claude">
+              <span class="decision-icon">📄</span>
+              <span>CLAUDE.md</span>
+            </div>
+            <div class="decision-body">
+              <div class="decision-when">
+                <strong>Quand ?</strong> Contexte global du projet que l'IA doit <em>toujours</em> connaître
+              </div>
+              <div class="decision-examples">
+                <div class="decision-example-label">Exemples concrets :</div>
+                <div class="decision-example">La stack du projet (React 19, TypeScript, Tailwind)</div>
+                <div class="decision-example">Les commandes clés (<code>pnpm dev</code>, <code>pnpm test</code>)</div>
+                <div class="decision-example">Les fichiers importants et l'architecture</div>
+              </div>
+              <div class="decision-code">
+                <pre><code><span class="code-heading"># Mon Projet</span>
+Stack : React 19, TypeScript, Tailwind
+DB : PostgreSQL + Prisma
+
+<span class="code-heading">## Commandes</span>
+- <span class="code-keyword">pnpm dev</span> → serveur local
+- <span class="code-keyword">pnpm test</span> → vitest</code></pre>
+              </div>
+              <div class="decision-signal">💡 Court (~50 lignes), lu à chaque session, partagé via Git</div>
+            </div>
           </div>
-          <div class="summary-item">
-            <span class="summary-dot dot--commands"></span>
-            <strong>Commands</strong> = actions (faire)
+
+          <div class="decision-card animate-card" style="--delay: 0.25s">
+            <div class="decision-header decision-header--rule">
+              <span class="decision-icon">📏</span>
+              <span>Rule</span>
+            </div>
+            <div class="decision-body">
+              <div class="decision-when">
+                <strong>Quand ?</strong> Convention de code que l'IA doit <em>toujours</em> respecter sur certains fichiers
+              </div>
+              <div class="decision-examples">
+                <div class="decision-example-label">Exemples concrets :</div>
+                <div class="decision-example">Imposer les named exports sur tous les <code>.tsx</code></div>
+                <div class="decision-example">Forcer <code>describe/it</code> dans les fichiers de test</div>
+                <div class="decision-example">Conventions API REST sur <code>src/api/**</code></div>
+              </div>
+              <div class="decision-code">
+                <pre><code><span class="code-frontmatter">---
+globs: "**/*.tsx"
+alwaysApply: true
+---</span>
+- <span class="code-highlight">Named exports</span> uniquement
+- Composants fonctionnels
+- Props typées avec <span class="code-keyword">interface</span></code></pre>
+              </div>
+              <div class="decision-signal">💡 L'agent fait 2x la même erreur ? Créez une rule.</div>
+            </div>
           </div>
-          <div class="summary-item">
-            <span class="summary-dot dot--skills"></span>
-            <strong>Skills</strong> = intelligence (savoir-faire)
+
+          <div class="decision-card animate-card" style="--delay: 0.35s">
+            <div class="decision-header decision-header--command">
+              <span class="decision-icon">⌨️</span>
+              <span>Command</span>
+            </div>
+            <div class="decision-body">
+              <div class="decision-when">
+                <strong>Quand ?</strong> Action que <em>vous</em> déclenchez manuellement — un raccourci pour un prompt
+              </div>
+              <div class="decision-examples">
+                <div class="decision-example-label">Exemples concrets :</div>
+                <div class="decision-example"><code>/review</code> — lancer une review de code</div>
+                <div class="decision-example"><code>/commit</code> — commit conventionnel automatique</div>
+                <div class="decision-example"><code>/fix-issue 42</code> — corriger une issue GitHub</div>
+              </div>
+              <div class="decision-code">
+                <pre><code><span class="code-comment"># .cursor/commands/commit.md</span>
+
+Analyse les fichiers modifiés.
+Génère un commit message
+en <span class="code-highlight">Conventional Commits</span>.
+Format : <span class="code-keyword">type(scope): description</span>
+Commite automatiquement.</code></pre>
+              </div>
+              <div class="decision-signal">💡 Vous tapez le même prompt 3x ? Faites-en une commande.</div>
+            </div>
           </div>
-          <div class="summary-item">
-            <span class="summary-dot dot--modes"></span>
-            <strong>Modes</strong> = environnement (comment faire)
+
+          <div class="decision-card animate-card" style="--delay: 0.45s">
+            <div class="decision-header decision-header--skill">
+              <span class="decision-icon">🧠</span>
+              <span>Skill</span>
+            </div>
+            <div class="decision-body">
+              <div class="decision-when">
+                <strong>Quand ?</strong> Workflow complexe que l'IA doit <em>découvrir et activer</em> intelligemment
+              </div>
+              <div class="decision-examples">
+                <div class="decision-example-label">Exemples concrets :</div>
+                <div class="decision-example">Déploiement avec scripts de validation et rollback</div>
+                <div class="decision-example">Génération de composants selon vos patterns maison</div>
+                <div class="decision-example">Analyse de performance avec rapport HTML visuel</div>
+              </div>
+              <div class="decision-code">
+                <pre><code><span class="code-frontmatter">---
+name: gen-component
+description: Generate a React component
+  following project patterns. Use when
+  creating new components or pages.
+---</span>
+Use template from <span class="code-keyword">assets/component.tsx</span>
+Follow patterns in <span class="code-string">[references/](references/)</span></code></pre>
+              </div>
+              <div class="decision-signal">💡 Besoin de scripts, fichiers de support, ou déclenchement auto ? Skill.</div>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 11 : Bonnes Pratiques -->
-    <section class="slide slide--best" data-slide="11">
+    <!-- SLIDE 12 : Bonnes Pratiques -->
+    <section class="slide slide--best" data-slide="12">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 6 règles d'or</h2>
         <div class="best-practices-grid">
           <div class="bp-card animate-card" style="--delay: 0.1s">
             <div class="bp-number">1</div>
-            <h3>Commencer par les commandes</h3>
-            <p>Vous tapez le même prompt 3 fois ? Créez une commande.</p>
+            <h3>SKILL.md &lt; 500 lignes</h3>
+            <p>Déplacer la doc détaillée dans <code>references/</code> — l'IA charge à la demande</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.175s">
             <div class="bp-number">2</div>
-            <h3>Migrer vers les skills</h3>
-            <p>Quand la commande a besoin de fichiers de support ou de déclenchement auto</p>
+            <h3>Tester avec <code>/context</code></h3>
+            <p>Vérifiez que vos skills apparaissent et ne dépassent pas le budget (~2% du contexte)</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.25s">
             <div class="bp-number">3</div>
-            <h3>Soigner la description</h3>
-            <p>C'est elle qui détermine si l'IA active la skill — mots-clés pertinents</p>
+            <h3>User vs Projet</h3>
+            <p>Skills perso dans <code>~/.cursor/skills/</code> — skills équipe dans le repo Git</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.325s">
             <div class="bp-number">4</div>
-            <h3>Protéger les effets de bord</h3>
-            <p><code>disable-model-invocation: true</code> pour <code>/deploy</code>, <code>/commit</code></p>
+            <h3>Un dossier par skill</h3>
+            <p>Ne pas mélanger — chaque skill a son propre dossier avec son <code>SKILL.md</code></p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.4s">
             <div class="bp-number">5</div>
-            <h3>Versionner dans Git</h3>
-            <p>L'équipe en profite — les skills voyagent avec le projet</p>
+            <h3>Scripts idempotents</h3>
+            <p>Les scripts dans <code>scripts/</code> doivent pouvoir être relancés sans casser</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.475s">
             <div class="bp-number">6</div>
-            <h3>SKILL.md &lt; 500 lignes</h3>
-            <p>Déplacer la doc détaillée dans <code>references/</code></p>
+            <h3>Utiliser <code>/migrate-to-skills</code></h3>
+            <p>Cursor convertit automatiquement vos rules dynamiques et commandes en skills</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 12 : Conclusion -->
-    <section class="slide slide--conclusion" data-slide="12">
+    <!-- SLIDE 13 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="13">
       <div class="slide-content">
         <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
           <h2>🎯 Récapitulatif</h2>
           <div class="conclusion-items">
-            <div class="conclusion-item">Les <strong>Commands</strong> = des raccourcis pour vos workflows récurrents</div>
-            <div class="conclusion-item">Les <strong>Skills</strong> = des capacités modulaires que l'IA découvre et utilise intelligemment</div>
-            <div class="conclusion-item"><strong>Standard ouvert</strong> Agent Skills — fonctionne dans Cursor ET Claude Code</div>
-            <div class="conclusion-item">Les commandes custom de Claude Code sont désormais des skills</div>
-            <div class="conclusion-item">Cursor v2.4 a introduit les skills avec <code>/migrate-to-skills</code></div>
-            <div class="conclusion-item">Commands, Skills, Rules et Modes sont <strong>complémentaires</strong> — pas en compétition</div>
+            <div class="conclusion-item"><strong>CLAUDE.md</strong> pour le contexte projet, <strong>Rules</strong> pour les conventions, <strong>Commands</strong> pour les actions, <strong>Skills</strong> pour les workflows intelligents</div>
+            <div class="conclusion-item">Le standard <strong>Agent Skills</strong> est portable — une même skill fonctionne dans Cursor, Claude Code et Codex</div>
+            <div class="conclusion-item">Ces quatre mécanismes sont <strong>complémentaires</strong> — choisissez le bon outil pour chaque besoin</div>
           </div>
           <div class="cta-box">
             Créez votre première Skill dès aujourd'hui !<br>
@@ -668,6 +759,94 @@ les scripts fournis.
               <span class="cta-sep">|</span>
               <span>▶ <code>mkdir -p .claude/skills/ma-skill</code></span>
             </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14 : Ressources -->
+    <section class="slide slide--resources" data-slide="14">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Ressources</div>
+        <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>
+        <div class="resources-grid">
+          <div class="resource-group animate-card" style="--delay: 0.15s">
+            <div class="resource-group-header">Documentation officielle</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://docs.claude.com/en/docs/claude-code/slash-commands" target="_blank">
+                <span class="resource-icon">▶</span>
+                <div>
+                  <div class="resource-name">Claude Code — Skills & Commands</div>
+                  <div class="resource-url">docs.claude.com/en/docs/claude-code/slash-commands</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://cursor.com/docs/context/skills" target="_blank">
+                <span class="resource-icon">⚡</span>
+                <div>
+                  <div class="resource-name">Cursor — Agent Skills</div>
+                  <div class="resource-url">cursor.com/docs/context/skills</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://docs.claude.com/en/docs/claude-code/interactive-mode" target="_blank">
+                <span class="resource-icon">▶</span>
+                <div>
+                  <div class="resource-name">Claude Code — Built-in Commands</div>
+                  <div class="resource-url">docs.claude.com/en/docs/claude-code/interactive-mode</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.25s">
+            <div class="resource-group-header">Standard & Communauté</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://agentskills.io" target="_blank">
+                <span class="resource-icon">🌐</span>
+                <div>
+                  <div class="resource-name">Agent Skills — Standard ouvert</div>
+                  <div class="resource-url">agentskills.io</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://cursor.com/changelog/2-4" target="_blank">
+                <span class="resource-icon">⚡</span>
+                <div>
+                  <div class="resource-name">Cursor v2.4 Changelog — Skills & Subagents</div>
+                  <div class="resource-url">cursor.com/changelog/2-4</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://dotclaude.com" target="_blank">
+                <span class="resource-icon">📚</span>
+                <div>
+                  <div class="resource-name">dotclaude.com — Guide .claude/</div>
+                  <div class="resource-url">dotclaude.com</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.35s">
+            <div class="resource-group-header">Guides & Tutoriels</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://maxtechera.dev/en/guides/claude-code-slash-commands" target="_blank">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">Claude Code Slash Commands Mastery</div>
+                  <div class="resource-url">maxtechera.dev</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://theodoroskokosioulis.com/blog/cursor-rules-commands-skills-hooks-guide/" target="_blank">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">Cursor Rules, Commands, Skills & Hooks</div>
+                  <div class="resource-url">theodoroskokosioulis.com</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://support.anthropic.com/en/articles/12512198-how-to-create-custom-skills" target="_blank">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">How to Create Custom Skills — Anthropic</div>
+                  <div class="resource-url">support.anthropic.com</div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
