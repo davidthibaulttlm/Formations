@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 14</span>
+        <span class="slide-counter" id="slideCounter">1 / 13</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -443,64 +443,8 @@ Contexte : <span class="code-keyword">!`gh issue view $0`</span>
       </div>
     </section>
 
-    <!-- SLIDE 9 : Custom Modes Cursor -->
-    <section class="slide slide--modes" data-slide="9">
-      <div class="slide-content">
-        <div class="section-label animate-pop">Custom Modes</div>
-        <h2 class="slide-title animate-slide-up">Modes personnalisés — Cursor</h2>
-        <div class="modes-layout">
-          <div class="modes-list">
-            <div class="mode-card animate-card" style="--delay: 0.15s">
-              <div class="mode-icon">📖</div>
-              <div class="mode-name">Teach</div>
-              <div class="mode-desc">Explications détaillées et questions de clarification</div>
-            </div>
-            <div class="mode-card animate-card" style="--delay: 0.2s">
-              <div class="mode-icon">🔧</div>
-              <div class="mode-name">Refactor</div>
-              <div class="mode-desc">Améliorer la structure sans nouvelles fonctionnalités</div>
-            </div>
-            <div class="mode-card animate-card" style="--delay: 0.25s">
-              <div class="mode-icon">📋</div>
-              <div class="mode-name">Plan</div>
-              <div class="mode-desc">Plans d'implémentation sans modifier le code</div>
-            </div>
-            <div class="mode-card animate-card" style="--delay: 0.3s">
-              <div class="mode-icon">🔬</div>
-              <div class="mode-name">Research</div>
-              <div class="mode-desc">Explorer plusieurs sources avant de recommander</div>
-            </div>
-            <div class="mode-card animate-card" style="--delay: 0.35s">
-              <div class="mode-icon">🐛</div>
-              <div class="mode-name">Debug</div>
-              <div class="mode-desc">Investigation approfondie avant correction</div>
-            </div>
-            <div class="mode-card animate-card" style="--delay: 0.4s">
-              <div class="mode-icon">👁️</div>
-              <div class="mode-name">Review</div>
-              <div class="mode-desc">Analyse qualité sans résolution automatique</div>
-            </div>
-          </div>
-          <div class="modes-info animate-card" style="--delay: 0.45s">
-            <h3>Comment créer un mode</h3>
-            <div class="modes-steps">
-              <div class="modes-step"><span class="cs-num">1</span> Ouvrez <code>Settings → Features → Chat</code></div>
-              <div class="modes-step"><span class="cs-num">2</span> Cliquez <strong>Custom modes</strong></div>
-              <div class="modes-step"><span class="cs-num">3</span> Cliquez <strong>Add custom mode</strong></div>
-              <div class="modes-step"><span class="cs-num">4</span> Choisissez : nom, icône, raccourci clavier</div>
-              <div class="modes-step"><span class="cs-num">5</span> Sélectionnez les <strong>outils activés</strong></div>
-              <div class="modes-step"><span class="cs-num">6</span> Ajoutez des <strong>instructions custom</strong></div>
-            </div>
-            <div class="create-note" style="margin-top: 1rem; padding: 0.75rem 1rem;">
-              🔮 À venir : <code>.cursor/modes.json</code> pour partager les modes en équipe via Git
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 10 : Comparatif -->
-    <section class="slide slide--compare" data-slide="10">
+    <!-- SLIDE 9 : Comparatif -->
+    <section class="slide slide--compare" data-slide="9">
       <div class="slide-content">
         <div class="section-label animate-pop">Comparatif</div>
         <h2 class="slide-title animate-slide-up">Le grand tableau comparatif</h2>
@@ -512,7 +456,6 @@ Contexte : <span class="code-keyword">!`gh issue view $0`</span>
                 <th><span class="col-badge col--commands">Commands<br><small>Actions directes</small></span></th>
                 <th><span class="col-badge col--skills">Skills<br><small>Capacités intelligentes</small></span></th>
                 <th><span class="col-badge col--rules">Rules<br><small>Instructions persistantes</small></span></th>
-                <th><span class="col-badge col--modes">Modes<br><small>Environnements</small></span></th>
               </tr>
             </thead>
             <tbody>
@@ -521,27 +464,23 @@ Contexte : <span class="code-keyword">!`gh issue view $0`</span>
                 <td>Manuel <code>/nom</code></td>
                 <td>Auto ou manuel</td>
                 <td>Automatique</td>
-                <td>Sélection user</td>
               </tr>
               <tr>
                 <td class="row-label">Cursor</td>
                 <td class="check"><code>.cursor/commands/</code></td>
                 <td class="check"><code>.cursor/skills/</code></td>
                 <td class="check"><code>.cursor/rules/</code></td>
-                <td class="check">Settings</td>
               </tr>
               <tr>
                 <td class="row-label">Claude Code</td>
                 <td class="check"><code>.claude/commands/</code></td>
                 <td class="check"><code>.claude/skills/</code></td>
                 <td class="check"><code>.claude/rules/</code></td>
-                <td class="cross">✗</td>
               </tr>
               <tr>
                 <td class="row-label">Standard ouvert</td>
                 <td class="cross">✗</td>
                 <td class="check">✓ agentskills.io</td>
-                <td class="cross">✗</td>
                 <td class="cross">✗</td>
               </tr>
               <tr>
@@ -549,13 +488,11 @@ Contexte : <span class="code-keyword">!`gh issue view $0`</span>
                 <td class="cross">✗</td>
                 <td class="check">✓ <code>context: fork</code></td>
                 <td class="cross">✗</td>
-                <td class="cross">✗</td>
               </tr>
               <tr>
                 <td class="row-label">Fichiers de support</td>
                 <td class="cross">✗</td>
                 <td class="check">✓ scripts, refs, assets</td>
-                <td class="cross">✗</td>
                 <td class="cross">✗</td>
               </tr>
               <tr>
@@ -563,14 +500,12 @@ Contexte : <span class="code-keyword">!`gh issue view $0`</span>
                 <td class="check">✓</td>
                 <td class="check">✓</td>
                 <td class="check">✓</td>
-                <td class="cross">Bientôt</td>
               </tr>
               <tr>
                 <td class="row-label">Idéal pour</td>
                 <td>Raccourcis rapides</td>
                 <td>Workflows complexes et réutilisables</td>
                 <td>Conventions permanentes</td>
-                <td>Contrôler le comportement de l'IA</td>
               </tr>
             </tbody>
           </table>
@@ -578,8 +513,8 @@ Contexte : <span class="code-keyword">!`gh issue view $0`</span>
       </div>
     </section>
 
-    <!-- SLIDE 11 : Quand utiliser quoi ? -->
-    <section class="slide slide--decision" data-slide="11">
+    <!-- SLIDE 10 : Quand utiliser quoi ? -->
+    <section class="slide slide--decision" data-slide="10">
       <div class="slide-content">
         <div class="section-label animate-pop">Guide de Décision</div>
         <h2 class="slide-title animate-slide-up">Quand utiliser quoi ?</h2>
@@ -702,8 +637,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 12 : Bonnes Pratiques -->
-    <section class="slide slide--best" data-slide="12">
+    <!-- SLIDE 11 : Bonnes Pratiques -->
+    <section class="slide slide--best" data-slide="11">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 6 règles d'or</h2>
@@ -742,8 +677,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 13 : Conclusion -->
-    <section class="slide slide--conclusion" data-slide="13">
+    <!-- SLIDE 12 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="12">
       <div class="slide-content">
         <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
           <h2>🎯 Récapitulatif</h2>
@@ -764,8 +699,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 14 : Ressources -->
-    <section class="slide slide--resources" data-slide="14">
+    <!-- SLIDE 13 : Ressources -->
+    <section class="slide slide--resources" data-slide="13">
       <div class="slide-content">
         <div class="section-label animate-pop">Ressources</div>
         <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>
