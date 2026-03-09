@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 10</span>
+        <span class="slide-counter" id="slideCounter">1 / 11</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -540,8 +540,82 @@ paths:
       </div>
     </section>
 
-    <!-- SLIDE 8 : Migration -->
-    <section class="slide slide--migration" data-slide="8">
+    <!-- SLIDE 8 : Trop de rules -->
+    <section class="slide slide--overload" data-slide="8">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Attention</div>
+        <h2 class="slide-title animate-slide-up">Trop de rules tuent les rules</h2>
+        <div class="overload-layout">
+          <div class="overload-col animate-card" style="--delay: 0.2s">
+            <div class="overload-header bad">❌ Le piège classique</div>
+            <div class="overload-body">
+              <div class="overload-tree">
+                <div class="file-tree-item root"><span class="file-icon-tree">📁</span> .cursor/rules/</div>
+                <div class="file-tree-item indent">├── code-style.mdc</div>
+                <div class="file-tree-item indent">├── testing.mdc</div>
+                <div class="file-tree-item indent">├── api.mdc</div>
+                <div class="file-tree-item indent">├── git.mdc</div>
+                <div class="file-tree-item indent">├── naming.mdc</div>
+                <div class="file-tree-item indent">├── imports.mdc</div>
+                <div class="file-tree-item indent">├── comments.mdc</div>
+                <div class="file-tree-item indent">├── errors.mdc</div>
+                <div class="file-tree-item indent overload-fade">├── security.mdc</div>
+                <div class="file-tree-item indent overload-fade">├── perf.mdc</div>
+                <div class="file-tree-item indent overload-fade overload-fade2">├── logging.mdc</div>
+                <div class="file-tree-item indent overload-fade overload-fade2">└── ... 20 fichiers 😵</div>
+              </div>
+              <div class="warning-badge">⚠️ L'IA est submergée — elle ignore des rules</div>
+            </div>
+          </div>
+          <div class="overload-rules animate-fade-in" style="--delay: 0.4s">
+            <div class="overload-rule-card">
+              <div class="overload-rule-icon">🧠</div>
+              <div class="overload-rule-text">
+                <strong>L'IA a une fenêtre de contexte limitée</strong><br>
+                Trop d'instructions = certaines sont ignorées silencieusement
+              </div>
+            </div>
+            <div class="overload-rule-card">
+              <div class="overload-rule-icon">🎯</div>
+              <div class="overload-rule-text">
+                <strong>Qualité > Quantité</strong><br>
+                5 rules précises et ciblées valent mieux que 30 rules vagues
+              </div>
+            </div>
+            <div class="overload-rule-card">
+              <div class="overload-rule-icon">📏</div>
+              <div class="overload-rule-text">
+                <strong>Règle pratique</strong><br>
+                Visez <strong>3 à 7 rules</strong> par projet — max 500 lignes chacune
+              </div>
+            </div>
+            <div class="overload-rule-card">
+              <div class="overload-rule-icon">⏱️</div>
+              <div class="overload-rule-text">
+                <strong>Ajoutez-en une quand c'est justifié</strong><br>
+                L'agent fait 2× la même erreur ? C'est le bon moment
+              </div>
+            </div>
+          </div>
+          <div class="overload-col animate-card" style="--delay: 0.3s">
+            <div class="overload-header good">✅ L'approche saine</div>
+            <div class="overload-body">
+              <div class="overload-tree">
+                <div class="file-tree-item root"><span class="file-icon-tree">📁</span> .cursor/rules/</div>
+                <div class="file-tree-item indent"><span class="file-highlight">code-style.mdc</span> <span class="real-tag">Always</span></div>
+                <div class="file-tree-item indent"><span class="file-highlight">testing.mdc</span> <span class="real-tag">Spec files</span></div>
+                <div class="file-tree-item indent"><span class="file-highlight">api.mdc</span> <span class="real-tag">src/api/**</span></div>
+                <div class="file-tree-item root" style="margin-top:0.5rem"><span class="file-icon-tree">📄</span> CLAUDE.md <span class="file-size good">~50 lignes</span></div>
+              </div>
+              <div class="success-badge">✓ Chaque rule est lue, comprise et respectée</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 : Migration -->
+    <section class="slide slide--migration" data-slide="9">
       <div class="slide-content">
         <div class="section-label animate-pop">Migration</div>
         <h2 class="slide-title animate-slide-up">Migration depuis un CLAUDE.md monolithique</h2>
@@ -602,8 +676,8 @@ paths:
       </div>
     </section>
 
-    <!-- SLIDE 9 : User Rules -->
-    <section class="slide slide--user" data-slide="9">
+    <!-- SLIDE 10 : User Rules -->
+    <section class="slide slide--user" data-slide="10">
       <div class="slide-content">
         <div class="section-label animate-pop">User Rules</div>
         <h2 class="slide-title animate-slide-up">Préférences personnelles partout</h2>
@@ -675,8 +749,8 @@ paths:
       </div>
     </section>
 
-    <!-- SLIDE 10 : Bonnes Pratiques + Conclusion -->
-    <section class="slide slide--best" data-slide="10">
+    <!-- SLIDE 11 : Bonnes Pratiques + Conclusion -->
+    <section class="slide slide--best" data-slide="11">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 7 règles d'or</h2>
