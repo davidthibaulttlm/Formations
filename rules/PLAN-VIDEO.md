@@ -126,6 +126,7 @@
 - `CLAUDE.md` / `AGENTS.md` = base commune, compatible partout
 - `.cursor/rules/` = spécifique Cursor, avec UI intégrée
 - `.claude/rules/` = spécifique Claude Code, avec hiérarchie de mémoire
+- **Les symlinks ne fonctionnent pas** : il faut dupliquer les rules (un jeu dans chaque dossier) si vous utilisez les deux outils
 - Les deux coexistent dans un même projet !
 
 **Annotation au stylet** : Dessiner un Venn diagram Cursor ↔ Claude Code avec CLAUDE.md au centre
@@ -146,7 +147,9 @@
 
 3. **Commun** : Le `CLAUDE.md` à la racine, lu par les deux outils
 
-**Annotation au stylet** : Entourer les différences de format entre les deux
+4. **Duplication nécessaire** : pas de symlinks — Cursor et Claude Code ont chacun leur dossier ; on maintient deux copies (`.mdc` vs `.md`, frontmatter `globs` vs `paths`)
+
+**Annotation au stylet** : Entourer les différences de format entre les deux, rappeler "dupliquer, pas de symlinks"
 
 ---
 
@@ -159,10 +162,8 @@
 - Problème : trop d'instructions = l'IA en ignore certaines (limite ~150-200 instructions)
 - Solution en 3 étapes :
   1. **Identifier les catégories** : style, tests, API, architecture
-  2. **Extraire** dans le dossier rules de votre outil :
-     - Cursor → `.cursor/rules/`
-     - Claude Code → `.claude/rules/`
-     - Ou les deux si votre équipe utilise les deux !
+  2. **Extraire** dans les dossiers rules : Cursor → `.cursor/rules/`, Claude Code → `.claude/rules/`
+     - **Les symlinks ne marchent pas** : il faut dupliquer le contenu dans les deux dossiers (adapter le format : `.mdc` + `globs` vs `.md` + `paths`)
   3. **Garder** dans CLAUDE.md uniquement l'essentiel (stack, commandes, fichiers clés)
 
 **Annotation au stylet** :
@@ -189,34 +190,7 @@ CLAUDE.md (50 lignes — stack + commandes)
 
 ---
 
-### 8. User-Level Rules (8:30 - 9:15) ⏱️ 0:45
-
-**Slide** : "Vos préférences personnelles partout"
-
-**Points à couvrir** :
-
-**Cursor** :
-- Cursor Settings → Rules → User Rules
-- S'appliquent à TOUS vos projets dans Cursor
-- Priorité : Team Rules > Project Rules > User Rules
-
-**Claude Code** :
-- Fichier `~/.claude/CLAUDE.md`
-- S'applique à tous vos projets dans Claude Code
-- Bonus : `CLAUDE.local.md` pour les préférences perso d'un projet (auto-gitignored)
-- Commande `/memory` pour voir/gérer la mémoire automatique
-
-**Exemples communs** :
-- "Réponds en français"
-- "Sois concis, pas d'explications sauf si demandé"
-- "Préfère les early returns"
-- Ne PAS y mettre des règles spécifiques à un projet
-
-**Annotation au stylet** : Schéma User Rules → s'applique à Projet A, B, C (pour les deux outils)
-
----
-
-### 9. Bonnes Pratiques (9:15 - 9:45) ⏱️ 0:30
+### 8. Bonnes Pratiques (8:30 - 9:00) ⏱️ 0:30
 
 **Slide** : "Les 7 bonnes pratiques"
 
@@ -225,21 +199,20 @@ CLAUDE.md (50 lignes — stack + commandes)
 3. **Être spécifique** → "Use named exports" plutôt que "Write clean code"
 4. **Inclure le pourquoi** → l'IA suit mieux quand elle comprend la raison
 5. **Garder sous 500 lignes** par fichier de rule
-6. **Penser multi-outils** → CLAUDE.md comme base commune, rules spécifiques en complément
+6. **Penser multi-outils** → CLAUDE.md comme base commune ; dupliquer les rules dans `.cursor/rules/` et `.claude/rules/` (pas de symlinks, ça ne fonctionne pas)
 7. **Tester** → vérifier que l'agent respecte réellement les rules dans les deux outils
 
 **Annotation au stylet** : Cocher chaque point comme une checklist
 
 ---
 
-### 10. Conclusion & Récapitulatif (9:45 - 10:00) ⏱️ 0:15
+### 9. Conclusion & Récapitulatif (9:00 - 10:00) ⏱️ 1 min
 
 **Slide** : "Récapitulatif"
 
 - Les rules = la clé pour un workflow IA cohérent, quel que soit l'outil
 - `CLAUDE.md` + `AGENTS.md` = la base commune entre Cursor et Claude Code
-- Rules modulaires dans `.cursor/rules/` ET/OU `.claude/rules/`
-- User Rules / `~/.claude/CLAUDE.md` pour vos préférences personnelles
+- Rules modulaires dans `.cursor/rules/` ET `.claude/rules/` — à dupliquer (les symlinks ne fonctionnent pas)
 - Les deux outils coexistent dans un même projet
 
 **Call to action** : "Créez votre première rule dès aujourd'hui !"
@@ -266,3 +239,4 @@ CLAUDE.md (50 lignes — stack + commandes)
 - Penser à zoomer sur les parties de code importantes
 - Montrer les similitudes AVANT les différences (message positif)
 - Bien insister sur CLAUDE.md comme point de convergence des deux outils
+- Mentionner clairement que les symlinks ne fonctionnent pas — il faut dupliquer les rules entre `.cursor/rules/` et `.claude/rules/`

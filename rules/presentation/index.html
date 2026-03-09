@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 11</span>
+        <span class="slide-counter" id="slideCounter">1 / 10</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -540,75 +540,8 @@ paths:
       </div>
     </section>
 
-    <!-- SLIDE 8 : Symlinks — Zéro duplication -->
-    <section class="slide slide--symlink" data-slide="8">
-      <div class="slide-content">
-        <div class="section-label animate-pop">Zéro Duplication</div>
-        <h2 class="slide-title animate-slide-up">Symlinks : une seule rule, deux outils</h2>
-        <div class="migration-flow">
-          <div class="migration-before animate-card" style="--delay: 0.2s">
-            <h3 class="migration-label bad">❌ Sans symlinks</h3>
-            <div class="file-tree">
-              <div class="file-tree-item root"><span class="file-icon-tree">📁</span> .cursor/rules/</div>
-              <div class="file-tree-item indent">├── code-style.mdc</div>
-              <div class="file-tree-item indent">├── testing.mdc</div>
-              <div class="file-tree-item indent">└── api-patterns.mdc</div>
-              <div class="file-tree-item root" style="margin-top:0.5rem"><span class="file-icon-tree">📁</span> .claude/rules/</div>
-              <div class="file-tree-item indent">├── code-style.md</div>
-              <div class="file-tree-item indent">├── testing.md</div>
-              <div class="file-tree-item indent">└── api-patterns.md</div>
-            </div>
-            <div class="warning-badge">⚠️ 6 fichiers, 3 règles — contenu dupliqué, désynchronisation garantie</div>
-          </div>
-          <div class="migration-arrow animate-fade-in" style="--delay: 0.4s">
-            <svg width="60" height="60" viewBox="0 0 60 60"><path d="M10 30 L45 30 M35 20 L45 30 L35 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
-          </div>
-          <div class="migration-after animate-card" style="--delay: 0.5s">
-            <h3 class="migration-label good">✅ Avec symlinks</h3>
-            <div class="file-tree">
-              <div class="file-tree-item root"><span class="file-icon-tree">📁</span> .cursor/rules/</div>
-              <div class="file-tree-item indent">├── <span class="file-highlight">code-style.mdc</span> <span class="real-tag">fichier réel</span></div>
-              <div class="file-tree-item indent">├── <span class="file-highlight">testing.mdc</span> <span class="real-tag">fichier réel</span></div>
-              <div class="file-tree-item indent">└── <span class="file-highlight">api-patterns.mdc</span> <span class="real-tag">fichier réel</span></div>
-              <div class="file-tree-item root" style="margin-top:0.5rem"><span class="file-icon-tree">📁</span> .claude/rules/</div>
-              <div class="file-tree-item indent">├── <span class="file-highlight-cc">code-style.md</span> <span class="link-tag">symlink</span></div>
-              <div class="file-tree-item indent">├── <span class="file-highlight-cc">testing.md</span> <span class="link-tag">symlink</span></div>
-              <div class="file-tree-item indent">└── <span class="file-highlight-cc">api-patterns.md</span> <span class="link-tag">symlink</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="create-dual animate-fade-in" style="--delay: 0.65s">
-          <div class="create-col">
-            <div class="create-col-header cc-header">▶ Linux / Mac</div>
-            <div class="create-format">
-              <pre><code><span class="code-comment"># depuis la racine du projet</span>
-<span class="code-keyword">cd</span> .claude/rules
-
-<span class="code-keyword">ln -s</span> <span class="code-string">../../.cursor/rules/code-style.mdc</span> code-style.md
-<span class="code-keyword">ln -s</span> <span class="code-string">../../.cursor/rules/testing.mdc</span> testing.md
-<span class="code-keyword">ln -s</span> <span class="code-string">../../.cursor/rules/api-patterns.mdc</span> api-patterns.md</code></pre>
-            </div>
-          </div>
-          <div class="create-col">
-            <div class="create-col-header cursor-header">⚡ Windows</div>
-            <div class="create-format">
-              <pre><code><span class="code-comment">:: depuis la racine du projet</span>
-<span class="code-keyword">cd</span> .claude\rules
-
-<span class="code-keyword">mklink</span> code-style.md <span class="code-string">..\..\.cursor\rules\code-style.mdc</span>
-<span class="code-keyword">mklink</span> testing.md <span class="code-string">..\..\.cursor\rules\testing.mdc</span>
-<span class="code-keyword">mklink</span> api-patterns.md <span class="code-string">..\..\.cursor\rules\api-patterns.mdc</span></code></pre>
-            </div>
-          </div>
-        </div>
-        <div class="analogy animate-fade-in" style="--delay: 0.8s">
-          💡 Les deux outils lisent du Markdown. Le frontmatter (<code>globs:</code> Cursor, <code>paths:</code> Claude Code) est ignoré par l'autre outil. Le contenu fonctionne partout.
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 9 : Migration -->
-    <section class="slide slide--migration" data-slide="9">
+    <!-- SLIDE 8 : Migration -->
+    <section class="slide slide--migration" data-slide="8">
       <div class="slide-content">
         <div class="section-label animate-pop">Migration</div>
         <h2 class="slide-title animate-slide-up">Migration depuis un CLAUDE.md monolithique</h2>
@@ -669,8 +602,8 @@ paths:
       </div>
     </section>
 
-    <!-- SLIDE 10 : User Rules -->
-    <section class="slide slide--user" data-slide="10">
+    <!-- SLIDE 9 : User Rules -->
+    <section class="slide slide--user" data-slide="9">
       <div class="slide-content">
         <div class="section-label animate-pop">User Rules</div>
         <h2 class="slide-title animate-slide-up">Préférences personnelles partout</h2>
@@ -742,8 +675,8 @@ paths:
       </div>
     </section>
 
-    <!-- SLIDE 11 : Bonnes Pratiques + Conclusion -->
-    <section class="slide slide--best" data-slide="11">
+    <!-- SLIDE 10 : Bonnes Pratiques + Conclusion -->
+    <section class="slide slide--best" data-slide="10">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 7 règles d'or</h2>
