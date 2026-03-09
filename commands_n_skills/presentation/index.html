@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les /Commands & Skills — Cursor & Claude Code — Formation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav class="slide-nav" id="slideNav">
+    <div class="nav-inner">
+      <span class="nav-title">Commands & Skills — Cursor & Claude Code</span>
+      <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="slide-counter" id="slideCounter">1 / 12</span>
+        <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <button class="nav-btn fullscreen-btn" id="fullscreenBtn" aria-label="Plein écran">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="slides-container" id="slidesContainer">
+
+    <!-- SLIDE 1 : Hero -->
+    <section class="slide slide--hero active" data-slide="1">
+      <div class="slide-content">
+        <div class="hero-badge animate-pop">Formation</div>
+        <h1 class="hero-title">
+          <span class="animate-slide-up" style="--delay: 0.1s">Les <span class="gradient-text">/Commands</span> & <span class="gradient-text">Skills</span></span>
+          <span class="animate-slide-up hero-tools" style="--delay: 0.25s">
+            <span class="tool-tag tool-tag--cursor">Cursor</span>
+            <span class="tool-amp">&</span>
+            <span class="tool-tag tool-tag--claude">Claude Code</span>
+          </span>
+        </h1>
+        <p class="hero-subtitle animate-fade-in" style="--delay: 0.5s">
+          Automatisez vos workflows.<br>
+          Donnez des capacités intelligentes à votre IA.
+        </p>
+        <div class="hero-keys animate-fade-in" style="--delay: 0.8s">
+          <kbd>→</kbd> ou <kbd>Espace</kbd> pour avancer
+        </div>
+      </div>
+      <div class="hero-bg-grid"></div>
+    </section>
+
+    <!-- SLIDE 2 : Le Problème -->
+    <section class="slide slide--problem" data-slide="2">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Le Problème</div>
+        <h2 class="slide-title animate-slide-up">Au-delà des Rules</h2>
+        <div class="problem-grid">
+          <div class="problem-card animate-card" style="--delay: 0.2s">
+            <div class="problem-icon">🔄</div>
+            <h3>Prompts répétitifs</h3>
+            <p>Vous retapez les mêmes prompts complexes à chaque session — review, commit, tests…</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.35s">
+            <div class="problem-icon">🚫</div>
+            <h3>Pas de partage</h3>
+            <p>Chaque dev a ses propres raccourcis mentaux — rien de versionné ni partagé en équipe</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.5s">
+            <div class="problem-icon">🤖</div>
+            <h3>Pas d'automatisation</h3>
+            <p>L'IA ne peut pas découvrir vos workflows toute seule — elle attend vos instructions</p>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.8s">
+          <span class="solution-arrow">→</span>
+          <strong>Commands</strong> = actions directes &nbsp;|&nbsp; <strong>Skills</strong> = capacités intelligentes que l'IA découvre et utilise
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 : Commandes Built-in -->
+    <section class="slide slide--builtin" data-slide="3">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Built-in</div>
+        <h2 class="slide-title animate-slide-up">Commandes intégrées</h2>
+        <div class="versus-grid">
+          <div class="versus-col animate-card" style="--delay: 0.2s">
+            <div class="versus-header cursor-header">
+              <span class="versus-logo">⚡</span>
+              Cursor
+              <span class="versus-sub">IDE graphique</span>
+            </div>
+            <div class="versus-body">
+              <div class="cmd-list">
+                <div class="cmd-category">Navigation</div>
+                <div class="cmd-item"><span class="cmd-name cursor-cmd">/plan</span><span class="cmd-desc">Mode planification</span></div>
+                <div class="cmd-item"><span class="cmd-name cursor-cmd">/ask</span><span class="cmd-desc">Question sans modifier de fichiers</span></div>
+                <div class="cmd-item"><span class="cmd-name cursor-cmd">/new-chat</span><span class="cmd-desc">Nouvelle conversation</span></div>
+                <div class="cmd-category">Modèle & Contexte</div>
+                <div class="cmd-item"><span class="cmd-name cursor-cmd">/model</span><span class="cmd-desc">Changer de modèle</span></div>
+                <div class="cmd-item"><span class="cmd-name cursor-cmd">/compress</span><span class="cmd-desc">Compresser le contexte</span></div>
+                <div class="cmd-item"><span class="cmd-name cursor-cmd">/max-mode</span><span class="cmd-desc">Mode max (modèle premium)</span></div>
+                <div class="cmd-category">Outils</div>
+                <div class="cmd-item"><span class="cmd-name cursor-cmd">/rules</span><span class="cmd-desc">Voir les rules actives</span></div>
+                <div class="cmd-item"><span class="cmd-name cursor-cmd">/commands</span><span class="cmd-desc">Gérer les commandes custom</span></div>
+                <div class="cmd-item"><span class="cmd-name cursor-cmd">/mcp list</span><span class="cmd-desc">Lister les serveurs MCP</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="versus-col animate-card" style="--delay: 0.35s">
+            <div class="versus-header cc-header">
+              <span class="versus-logo">▶</span>
+              Claude Code
+              <span class="versus-sub">CLI terminal</span>
+            </div>
+            <div class="versus-body">
+              <div class="cmd-list">
+                <div class="cmd-category">Session</div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/compact</span><span class="cmd-desc">Compresser l'historique</span></div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/clear</span><span class="cmd-desc">Effacer la conversation</span></div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/cost</span><span class="cmd-desc">Tokens et coûts de la session</span></div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/context</span><span class="cmd-desc">Visualiser la fenêtre de contexte</span></div>
+                <div class="cmd-category">Projet</div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/init</span><span class="cmd-desc">Initialiser CLAUDE.md</span></div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/review</span><span class="cmd-desc">Review du code récent</span></div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/add-dir</span><span class="cmd-desc">Ajouter un répertoire de travail</span></div>
+                <div class="cmd-category">Configuration</div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/model</span><span class="cmd-desc">Changer de modèle</span></div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/config</span><span class="cmd-desc">Ouvrir les paramètres</span></div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/permissions</span><span class="cmd-desc">Gérer les permissions</span></div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/mcp</span><span class="cmd-desc">Gérer les serveurs MCP</span></div>
+                <div class="cmd-item"><span class="cmd-name cc-cmd">/doctor</span><span class="cmd-desc">Vérifier l'installation</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.6s">
+          💡 Commandes équivalentes : <code>/compress</code> (Cursor) = <code>/compact</code> (Claude Code) &nbsp;|&nbsp; <code>/model</code> existe dans les deux
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 : Commandes Custom -->
+    <section class="slide slide--custom" data-slide="4">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Custom</div>
+        <h2 class="slide-title animate-slide-up">Créer vos propres commandes</h2>
+        <div class="create-dual">
+          <div class="create-col animate-card" style="--delay: 0.2s">
+            <div class="create-col-header cursor-header">⚡ Cursor</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Créez un fichier <code>.md</code> dans <code>.cursor/commands/</code></div>
+              <div class="cs"><span class="cs-num">2</span> Le nom du fichier = nom de la commande</div>
+              <div class="cs"><span class="cs-num">3</span> Le contenu = le prompt envoyé à l'IA</div>
+              <div class="cs"><span class="cs-num">4</span> Invoquez avec <code>/nom</code> dans le chat</div>
+            </div>
+            <div class="create-result">
+              <code>.cursor/commands/review.md</code>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-heading"># Code Review</span>
+
+Fais une review complète du code
+dans les fichiers modifiés.
+
+Vérifie :
+- La <span class="code-highlight">lisibilité</span>
+- Les <span class="code-highlight">erreurs potentielles</span>
+- Les <span class="code-keyword">bonnes pratiques</span>
+- La <span class="code-keyword">performance</span></code></pre>
+            </div>
+          </div>
+
+          <div class="create-col animate-card" style="--delay: 0.35s">
+            <div class="create-col-header cc-header">▶ Claude Code</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Créez <code>.claude/commands/</code> ou <code>.claude/skills/</code></div>
+              <div class="cs"><span class="cs-num">2</span> Ajoutez un frontmatter YAML</div>
+              <div class="cs"><span class="cs-num">3</span> Utilisez <code>$ARGUMENTS</code> pour les paramètres</div>
+              <div class="cs"><span class="cs-num">4</span> Utilisez <code>!`cmd`</code> pour injecter du contexte</div>
+            </div>
+            <div class="create-result">
+              <code>.claude/commands/fix-issue.md</code>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-frontmatter">---
+description: Corrige un issue GitHub
+argument-hint: [issue-number]
+allowed-tools: Read, Edit, Bash
+model: sonnet
+---</span>
+
+Corrige l'issue GitHub <span class="code-highlight">$ARGUMENTS</span>.
+Contexte : <span class="code-keyword">!`gh issue view $0`</span>
+
+<span class="code-comment"># Invocation : /fix-issue 123</span></code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.6s">
+          💡 Claude Code offre plus de contrôle (frontmatter, arguments, injection dynamique). Cursor est plus simple (Markdown pur). Les deux se versionnent dans Git.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 : Skills - Le Standard -->
+    <section class="slide slide--standard" data-slide="5">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Standard Ouvert</div>
+        <h2 class="slide-title animate-slide-up">Skills — Le niveau supérieur</h2>
+        <div class="diff-grid">
+          <div class="diff-card animate-card" style="--delay: 0.2s">
+            <div class="diff-icon">⌨️</div>
+            <h3>Commandes</h3>
+            <p>Vous les déclenchez manuellement<br>avec <code>/nom</code></p>
+          </div>
+          <div class="diff-card animate-card" style="--delay: 0.35s">
+            <div class="diff-icon">🧠</div>
+            <h3>Skills</h3>
+            <p>L'IA les <strong>découvre et active</strong><br>automatiquement quand c'est pertinent</p>
+          </div>
+        </div>
+        <div class="standard-features">
+          <div class="standard-feature animate-card" style="--delay: 0.45s">
+            <div class="sf-icon">🌐</div>
+            <h4>Standard ouvert</h4>
+            <p>agentskills.io — publié par Anthropic (déc. 2025)</p>
+          </div>
+          <div class="standard-feature animate-card" style="--delay: 0.5s">
+            <div class="sf-icon">🔄</div>
+            <h4>Portable</h4>
+            <p>Fonctionne dans Cursor, Claude Code, Codex</p>
+          </div>
+          <div class="standard-feature animate-card" style="--delay: 0.55s">
+            <div class="sf-icon">📦</div>
+            <h4>Modulaire</h4>
+            <p>Un dossier avec SKILL.md + scripts + assets</p>
+          </div>
+          <div class="standard-feature animate-card" style="--delay: 0.6s">
+            <div class="sf-icon">⚡</div>
+            <h4>Progressif</h4>
+            <p>Chargement à la demande — contexte efficace</p>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.75s">
+          💡 Les commandes custom de Claude Code ont été <strong>fusionnées</strong> dans les skills. <code>.claude/commands/</code> fonctionne toujours, mais les skills sont recommandées. Cursor v2.4 (janv. 2026) a introduit les skills + <code>/migrate-to-skills</code>.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 : Anatomie SKILL.md -->
+    <section class="slide slide--anatomy" data-slide="6">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Anatomie</div>
+        <h2 class="slide-title animate-slide-up">Structure d'une Skill</h2>
+        <div class="anatomy-layout">
+          <div class="anatomy-tree animate-card" style="--delay: 0.2s">
+            <h3>Structure du dossier</h3>
+            <div class="file-tree">
+              <div class="file-tree-item root">
+                <span class="file-icon-tree">📁</span>
+                my-skill/
+              </div>
+              <div class="file-tree-item indent">├── <span class="file-highlight-skill">SKILL.md</span> <span class="file-tag required">Obligatoire</span></div>
+              <div class="file-tree-item indent">├── <span class="file-highlight">scripts/</span> <span class="file-tag optional">Optionnel</span></div>
+              <div class="file-tree-item indent">│&nbsp;&nbsp; └── deploy.sh</div>
+              <div class="file-tree-item indent">├── <span class="file-highlight">references/</span> <span class="file-tag optional">Optionnel</span></div>
+              <div class="file-tree-item indent">│&nbsp;&nbsp; └── REFERENCE.md</div>
+              <div class="file-tree-item indent">└── <span class="file-highlight">assets/</span> <span class="file-tag optional">Optionnel</span></div>
+              <div class="file-tree-item indent">&nbsp;&nbsp;&nbsp; └── config-template.json</div>
+            </div>
+            <div class="frontmatter-grid">
+              <div class="fm-item fm-critical"><span class="fm-key">name</span><span class="fm-val">Identifiant (a-z, 0-9, -)</span></div>
+              <div class="fm-item fm-critical"><span class="fm-key">description</span><span class="fm-val">Déclenchement auto !</span></div>
+              <div class="fm-item"><span class="fm-key">disable-model-invocation</span><span class="fm-val">Forcer /manuelle</span></div>
+              <div class="fm-item"><span class="fm-key">allowed-tools</span><span class="fm-val">Outils sans confirmation</span></div>
+              <div class="fm-item"><span class="fm-key">model</span><span class="fm-val">Modèle à utiliser</span></div>
+              <div class="fm-item"><span class="fm-key">context: fork</span><span class="fm-val">Exécuter en sous-agent</span></div>
+            </div>
+          </div>
+
+          <div class="anatomy-code animate-card" style="--delay: 0.35s">
+            <div class="anatomy-code-header">SKILL.md — Exemple complet</div>
+            <pre><code><span class="code-frontmatter">---
+name: deploy-app
+description: >
+  Deploy the application to staging
+  or production environments. Use when
+  deploying code or when the user
+  mentions deployment or releases.
+disable-model-invocation: true
+allowed-tools: Bash(npm *), Read
+model: sonnet
+---</span>
+
+<span class="code-heading"># Deploy App</span>
+
+Déployer l'application en utilisant
+les scripts fournis.
+
+<span class="code-heading">## Étapes</span>
+1. Valider avec <span class="code-keyword">scripts/validate.py</span>
+2. Builder le projet
+3. Exécuter <span class="code-keyword">scripts/deploy.sh</span> <span class="code-highlight">$ARGUMENTS</span>
+4. Vérifier le déploiement
+
+<span class="code-heading">## Ressources</span>
+- Détails API : <span class="code-string">[reference.md](reference.md)</span>
+- Exemples : <span class="code-string">[examples.md](examples.md)</span></code></pre>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.6s">
+          ⚠️ La <strong>description</strong> est la partie la plus critique — c'est elle qui détermine si l'IA active la skill automatiquement. Soignez-la !
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 : Skills en Action -->
+    <section class="slide slide--action" data-slide="7">
+      <div class="slide-content">
+        <div class="section-label animate-pop">En Action</div>
+        <h2 class="slide-title animate-slide-up">Skills dans les deux outils</h2>
+        <div class="skills-dual">
+          <div class="skill-col animate-card" style="--delay: 0.2s">
+            <div class="versus-header cursor-header">
+              <span class="versus-logo">⚡</span>
+              Cursor
+              <span class="versus-sub">v2.4+</span>
+            </div>
+            <div class="skill-col-body">
+              <div class="skill-item">
+                <span class="skill-label">Emplacements</span>
+                <div><code>.cursor/skills/</code><br><code>.agents/skills/</code><br><code>~/.cursor/skills/</code></div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Compatibilité</span>
+                <span>Lit aussi <code>.claude/skills/</code> et <code>.codex/skills/</code></span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Découverte</span>
+                <span>Automatique au démarrage</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Invocation</span>
+                <span>Tapez <code>/</code> dans le chat Agent</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Visibilité</span>
+                <span>Settings → Rules → Agent Decides</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Migration</span>
+                <span><code>/migrate-to-skills</code></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-col animate-card" style="--delay: 0.35s">
+            <div class="versus-header cc-header">
+              <span class="versus-logo">▶</span>
+              Claude Code
+              <span class="versus-sub">CLI</span>
+            </div>
+            <div class="skill-col-body">
+              <div class="skill-item">
+                <span class="skill-label">Emplacements</span>
+                <div><code>.claude/skills/</code><br><code>~/.claude/skills/</code></div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Priorité</span>
+                <span>Enterprise > Personal > Project</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Découverte</span>
+                <span>Auto + sous-répertoires (monorepos)</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Invocation</span>
+                <span>Tapez <code>/skill-name</code> ou automatique</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Sous-agents</span>
+                <span><code>context: fork</code> pour isoler</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-label">Budget</span>
+                <span>~2% de la fenêtre de contexte</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="invocation-grid animate-fade-in" style="--delay: 0.55s">
+          <div class="invocation-card">
+            <h4>Par défaut</h4>
+            <p>Utilisateur <strong>ET</strong> IA peuvent invoquer</p>
+          </div>
+          <div class="invocation-card">
+            <h4><code>disable-model-invocation: true</code></h4>
+            <p>Utilisateur uniquement — pour <code>/deploy</code>, <code>/commit</code></p>
+          </div>
+          <div class="invocation-card">
+            <h4><code>user-invocable: false</code></h4>
+            <p>IA uniquement — connaissances de fond</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 : Bundled Skills Claude Code -->
+    <section class="slide slide--bundled" data-slide="8">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Bundled Skills</div>
+        <h2 class="slide-title animate-slide-up">Skills intégrées — Claude Code</h2>
+        <div class="bundled-grid">
+          <div class="bundled-card bundled-featured animate-card" style="--delay: 0.15s">
+            <div class="bundled-icon">🚀</div>
+            <div class="bundled-name">/batch</div>
+            <div class="bundled-desc">Orchestrer des changements à grande échelle en parallèle. Décompose en 5-30 unités, chaque agent dans un git worktree isolé — implémente, teste et ouvre une PR.</div>
+            <div class="bundled-example">/batch migrate src/ from Solid to React</div>
+          </div>
+          <div class="bundled-card bundled-featured animate-card" style="--delay: 0.25s">
+            <div class="bundled-icon">✨</div>
+            <div class="bundled-name">/simplify</div>
+            <div class="bundled-desc">Nettoyer le code récemment modifié. Lance 3 agents en parallèle (réutilisation, qualité, efficacité) — agrège et applique les corrections.</div>
+            <div class="bundled-example">/simplify focus on memory efficiency</div>
+          </div>
+          <div class="bundled-card animate-card" style="--delay: 0.35s">
+            <div class="bundled-icon">🔍</div>
+            <div class="bundled-name">/debug</div>
+            <div class="bundled-desc">Diagnostiquer la session courante en lisant les logs de debug.</div>
+          </div>
+          <div class="bundled-card animate-card" style="--delay: 0.45s">
+            <div class="bundled-icon">🔁</div>
+            <div class="bundled-name">/loop</div>
+            <div class="bundled-desc">Exécuter un prompt à intervalle régulier — polling de déploiements.</div>
+            <div class="bundled-example">/loop 5m check if deploy finished</div>
+          </div>
+          <div class="bundled-card animate-card" style="--delay: 0.55s">
+            <div class="bundled-icon">📚</div>
+            <div class="bundled-name">/claude-api</div>
+            <div class="bundled-desc">Charger la référence API Claude pour votre langage.</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.7s">
+          💡 Ces skills sont des <strong>playbooks</strong> — pas du code figé. Elles orchestrent des agents, lisent des fichiers et s'adaptent à votre codebase.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 : Custom Modes Cursor -->
+    <section class="slide slide--modes" data-slide="9">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Custom Modes</div>
+        <h2 class="slide-title animate-slide-up">Modes personnalisés — Cursor</h2>
+        <div class="modes-layout">
+          <div class="modes-list">
+            <div class="mode-card animate-card" style="--delay: 0.15s">
+              <div class="mode-icon">📖</div>
+              <div class="mode-name">Teach</div>
+              <div class="mode-desc">Explications détaillées et questions de clarification</div>
+            </div>
+            <div class="mode-card animate-card" style="--delay: 0.2s">
+              <div class="mode-icon">🔧</div>
+              <div class="mode-name">Refactor</div>
+              <div class="mode-desc">Améliorer la structure sans nouvelles fonctionnalités</div>
+            </div>
+            <div class="mode-card animate-card" style="--delay: 0.25s">
+              <div class="mode-icon">📋</div>
+              <div class="mode-name">Plan</div>
+              <div class="mode-desc">Plans d'implémentation sans modifier le code</div>
+            </div>
+            <div class="mode-card animate-card" style="--delay: 0.3s">
+              <div class="mode-icon">🔬</div>
+              <div class="mode-name">Research</div>
+              <div class="mode-desc">Explorer plusieurs sources avant de recommander</div>
+            </div>
+            <div class="mode-card animate-card" style="--delay: 0.35s">
+              <div class="mode-icon">🐛</div>
+              <div class="mode-name">Debug</div>
+              <div class="mode-desc">Investigation approfondie avant correction</div>
+            </div>
+            <div class="mode-card animate-card" style="--delay: 0.4s">
+              <div class="mode-icon">👁️</div>
+              <div class="mode-name">Review</div>
+              <div class="mode-desc">Analyse qualité sans résolution automatique</div>
+            </div>
+          </div>
+          <div class="modes-info animate-card" style="--delay: 0.45s">
+            <h3>Comment créer un mode</h3>
+            <div class="modes-steps">
+              <div class="modes-step"><span class="cs-num">1</span> Ouvrez <code>Settings → Features → Chat</code></div>
+              <div class="modes-step"><span class="cs-num">2</span> Cliquez <strong>Custom modes</strong></div>
+              <div class="modes-step"><span class="cs-num">3</span> Cliquez <strong>Add custom mode</strong></div>
+              <div class="modes-step"><span class="cs-num">4</span> Choisissez : nom, icône, raccourci clavier</div>
+              <div class="modes-step"><span class="cs-num">5</span> Sélectionnez les <strong>outils activés</strong></div>
+              <div class="modes-step"><span class="cs-num">6</span> Ajoutez des <strong>instructions custom</strong></div>
+            </div>
+            <div class="create-note" style="margin-top: 1rem; padding: 0.75rem 1rem;">
+              🔮 À venir : <code>.cursor/modes.json</code> pour partager les modes en équipe via Git
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 : Comparatif -->
+    <section class="slide slide--compare" data-slide="10">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Comparatif</div>
+        <h2 class="slide-title animate-slide-up">Le grand tableau comparatif</h2>
+        <div class="compare-table-wrapper animate-fade-in" style="--delay: 0.3s">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th><span class="col-badge col--commands">Commands<br><small>Actions directes</small></span></th>
+                <th><span class="col-badge col--skills">Skills<br><small>Capacités intelligentes</small></span></th>
+                <th><span class="col-badge col--rules">Rules<br><small>Instructions persistantes</small></span></th>
+                <th><span class="col-badge col--modes">Modes<br><small>Environnements</small></span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="row-label">Déclenchement</td>
+                <td>Manuel <code>/nom</code></td>
+                <td>Auto ou manuel</td>
+                <td>Automatique</td>
+                <td>Sélection user</td>
+              </tr>
+              <tr>
+                <td class="row-label">Cursor</td>
+                <td class="check"><code>.cursor/commands/</code></td>
+                <td class="check"><code>.cursor/skills/</code></td>
+                <td class="check"><code>.cursor/rules/</code></td>
+                <td class="check">Settings</td>
+              </tr>
+              <tr>
+                <td class="row-label">Claude Code</td>
+                <td class="check"><code>.claude/commands/</code></td>
+                <td class="check"><code>.claude/skills/</code></td>
+                <td class="check"><code>.claude/rules/</code></td>
+                <td class="cross">✗</td>
+              </tr>
+              <tr>
+                <td class="row-label">Standard ouvert</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ agentskills.io</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+              </tr>
+              <tr>
+                <td class="row-label">Sous-agents</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ <code>context: fork</code></td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+              </tr>
+              <tr>
+                <td class="row-label">Fichiers de support</td>
+                <td class="cross">✗</td>
+                <td class="check">✓ scripts, refs, assets</td>
+                <td class="cross">✗</td>
+                <td class="cross">✗</td>
+              </tr>
+              <tr>
+                <td class="row-label">Versionné Git</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="cross">Bientôt</td>
+              </tr>
+              <tr>
+                <td class="row-label">Idéal pour</td>
+                <td>Raccourcis rapides</td>
+                <td>Workflows complexes et réutilisables</td>
+                <td>Conventions permanentes</td>
+                <td>Contrôler le comportement de l'IA</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="compare-summary animate-fade-in" style="--delay: 0.6s">
+          <div class="summary-item">
+            <span class="summary-dot dot--rules"></span>
+            <strong>Rules</strong> = la base (savoir)
+          </div>
+          <div class="summary-item">
+            <span class="summary-dot dot--commands"></span>
+            <strong>Commands</strong> = actions (faire)
+          </div>
+          <div class="summary-item">
+            <span class="summary-dot dot--skills"></span>
+            <strong>Skills</strong> = intelligence (savoir-faire)
+          </div>
+          <div class="summary-item">
+            <span class="summary-dot dot--modes"></span>
+            <strong>Modes</strong> = environnement (comment faire)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11 : Bonnes Pratiques -->
+    <section class="slide slide--best" data-slide="11">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Bonnes Pratiques</div>
+        <h2 class="slide-title animate-slide-up">Les 6 règles d'or</h2>
+        <div class="best-practices-grid">
+          <div class="bp-card animate-card" style="--delay: 0.1s">
+            <div class="bp-number">1</div>
+            <h3>Commencer par les commandes</h3>
+            <p>Vous tapez le même prompt 3 fois ? Créez une commande.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.175s">
+            <div class="bp-number">2</div>
+            <h3>Migrer vers les skills</h3>
+            <p>Quand la commande a besoin de fichiers de support ou de déclenchement auto</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.25s">
+            <div class="bp-number">3</div>
+            <h3>Soigner la description</h3>
+            <p>C'est elle qui détermine si l'IA active la skill — mots-clés pertinents</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.325s">
+            <div class="bp-number">4</div>
+            <h3>Protéger les effets de bord</h3>
+            <p><code>disable-model-invocation: true</code> pour <code>/deploy</code>, <code>/commit</code></p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.4s">
+            <div class="bp-number">5</div>
+            <h3>Versionner dans Git</h3>
+            <p>L'équipe en profite — les skills voyagent avec le projet</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.475s">
+            <div class="bp-number">6</div>
+            <h3>SKILL.md &lt; 500 lignes</h3>
+            <p>Déplacer la doc détaillée dans <code>references/</code></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="12">
+      <div class="slide-content">
+        <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
+          <h2>🎯 Récapitulatif</h2>
+          <div class="conclusion-items">
+            <div class="conclusion-item">Les <strong>Commands</strong> = des raccourcis pour vos workflows récurrents</div>
+            <div class="conclusion-item">Les <strong>Skills</strong> = des capacités modulaires que l'IA découvre et utilise intelligemment</div>
+            <div class="conclusion-item"><strong>Standard ouvert</strong> Agent Skills — fonctionne dans Cursor ET Claude Code</div>
+            <div class="conclusion-item">Les commandes custom de Claude Code sont désormais des skills</div>
+            <div class="conclusion-item">Cursor v2.4 a introduit les skills avec <code>/migrate-to-skills</code></div>
+            <div class="conclusion-item">Commands, Skills, Rules et Modes sont <strong>complémentaires</strong> — pas en compétition</div>
+          </div>
+          <div class="cta-box">
+            Créez votre première Skill dès aujourd'hui !<br>
+            <span class="cta-dual">
+              <span>⚡ <code>mkdir .cursor/skills/ma-skill</code></span>
+              <span class="cta-sep">|</span>
+              <span>▶ <code>mkdir -p .claude/skills/ma-skill</code></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
