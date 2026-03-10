@@ -7,11 +7,12 @@
 # Site structure (each course in its own folder):
 #   /rules/                  → Rules presentation
 #   /commands_n_skills/      → Commands & Skills presentation
+#   /hooks/                  → Hooks presentation
 #
 # Live URLs:
-#   https://davidthibaulttlm.github.io/Formations/
 #   https://davidthibaulttlm.github.io/Formations/rules
 #   https://davidthibaulttlm.github.io/Formations/commands_n_skills
+#   https://davidthibaulttlm.github.io/Formations/hooks
 
 name: Deploy presentations to GitHub Pages
 
@@ -21,6 +22,7 @@ on:
     paths:
       - 'rules/presentation/**'
       - 'commands_n_skills/presentation/**'
+      - 'hooks/presentation/**'
       - '.github/workflows/deploy-presentation.yml'
   workflow_dispatch:
 
@@ -48,9 +50,10 @@ jobs:
 
       - name: Build combined site
         run: |
-          mkdir -p _site/rules _site/commands_n_skills
+          mkdir -p _site/rules _site/commands_n_skills _site/hooks
           cp rules/presentation/* _site/rules/
           cp commands_n_skills/presentation/* _site/commands_n_skills/
+          cp hooks/presentation/* _site/hooks/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -66,3 +69,4 @@ jobs:
           echo "::notice title=Site live::All presentations deployed"
           echo "👉 Rules:              ${{ steps.deployment.outputs.page_url }}rules/"
           echo "👉 Commands & Skills:  ${{ steps.deployment.outputs.page_url }}commands_n_skills/"
+          echo "👉 Hooks:              ${{ steps.deployment.outputs.page_url }}hooks/"

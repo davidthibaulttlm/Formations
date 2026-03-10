@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Hooks — Cursor & Claude Code — Formation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav class="slide-nav" id="slideNav">
+    <div class="nav-inner">
+      <span class="nav-title">Hooks — Cursor & Claude Code</span>
+      <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="slide-counter" id="slideCounter">1 / 12</span>
+        <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <button class="nav-btn fullscreen-btn" id="fullscreenBtn" aria-label="Plein écran">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="slides-container" id="slidesContainer">
+
+    <!-- SLIDE 1 : Hero -->
+    <section class="slide slide--hero active" data-slide="1">
+      <div class="slide-content">
+        <div class="hero-badge animate-pop">Formation</div>
+        <h1 class="hero-title">
+          <span class="animate-slide-up" style="--delay: 0.1s">Les <span class="gradient-text">Hooks</span></span>
+          <span class="animate-slide-up hero-tools" style="--delay: 0.25s">
+            <span class="tool-tag tool-tag--cursor">Cursor</span>
+            <span class="tool-amp">&</span>
+            <span class="tool-tag tool-tag--claude">Claude Code</span>
+          </span>
+        </h1>
+        <p class="hero-subtitle animate-fade-in" style="--delay: 0.5s">
+          Contrôlez l'agent avec du code déterministe.
+        </p>
+        <div class="hero-keys animate-fade-in" style="--delay: 0.8s">
+          <kbd>→</kbd> ou <kbd>Espace</kbd> pour avancer
+        </div>
+      </div>
+      <div class="hero-bg-grid"></div>
+    </section>
+
+    <!-- SLIDE 2 : Le Problème -->
+    <section class="slide slide--problem" data-slide="2">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Le Problème</div>
+        <h2 class="slide-title animate-slide-up">Les limites des Rules</h2>
+        <div class="problem-grid">
+          <div class="problem-card animate-card" style="--delay: 0.2s">
+            <div class="problem-icon">🎲</div>
+            <h3>Probabiliste</h3>
+            <p>Les Rules sont des suggestions — l'IA peut les ignorer ou les oublier en cours de session</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.35s">
+            <div class="problem-icon">🔓</div>
+            <h3>Pas de garantie</h3>
+            <p>Impossible de bloquer une commande dangereuse ou de forcer un formatage avec une simple Rule</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.5s">
+            <div class="problem-icon">📊</div>
+            <h3>Pas d'audit</h3>
+            <p>Aucun moyen de logger les actions de l'agent ou d'envoyer de la télémétrie</p>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.8s">
+          <span class="solution-arrow">→</span>
+          <strong>Hooks</strong> = du code qui s'exécute systématiquement, à chaque fois, de façon <strong>déterministe</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 : Qu'est-ce qu'un Hook ? -->
+    <section class="slide slide--concept" data-slide="3">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Concept</div>
+        <h2 class="slide-title animate-slide-up">Qu'est-ce qu'un Hook ?</h2>
+        <div class="concept-flow animate-fade-in" style="--delay: 0.3s">
+          <div class="concept-formula">
+            <span class="concept-input">Agent veut agir</span>
+            <span class="concept-arrow">→</span>
+            <span class="concept-input">Hook intercepte</span>
+            <span class="concept-arrow">→</span>
+            <span class="concept-output">✅ Autoriser &nbsp;|&nbsp; ❌ Bloquer &nbsp;|&nbsp; 📝 Modifier</span>
+          </div>
+        </div>
+        <p class="concept-desc animate-fade-in" style="--delay: 0.45s">
+          Un hook est un processus externe (script, prompt LLM, endpoint HTTP) que l'outil exécute automatiquement à un moment précis du cycle de l'agent. Contrairement aux Rules qui sont des suggestions, les hooks sont <strong>garantis à 100%</strong>.
+        </p>
+        <div class="concept-types animate-fade-in" style="--delay: 0.55s">
+          <div class="concept-type">
+            <div class="concept-type-header concept-type--rules">
+              <span>📏</span> Rules
+            </div>
+            <div class="concept-type-body">
+              Instructions que l'IA <em>devrait</em> suivre
+            </div>
+            <div class="concept-note">Probabiliste — peut être ignoré</div>
+          </div>
+          <div class="concept-type">
+            <div class="concept-type-header concept-type--hooks">
+              <span>🪝</span> Hooks
+            </div>
+            <div class="concept-type-body">
+              Code qui s'exécute <em>systématiquement</em>
+            </div>
+            <div class="concept-note">Déterministe — garanti à 100%</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.7s">
+          💡 Pensez aux hooks comme du <strong>middleware Express</strong> — ils interceptent les actions de l'IA au lieu des requêtes HTTP.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 : Le Cycle de Vie -->
+    <section class="slide slide--lifecycle" data-slide="4">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Cycle de Vie</div>
+        <h2 class="slide-title animate-slide-up">Quand les hooks se déclenchent</h2>
+        <div class="lifecycle-grid">
+          <div class="lifecycle-category animate-card" style="--delay: 0.15s">
+            <div class="lifecycle-icon">▶️</div>
+            <h3>Session</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">SessionStart</span>
+              <span class="lifecycle-event">SessionEnd</span>
+            </div>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.25s">
+            <div class="lifecycle-icon">🛑</div>
+            <h3>Avant une action (Pre)</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">PreToolUse</span>
+              <span class="lifecycle-event">beforeShellExecution</span>
+              <span class="lifecycle-event">beforeReadFile</span>
+              <span class="lifecycle-event">UserPromptSubmit</span>
+            </div>
+            <div class="lifecycle-note">Peut bloquer l'action</div>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.35s">
+            <div class="lifecycle-icon">✅</div>
+            <h3>Après une action (Post)</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">PostToolUse</span>
+              <span class="lifecycle-event">afterFileEdit</span>
+              <span class="lifecycle-event">afterShellExecution</span>
+              <span class="lifecycle-event">PostToolUseFailure</span>
+            </div>
+            <div class="lifecycle-note">Idéal pour formater, logger</div>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.45s">
+            <div class="lifecycle-icon">🤖</div>
+            <h3>Sous-agents</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">SubagentStart</span>
+              <span class="lifecycle-event">SubagentStop</span>
+            </div>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.55s">
+            <div class="lifecycle-icon">📋</div>
+            <h3>Contexte</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">PreCompact</span>
+              <span class="lifecycle-event">InstructionsLoaded</span>
+              <span class="lifecycle-event">ConfigChange</span>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.7s">
+          ⚠️ Claude Code a ~18 événements, Cursor ~16. Les noms diffèrent (<strong>PascalCase</strong> vs <strong>camelCase</strong>) mais les concepts sont identiques.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 : Configuration -->
+    <section class="slide slide--config" data-slide="5">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Configuration</div>
+        <h2 class="slide-title animate-slide-up">Où configurer les hooks</h2>
+        <div class="create-dual">
+          <div class="create-col animate-card" style="--delay: 0.2s">
+            <div class="create-col-header cursor-header">⚡ Cursor</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Créez <code>.cursor/hooks.json</code> (projet) ou <code>~/.cursor/hooks.json</code> (global)</div>
+              <div class="cs"><span class="cs-num">2</span> Listez les hooks par événement</div>
+              <div class="cs"><span class="cs-num">3</span> Pointez vers un script exécutable</div>
+              <div class="cs"><span class="cs-num">4</span> Cursor recharge automatiquement</div>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-frontmatter">{</span>
+  <span class="code-string">"version"</span>: <span class="code-highlight">1</span>,
+  <span class="code-string">"hooks"</span>: <span class="code-frontmatter">{</span>
+    <span class="code-string">"afterFileEdit"</span>: [
+      <span class="code-frontmatter">{</span>
+        <span class="code-string">"command"</span>: <span class="code-keyword">".cursor/hooks/format.sh"</span>
+      <span class="code-frontmatter">}</span>
+    ]
+  <span class="code-frontmatter">}</span>
+<span class="code-frontmatter">}</span></code></pre>
+            </div>
+          </div>
+
+          <div class="create-col animate-card" style="--delay: 0.35s">
+            <div class="create-col-header cc-header">▶ Claude Code</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Éditez <code>.claude/settings.json</code> (projet) ou <code>~/.claude/settings.json</code> (global)</div>
+              <div class="cs"><span class="cs-num">2</span> Ajoutez un <code>matcher</code> regex pour filtrer</div>
+              <div class="cs"><span class="cs-num">3</span> Définissez le type : command, prompt, http, agent</div>
+              <div class="cs"><span class="cs-num">4</span> Ou utilisez <code>/hooks</code> pour le menu interactif</div>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-frontmatter">{</span>
+  <span class="code-string">"hooks"</span>: <span class="code-frontmatter">{</span>
+    <span class="code-string">"PostToolUse"</span>: [
+      <span class="code-frontmatter">{</span>
+        <span class="code-string">"matcher"</span>: <span class="code-highlight">"Write|Edit"</span>,
+        <span class="code-string">"hooks"</span>: [
+          <span class="code-frontmatter">{</span>
+            <span class="code-string">"type"</span>: <span class="code-keyword">"command"</span>,
+            <span class="code-string">"command"</span>: <span class="code-keyword">".claude/hooks/format.sh"</span>
+          <span class="code-frontmatter">}</span>
+        ]
+      <span class="code-frontmatter">}</span>
+    ]
+  <span class="code-frontmatter">}</span>
+<span class="code-frontmatter">}</span></code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.6s">
+          💡 Différence clé : Claude Code utilise un <strong>matcher regex</strong> pour filtrer sur le nom de l'outil. Cursor applique le hook à <strong>TOUTES</strong> les occurrences de l'événement (sauf si matcher est défini).
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 : Les 4 Types de Hooks -->
+    <section class="slide slide--types" data-slide="6">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Types</div>
+        <h2 class="slide-title animate-slide-up">Les 4 types de hooks</h2>
+        <div class="hook-types-grid">
+          <div class="hook-type-card animate-card" style="--delay: 0.15s">
+            <div class="hook-type-icon">⚙️</div>
+            <div class="hook-type-name">Command</div>
+            <div class="hook-type-availability">Cursor + Claude Code</div>
+            <div class="hook-type-desc">Script shell recevant du JSON sur stdin. Retourne <code>exit 0</code> (OK) ou <code>exit 2</code> (bloquer).</div>
+            <div class="hook-type-tag">80% des cas</div>
+          </div>
+          <div class="hook-type-card animate-card" style="--delay: 0.25s">
+            <div class="hook-type-icon">💬</div>
+            <div class="hook-type-name">Prompt</div>
+            <div class="hook-type-availability">Cursor + Claude Code</div>
+            <div class="hook-type-desc">Prompt envoyé à un LLM rapide pour une évaluation oui/non. Pas besoin de code.</div>
+            <div class="hook-type-tag">Facile</div>
+          </div>
+          <div class="hook-type-card animate-card" style="--delay: 0.35s">
+            <div class="hook-type-icon">🌐</div>
+            <div class="hook-type-name">HTTP</div>
+            <div class="hook-type-availability">Claude Code</div>
+            <div class="hook-type-desc">POST avec le JSON de l'événement vers une URL. Idéal pour services externes et compliance.</div>
+            <div class="hook-type-tag">Intégration</div>
+          </div>
+          <div class="hook-type-card animate-card" style="--delay: 0.45s">
+            <div class="hook-type-icon">🤖</div>
+            <div class="hook-type-name">Agent</div>
+            <div class="hook-type-availability">Claude Code</div>
+            <div class="hook-type-desc">Sous-agent multi-tour avec accès aux outils (Read, Grep). Pour vérifications complexes.</div>
+            <div class="hook-type-tag">Puissant</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.6s">
+          💡 Commencez toujours par <strong>Command</strong>. N'utilisez Prompt/HTTP/Agent que quand le script ne suffit pas.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 : Exemple — Auto-format -->
+    <section class="slide slide--example-format" data-slide="7">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Exemple</div>
+        <h2 class="slide-title animate-slide-up">Auto-format avec Prettier</h2>
+        <div class="dual-code">
+          <div class="code-block animate-card" style="--delay: 0.2s">
+            <div class="code-header">
+              <span class="code-filename">.claude/settings.json</span>
+              <span class="code-lang cc-lang">Claude Code</span>
+            </div>
+            <pre><code><span class="code-frontmatter">{</span>
+  <span class="code-string">"hooks"</span>: <span class="code-frontmatter">{</span>
+    <span class="code-string">"PostToolUse"</span>: [
+      <span class="code-frontmatter">{</span>
+        <span class="code-string">"matcher"</span>: <span class="code-highlight">"Write|Edit"</span>,
+        <span class="code-string">"hooks"</span>: [
+          <span class="code-frontmatter">{</span>
+            <span class="code-string">"type"</span>: <span class="code-keyword">"command"</span>,
+            <span class="code-string">"command"</span>: <span class="code-highlight">"jq -r '.tool_input.file_path' | xargs npx prettier --write 2>/dev/null; exit 0"</span>
+          <span class="code-frontmatter">}</span>
+        ]
+      <span class="code-frontmatter">}</span>
+    ]
+  <span class="code-frontmatter">}</span>
+<span class="code-frontmatter">}</span></code></pre>
+          </div>
+          <div class="code-block animate-card" style="--delay: 0.35s">
+            <div class="code-header">
+              <span class="code-filename">.cursor/hooks.json</span>
+              <span class="code-lang cursor-lang">Cursor</span>
+            </div>
+            <pre><code><span class="code-frontmatter">{</span>
+  <span class="code-string">"version"</span>: <span class="code-highlight">1</span>,
+  <span class="code-string">"hooks"</span>: <span class="code-frontmatter">{</span>
+    <span class="code-string">"afterFileEdit"</span>: [
+      <span class="code-frontmatter">{</span>
+        <span class="code-string">"command"</span>: <span class="code-keyword">".cursor/hooks/format.sh"</span>
+      <span class="code-frontmatter">}</span>
+    ]
+  <span class="code-frontmatter">}</span>
+<span class="code-frontmatter">}</span></code></pre>
+          </div>
+        </div>
+        <div class="hook-flow animate-fade-in" style="--delay: 0.55s">
+          <div class="hook-flow-step">Agent modifie fichier</div>
+          <div class="hook-flow-arrow">→</div>
+          <div class="hook-flow-step">Hook PostToolUse</div>
+          <div class="hook-flow-arrow">→</div>
+          <div class="hook-flow-step">Prettier formate</div>
+          <div class="hook-flow-arrow">→</div>
+          <div class="hook-flow-step">Fichier propre ✅</div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.7s">
+          💡 <code>exit 0</code> garantit que le hook ne bloque jamais l'agent même si Prettier échoue. C'est le pattern <strong>fail-open</strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 : Exemple — Sécurité -->
+    <section class="slide slide--example-security" data-slide="8">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Exemple</div>
+        <h2 class="slide-title animate-slide-up">Bloquer les commandes dangereuses</h2>
+        <div class="code-block animate-card" style="--delay: 0.2s">
+          <div class="code-header">
+            <span class="code-filename">.claude/hooks/block-rm.sh</span>
+            <span class="code-lang cc-lang">Bash</span>
+          </div>
+          <pre><code><span class="code-comment">#!/bin/bash</span>
+<span class="code-keyword">COMMAND</span>=$(<span class="code-highlight">jq -r '.tool_input.command'</span>)
+
+<span class="code-keyword">if</span> echo "$COMMAND" | grep -q <span class="code-string">'rm -rf'</span>; then
+  <span class="code-highlight">jq -n</span> <span class="code-string">'{
+    hookSpecificOutput: {
+      hookEventName: "PreToolUse",
+      permissionDecision: "deny",
+      permissionDecisionReason: "Commande destructrice bloquée"
+    }
+  }'</span>
+<span class="code-keyword">else</span>
+  <span class="code-highlight">exit 0</span>
+<span class="code-keyword">fi</span></code></pre>
+        </div>
+        <div class="approaches-grid animate-fade-in" style="--delay: 0.45s">
+          <div class="approach-card">
+            <div class="approach-header">Script (Command)</div>
+            <div class="approach-body">Le plus précis — regex, parsing JSON, logique conditionnelle</div>
+            <div class="approach-tag"><code>exit 2</code> = bloquer</div>
+          </div>
+          <div class="approach-card">
+            <div class="approach-header">Prompt (LLM)</div>
+            <div class="approach-body"><code>"Does this command look safe? Block rm -rf and DROP TABLE."</code></div>
+            <div class="approach-tag">Pas de code</div>
+          </div>
+          <div class="approach-card">
+            <div class="approach-header">Cursor shortcut</div>
+            <div class="approach-body"><code>"matcher": "rm -rf"</code> dans beforeShellExecution — regex intégrée</div>
+            <div class="approach-tag">Le plus simple</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.65s">
+          ⚠️ L'agent reçoit la raison du blocage et peut s'adapter — il ne reste pas bloqué.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 : Compatibilité croisée -->
+    <section class="slide slide--compat" data-slide="9">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Interopérabilité</div>
+        <h2 class="slide-title animate-slide-up">Cursor charge les hooks Claude Code</h2>
+        <div class="compare-table-wrapper animate-fade-in" style="--delay: 0.3s">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th><span class="col-badge col--cc-rules">Claude Code<br><small>PascalCase</small></span></th>
+                <th><span class="col-badge col--cursor-rules">Cursor<br><small>camelCase</small></span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>SessionStart</code></td>
+                <td><code>sessionStart</code></td>
+              </tr>
+              <tr>
+                <td><code>PreToolUse</code></td>
+                <td><code>preToolUse</code></td>
+              </tr>
+              <tr>
+                <td><code>PostToolUse</code></td>
+                <td><code>postToolUse</code></td>
+              </tr>
+              <tr>
+                <td><code>SubagentStart</code></td>
+                <td><code>subagentStart</code></td>
+              </tr>
+              <tr>
+                <td><code>PreCompact</code></td>
+                <td><code>preCompact</code></td>
+              </tr>
+              <tr>
+                <td><code>SessionEnd</code></td>
+                <td><code>sessionEnd</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.6s">
+          <span class="solution-arrow">→</span>
+          Un seul jeu de hooks dans <code>.claude/settings.json</code> peut fonctionner dans les deux outils. Contrairement aux Rules, <strong>pas besoin de dupliquer</strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 : Bonnes Pratiques -->
+    <section class="slide slide--best" data-slide="10">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Bonnes Pratiques</div>
+        <h2 class="slide-title animate-slide-up">Les 6 règles d'or</h2>
+        <div class="best-practices-grid">
+          <div class="bp-card animate-card" style="--delay: 0.1s">
+            <div class="bp-number">1</div>
+            <h3>Fail-open par défaut</h3>
+            <p>Terminez par <code>exit 0</code> pour les hooks non-critiques. Réservez <code>exit 2</code> pour les blocages intentionnels.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.175s">
+            <div class="bp-number">2</div>
+            <h3>Rapides et légers</h3>
+            <p>Un hook lent ralentit l'agent. Gardez sous 5 secondes. Utilisez <code>timeout</code> pour limiter.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.25s">
+            <div class="bp-number">3</div>
+            <h3>Hooks projet dans Git</h3>
+            <p>Partagez les hooks de sécurité via <code>.claude/settings.json</code> ou <code>.cursor/hooks.json</code></p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.325s">
+            <div class="bp-number">4</div>
+            <h3>Commencer par Command</h3>
+            <p>Couvre 80% des besoins. Prompt/Agent uniquement quand le script ne suffit pas.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.4s">
+            <div class="bp-number">5</div>
+            <h3>Tester avec des logs</h3>
+            <p>Redirigez vers un fichier de log (<code>&gt;&gt; /tmp/hooks.log</code>) pendant le développement.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.475s">
+            <div class="bp-number">6</div>
+            <h3>Matcher précis</h3>
+            <p>Filtrez avec <code>Write|Edit</code> plutôt que <code>.*</code> pour éviter de ralentir l'agent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="11">
+      <div class="slide-content">
+        <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
+          <h2>🎯 Récapitulatif</h2>
+          <div class="conclusion-items">
+            <div class="conclusion-item">Les Hooks = du <strong>code déterministe</strong> aux moments clés du cycle de l'agent</div>
+            <div class="conclusion-item">Contrairement aux Rules, les hooks sont <strong>garantis à chaque exécution</strong></div>
+            <div class="conclusion-item">4 types : <strong>Command</strong>, <strong>Prompt</strong>, <strong>HTTP</strong>, <strong>Agent</strong> — commencez par Command</div>
+            <div class="conclusion-item">Cursor et Claude Code partagent les mêmes concepts avec <strong>compatibilité croisée</strong></div>
+          </div>
+          <div class="cta-box">
+            Créez votre premier hook de formatage dès aujourd'hui !<br>
+            <span class="cta-dual">
+              <span>⚡ <code>.cursor/hooks.json</code></span>
+              <span class="cta-sep">|</span>
+              <span>▶ <code>.claude/settings.json</code></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 : Ressources -->
+    <section class="slide slide--resources" data-slide="12">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Ressources</div>
+        <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>
+        <div class="resources-grid">
+          <div class="resource-group animate-card" style="--delay: 0.15s">
+            <div class="resource-group-header">Documentation officielle</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://cursor.com/docs/agent/hooks" target="_blank">
+                <span class="resource-icon">⚡</span>
+                <div>
+                  <div class="resource-name">Cursor — Hooks</div>
+                  <div class="resource-url">cursor.com/docs/agent/hooks</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://code.claude.com/docs/en/hooks" target="_blank">
+                <span class="resource-icon">▶</span>
+                <div>
+                  <div class="resource-name">Claude Code — Hooks Reference</div>
+                  <div class="resource-url">code.claude.com/docs/en/hooks</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://code.claude.com/docs/en/hooks-guide" target="_blank">
+                <span class="resource-icon">▶</span>
+                <div>
+                  <div class="resource-name">Claude Code — Hooks Guide</div>
+                  <div class="resource-url">code.claude.com/docs/en/hooks-guide</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.25s">
+            <div class="resource-group-header">Guides & Tutoriels</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://claude.com/blog/how-to-configure-hooks" target="_blank">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">Anthropic — How to Configure Hooks</div>
+                  <div class="resource-url">claude.com/blog/how-to-configure-hooks</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://aiengineerguide.com/blog/cursor-agent-lifecycle-hooks/" target="_blank">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">Cursor Lifecycle Hooks Guide</div>
+                  <div class="resource-url">aiengineerguide.com</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://aiorg.dev/blog/claude-code-hooks" target="_blank">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">Claude Code Hooks — 20+ Examples</div>
+                  <div class="resource-url">aiorg.dev/blog/claude-code-hooks</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.35s">
+            <div class="resource-group-header">Références</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://cursor.com/docs/reference/third-party-hooks" target="_blank">
+                <span class="resource-icon">⚡</span>
+                <div>
+                  <div class="resource-name">Cursor — Third Party Hooks</div>
+                  <div class="resource-url">cursor.com/docs/reference/third-party-hooks</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://smartscope.blog/en/generative-ai/claude/claude-code-hooks-guide/" target="_blank">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">SmartScope — Hooks Complete Guide</div>
+                  <div class="resource-url">smartscope.blog</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
