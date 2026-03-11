@@ -124,6 +124,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fullscreenBtn.addEventListener('click', toggleFullscreen);
 
+  // Tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      tabPanels.forEach(p => p.classList.remove('active'));
+      document.getElementById(`tab-${tab}`).classList.add('active');
+    });
+  });
+
   updateSlide();
 
   setTimeout(() => { nav.style.opacity = '1'; }, 500);

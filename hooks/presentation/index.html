@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 12</span>
+        <span class="slide-counter" id="slideCounter">1 / 11</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -288,115 +288,192 @@
       </div>
     </section>
 
-    <!-- SLIDE 7 : Exemple — Auto-format -->
-    <section class="slide slide--example-format" data-slide="7">
+    <!-- SLIDE 7 : Un exemple par type de hook -->
+    <section class="slide slide--examples" data-slide="7">
       <div class="slide-content">
-        <div class="section-label animate-pop">Exemple</div>
-        <h2 class="slide-title animate-slide-up">Auto-format avec Prettier</h2>
-        <div class="dual-code">
-          <div class="code-block animate-card" style="--delay: 0.2s">
+        <div class="section-label animate-pop">Exemples concrets</div>
+        <h2 class="slide-title animate-slide-up">Un exemple par type</h2>
+
+        <div class="examples-tabs animate-fade-in" style="--delay: 0.2s">
+          <button class="tab-btn active" data-tab="command">⚙️ Command</button>
+          <button class="tab-btn" data-tab="prompt">💬 Prompt</button>
+          <button class="tab-btn" data-tab="http">🌐 HTTP</button>
+          <button class="tab-btn" data-tab="agent">🤖 Agent</button>
+        </div>
+
+        <!-- TAB: Command -->
+        <div class="tab-panel active" id="tab-command">
+          <div class="example-context">
+            <span class="example-context-label">Cas d'usage</span>
+            <span>Formater automatiquement chaque fichier modifié avec Prettier</span>
+          </div>
+          <div class="dual-code">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-filename">.claude/settings.json</span>
+                <span class="code-lang cc-lang">Claude Code</span>
+              </div>
+              <pre><code><span class="code-frontmatter">{</span>
+  <span class="code-string">"hooks"</span>: <span class="code-frontmatter">{</span>
+    <span class="code-string">"PostToolUse"</span>: [<span class="code-frontmatter">{</span>
+      <span class="code-string">"matcher"</span>: <span class="code-highlight">"Write|Edit"</span>,
+      <span class="code-string">"hooks"</span>: [<span class="code-frontmatter">{</span>
+        <span class="code-string">"type"</span>: <span class="code-keyword">"command"</span>,
+        <span class="code-string">"command"</span>: <span class="code-highlight">"jq -r '.tool_input.file_path' | xargs npx prettier --write 2>/dev/null; exit 0"</span>
+      <span class="code-frontmatter">}</span>]
+    <span class="code-frontmatter">}</span>]
+  <span class="code-frontmatter">}</span>
+<span class="code-frontmatter">}</span></code></pre>
+            </div>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-filename">.cursor/hooks.json</span>
+                <span class="code-lang cursor-lang">Cursor</span>
+              </div>
+              <pre><code><span class="code-frontmatter">{</span>
+  <span class="code-string">"version"</span>: <span class="code-highlight">1</span>,
+  <span class="code-string">"hooks"</span>: <span class="code-frontmatter">{</span>
+    <span class="code-string">"afterFileEdit"</span>: [<span class="code-frontmatter">{</span>
+      <span class="code-string">"command"</span>: <span class="code-keyword">".cursor/hooks/format.sh"</span>
+    <span class="code-frontmatter">}</span>]
+  <span class="code-frontmatter">}</span>
+<span class="code-frontmatter">}</span></code></pre>
+            </div>
+          </div>
+          <div class="hook-flow">
+            <div class="hook-flow-step">Agent modifie fichier</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step hook-flow-step--accent">Hook PostToolUse</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step">Prettier formate</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step">Fichier propre ✅</div>
+          </div>
+          <div class="create-note">
+            💡 <code>exit 0</code> = fail-open. Le hook ne bloque jamais, même si Prettier échoue.
+          </div>
+        </div>
+
+        <!-- TAB: Prompt -->
+        <div class="tab-panel" id="tab-prompt">
+          <div class="example-context">
+            <span class="example-context-label">Cas d'usage</span>
+            <span>Bloquer les commandes dangereuses — sans écrire de code</span>
+          </div>
+          <div class="code-block">
             <div class="code-header">
               <span class="code-filename">.claude/settings.json</span>
               <span class="code-lang cc-lang">Claude Code</span>
             </div>
             <pre><code><span class="code-frontmatter">{</span>
   <span class="code-string">"hooks"</span>: <span class="code-frontmatter">{</span>
-    <span class="code-string">"PostToolUse"</span>: [
-      <span class="code-frontmatter">{</span>
-        <span class="code-string">"matcher"</span>: <span class="code-highlight">"Write|Edit"</span>,
-        <span class="code-string">"hooks"</span>: [
-          <span class="code-frontmatter">{</span>
-            <span class="code-string">"type"</span>: <span class="code-keyword">"command"</span>,
-            <span class="code-string">"command"</span>: <span class="code-highlight">"jq -r '.tool_input.file_path' | xargs npx prettier --write 2>/dev/null; exit 0"</span>
-          <span class="code-frontmatter">}</span>
-        ]
-      <span class="code-frontmatter">}</span>
-    ]
+    <span class="code-string">"PreToolUse"</span>: [<span class="code-frontmatter">{</span>
+      <span class="code-string">"matcher"</span>: <span class="code-highlight">"Bash"</span>,
+      <span class="code-string">"hooks"</span>: [<span class="code-frontmatter">{</span>
+        <span class="code-string">"type"</span>: <span class="code-keyword">"prompt"</span>,
+        <span class="code-string">"prompt"</span>: <span class="code-highlight">"Does this command look safe to execute? Block destructive operations like rm -rf, DROP TABLE, or format disk. Only allow read-only or standard dev operations."</span>
+      <span class="code-frontmatter">}</span>]
+    <span class="code-frontmatter">}</span>]
   <span class="code-frontmatter">}</span>
 <span class="code-frontmatter">}</span></code></pre>
           </div>
-          <div class="code-block animate-card" style="--delay: 0.35s">
+          <div class="hook-flow">
+            <div class="hook-flow-step">Agent veut exécuter <code>rm -rf /</code></div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step hook-flow-step--accent">LLM évalue le prompt</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step">❌ Bloqué automatiquement</div>
+          </div>
+          <div class="create-note">
+            💡 Zéro code — juste du langage naturel. Un modèle rapide évalue en quelques secondes. Idéal pour des politiques de sécurité souples.
+          </div>
+        </div>
+
+        <!-- TAB: HTTP -->
+        <div class="tab-panel" id="tab-http">
+          <div class="example-context">
+            <span class="example-context-label">Cas d'usage</span>
+            <span>Logger chaque action de l'agent vers un service de monitoring externe</span>
+          </div>
+          <div class="example-context example-context--cc">
+            <span class="example-context-label">Claude Code uniquement</span>
+          </div>
+          <div class="code-block">
             <div class="code-header">
-              <span class="code-filename">.cursor/hooks.json</span>
-              <span class="code-lang cursor-lang">Cursor</span>
+              <span class="code-filename">.claude/settings.json</span>
+              <span class="code-lang cc-lang">Claude Code</span>
             </div>
             <pre><code><span class="code-frontmatter">{</span>
-  <span class="code-string">"version"</span>: <span class="code-highlight">1</span>,
   <span class="code-string">"hooks"</span>: <span class="code-frontmatter">{</span>
-    <span class="code-string">"afterFileEdit"</span>: [
-      <span class="code-frontmatter">{</span>
-        <span class="code-string">"command"</span>: <span class="code-keyword">".cursor/hooks/format.sh"</span>
-      <span class="code-frontmatter">}</span>
-    ]
+    <span class="code-string">"PostToolUse"</span>: [<span class="code-frontmatter">{</span>
+      <span class="code-string">"matcher"</span>: <span class="code-highlight">".*"</span>,
+      <span class="code-string">"hooks"</span>: [<span class="code-frontmatter">{</span>
+        <span class="code-string">"type"</span>: <span class="code-keyword">"http"</span>,
+        <span class="code-string">"url"</span>: <span class="code-highlight">"https://monitoring.example.com/api/hooks"</span>,
+        <span class="code-string">"headers"</span>: <span class="code-frontmatter">{</span>
+          <span class="code-string">"Authorization"</span>: <span class="code-highlight">"Bearer $MONITORING_TOKEN"</span>
+        <span class="code-frontmatter">}</span>
+      <span class="code-frontmatter">}</span>]
+    <span class="code-frontmatter">}</span>]
   <span class="code-frontmatter">}</span>
 <span class="code-frontmatter">}</span></code></pre>
           </div>
+          <div class="hook-flow">
+            <div class="hook-flow-step">Agent utilise un outil</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step hook-flow-step--accent">POST JSON vers l'API</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step">Dashboard de monitoring 📊</div>
+          </div>
+          <div class="create-note">
+            💡 Les headers supportent les variables d'environnement (<code>$MONITORING_TOKEN</code>). Idéal pour la compliance, l'audit et le logging centralisé.
+          </div>
         </div>
-        <div class="hook-flow animate-fade-in" style="--delay: 0.55s">
-          <div class="hook-flow-step">Agent modifie fichier</div>
-          <div class="hook-flow-arrow">→</div>
-          <div class="hook-flow-step">Hook PostToolUse</div>
-          <div class="hook-flow-arrow">→</div>
-          <div class="hook-flow-step">Prettier formate</div>
-          <div class="hook-flow-arrow">→</div>
-          <div class="hook-flow-step">Fichier propre ✅</div>
+
+        <!-- TAB: Agent -->
+        <div class="tab-panel" id="tab-agent">
+          <div class="example-context">
+            <span class="example-context-label">Cas d'usage</span>
+            <span>Vérifier que chaque fichier modifié respecte les conventions du projet</span>
+          </div>
+          <div class="example-context example-context--cc">
+            <span class="example-context-label">Claude Code uniquement</span>
+          </div>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">.claude/settings.json</span>
+              <span class="code-lang cc-lang">Claude Code</span>
+            </div>
+            <pre><code><span class="code-frontmatter">{</span>
+  <span class="code-string">"hooks"</span>: <span class="code-frontmatter">{</span>
+    <span class="code-string">"PostToolUse"</span>: [<span class="code-frontmatter">{</span>
+      <span class="code-string">"matcher"</span>: <span class="code-highlight">"Write|Edit"</span>,
+      <span class="code-string">"hooks"</span>: [<span class="code-frontmatter">{</span>
+        <span class="code-string">"type"</span>: <span class="code-keyword">"agent"</span>,
+        <span class="code-string">"prompt"</span>: <span class="code-highlight">"Read the modified file and the project's CONVENTIONS.md. Verify the code follows all naming conventions, import ordering rules, and error handling patterns. If violations are found, report them."</span>,
+        <span class="code-string">"timeout"</span>: <span class="code-highlight">60</span>
+      <span class="code-frontmatter">}</span>]
+    <span class="code-frontmatter">}</span>]
+  <span class="code-frontmatter">}</span>
+<span class="code-frontmatter">}</span></code></pre>
+          </div>
+          <div class="hook-flow">
+            <div class="hook-flow-step">Agent modifie fichier</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step hook-flow-step--accent">Sous-agent lit le code + CONVENTIONS.md</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step">Rapport de conformité 📋</div>
+          </div>
+          <div class="create-note">
+            ⚠️ Le plus puissant mais le plus coûteux (consomme des tokens). Le sous-agent a accès aux outils Read, Grep, Glob. Timeout par défaut : 60s.
+          </div>
         </div>
-        <div class="create-note animate-fade-in" style="--delay: 0.7s">
-          💡 <code>exit 0</code> garantit que le hook ne bloque jamais l'agent même si Prettier échoue. C'est le pattern <strong>fail-open</strong>.
-        </div>
+
       </div>
     </section>
 
-    <!-- SLIDE 8 : Exemple — Sécurité -->
-    <section class="slide slide--example-security" data-slide="8">
-      <div class="slide-content">
-        <div class="section-label animate-pop">Exemple</div>
-        <h2 class="slide-title animate-slide-up">Bloquer les commandes dangereuses</h2>
-        <div class="code-block animate-card" style="--delay: 0.2s">
-          <div class="code-header">
-            <span class="code-filename">.claude/hooks/block-rm.sh</span>
-            <span class="code-lang cc-lang">Bash</span>
-          </div>
-          <pre><code><span class="code-comment">#!/bin/bash</span>
-<span class="code-keyword">COMMAND</span>=$(<span class="code-highlight">jq -r '.tool_input.command'</span>)
-
-<span class="code-keyword">if</span> echo "$COMMAND" | grep -q <span class="code-string">'rm -rf'</span>; then
-  <span class="code-highlight">jq -n</span> <span class="code-string">'{
-    hookSpecificOutput: {
-      hookEventName: "PreToolUse",
-      permissionDecision: "deny",
-      permissionDecisionReason: "Commande destructrice bloquée"
-    }
-  }'</span>
-<span class="code-keyword">else</span>
-  <span class="code-highlight">exit 0</span>
-<span class="code-keyword">fi</span></code></pre>
-        </div>
-        <div class="approaches-grid animate-fade-in" style="--delay: 0.45s">
-          <div class="approach-card">
-            <div class="approach-header">Script (Command)</div>
-            <div class="approach-body">Le plus précis — regex, parsing JSON, logique conditionnelle</div>
-            <div class="approach-tag"><code>exit 2</code> = bloquer</div>
-          </div>
-          <div class="approach-card">
-            <div class="approach-header">Prompt (LLM)</div>
-            <div class="approach-body"><code>"Does this command look safe? Block rm -rf and DROP TABLE."</code></div>
-            <div class="approach-tag">Pas de code</div>
-          </div>
-          <div class="approach-card">
-            <div class="approach-header">Cursor shortcut</div>
-            <div class="approach-body"><code>"matcher": "rm -rf"</code> dans beforeShellExecution — regex intégrée</div>
-            <div class="approach-tag">Le plus simple</div>
-          </div>
-        </div>
-        <div class="create-note animate-fade-in" style="--delay: 0.65s">
-          ⚠️ L'agent reçoit la raison du blocage et peut s'adapter — il ne reste pas bloqué.
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 9 : Compatibilité croisée -->
-    <section class="slide slide--compat" data-slide="9">
+    <!-- SLIDE 8 : Compatibilité croisée -->
+    <section class="slide slide--compat" data-slide="8">
       <div class="slide-content">
         <div class="section-label animate-pop">Interopérabilité</div>
         <h2 class="slide-title animate-slide-up">Cursor charge les hooks Claude Code</h2>
@@ -443,8 +520,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 10 : Bonnes Pratiques -->
-    <section class="slide slide--best" data-slide="10">
+    <!-- SLIDE 9 : Bonnes Pratiques -->
+    <section class="slide slide--best" data-slide="9">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 6 règles d'or</h2>
@@ -483,8 +560,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 11 : Conclusion -->
-    <section class="slide slide--conclusion" data-slide="11">
+    <!-- SLIDE 10 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="10">
       <div class="slide-content">
         <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
           <h2>🎯 Récapitulatif</h2>
@@ -506,8 +583,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 12 : Ressources -->
-    <section class="slide slide--resources" data-slide="12">
+    <!-- SLIDE 11 : Ressources -->
+    <section class="slide slide--resources" data-slide="11">
       <div class="slide-content">
         <div class="section-label animate-pop">Ressources</div>
         <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>
