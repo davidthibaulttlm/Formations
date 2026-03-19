@@ -21,6 +21,7 @@
 
 **Points à couvrir** :
 - Se présenter rapidement
+- Positionner l'ordre pédagogique : cette capsule (Rules) est idéale avant la capsule Commands & Skills
 - Le problème : on répète les mêmes instructions à l'IA à chaque session
 - Deux outils majeurs pour coder avec Claude : **Cursor** (IDE) et **Claude Code** (CLI)
 - Les deux supportent un système de Rules — mais de manière différente
@@ -61,6 +62,7 @@
 - 4 types : Always, Intelligently, Specific Files, Manually
 - User Rules dans Settings → Rules
 - Lit aussi `CLAUDE.md` et `AGENTS.md` automatiquement
+- Note format : `.mdc` = extension "Markdown Cursor" (format spécifique Cursor)
 
 **Claude Code** :
 - CLI dans le terminal
@@ -73,6 +75,7 @@
   6. Auto Memory (apprentissage automatique)
 - Rules avec frontmatter `paths` pour ciblage conditionnel
 - Commande `/memory` pour la mémoire automatique
+- Note format : `.md` = Markdown standard
 
 **Ce qu'ils ont en commun** :
 - Les deux lisent `CLAUDE.md` à la racine
@@ -81,6 +84,9 @@
 - Les deux sont versionnables dans Git
 
 **Annotation au stylet** : Deux colonnes avec les architectures, entourer les points communs
+
+**Ajout verbal suggéré** :
+- "Le `.md` est le Markdown standard. Cursor a ajouté `.mdc` ('Markdown Cursor') pour identifier ses rules dans le projet."
 
 ---
 
@@ -190,7 +196,38 @@ CLAUDE.md (50 lignes — stack + commandes)
 
 ---
 
-### 8. Bonnes Pratiques (8:30 - 9:00) ⏱️ 0:30
+### 8. Comment rédiger une bonne rule (8:30 - 9:00) ⏱️ 0:30
+
+**Slide** : "Écrire une rule comme une recette"
+
+**Points à couvrir** :
+- Une bonne rule est actionnable et testable
+- Utiliser des verbes à l'impératif :
+  - Open X
+  - Verify Y
+  - Run Z
+  - Fix A
+  - Re-run B
+- Éviter les formulations vagues ("fais propre", "optimise si possible")
+- Donner des contraintes explicites (always/never)
+
+**Exemple recommandé** :
+```
+# Rule: Corriger avant commit
+Open changed files only.
+Verify lint errors first.
+Run project linter.
+Fix all reported errors.
+Re-run linter until zero errors.
+Summarize changes briefly.
+Never skip failing checks.
+```
+
+**Annotation au stylet** : Souligner les verbes à l'impératif et entourer "testable"
+
+---
+
+### 9. Bonnes Pratiques (9:00 - 9:30) ⏱️ 0:30
 
 **Slide** : "Les 7 bonnes pratiques"
 
@@ -206,7 +243,7 @@ CLAUDE.md (50 lignes — stack + commandes)
 
 ---
 
-### 9. Conclusion & Récapitulatif (9:00 - 10:00) ⏱️ 1 min
+### 10. Conclusion & Récapitulatif (9:30 - 10:00) ⏱️ 0:30
 
 **Slide** : "Récapitulatif"
 
@@ -214,6 +251,7 @@ CLAUDE.md (50 lignes — stack + commandes)
 - `CLAUDE.md` + `AGENTS.md` = la base commune entre Cursor et Claude Code
 - Rules modulaires dans `.cursor/rules/` ET `.claude/rules/` — à dupliquer (les symlinks ne fonctionnent pas)
 - Les deux outils coexistent dans un même projet
+- Ordre recommandé pour la série : commencer par Rules, puis Commands & Skills
 
 **Call to action** : "Créez votre première rule dès aujourd'hui !"
 

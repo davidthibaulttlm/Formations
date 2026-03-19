@@ -20,10 +20,10 @@
 **Slide** : "Les /Commands & Skills — Cursor & Claude Code"
 
 **Points à couvrir** :
-- Ouvrir avec une promesse orientee valeur: "Aujourd'hui, on reduit la friction equipe avec Rules/Commands/Skills"
-- Rappel : dans la capsule precedente, on a vu les Rules — des instructions persistantes
-- Les Commands = des prompts sauvegardes et reutilisables
-- Les Skills = des capacites modulaires chargees selon la tache
+- Ouvrir avec une promesse orientée valeur : "Aujourd'hui, on réduit la friction équipe avec Rules/Commands/Skills"
+- Rappel : dans la capsule précédente, on a vu les Rules — des instructions persistantes
+- Les Commands = des prompts sauvegardés et réutilisables
+- Les Skills = des capacités modulaires chargées selon la tâche
 - Standard ouvert **Agent Skills** (agentskills.io) — fonctionne dans Cursor, Claude Code, Codex
 
 **Annotation au stylet** : Dessiner Rules → Commands → Skills comme une progression
@@ -32,17 +32,17 @@
 
 ### 2. Les irritants concrets (0:50 — 2:00) ⏱️ 1:10
 
-**Slide** : "Pourquoi s'en servir en equipe ?"
+**Slide** : "Pourquoi s'en servir en équipe ?"
 
 **Points à couvrir** :
-- Parler d'irritants vecus avant de parler implementation:
-  1. **Variabilite equipe** : chacun travaille avec l'IA a sa facon, conventions cassees
-  2. **Prompt repetitif** : "roule le linter, corrige, assure que le CI passe" retape sans arret
+- Parler d'irritants vécus avant de parler implémentation :
+  1. **Variabilité d'équipe** : chacun travaille avec l'IA à sa façon, conventions cassées
+  2. **Prompt répétitif** : "roule le linter, corrige, assure que le CI passe" retapé sans arrêt
   3. **Explosion des rules** : trop de rules = contexte plus lourd, plus lent, plus cher, maintenance difficile
-- Solutions associees:
-  - Rules/Commands/Skills versionnes dans Git = pratique equipe officielle
-  - Une commande ` /lint ` supprime un rituel repetitif
-  - Migrer certaines rules vers des skills pour chargement dynamique et meilleure scalabilite
+- Solutions associées :
+  - Rules/Commands/Skills versionnés dans Git = pratique équipe officielle
+  - Une commande ` /lint ` supprime un rituel répétitif
+  - Migrer certaines rules vers des skills pour chargement dynamique et meilleure scalabilité
 
 **Annotation au stylet** : Trois irritants -> trois solutions
 
@@ -91,14 +91,14 @@
 - Fichiers Markdown dans `.cursor/commands/` (projet) ou `~/.cursor/commands/` (global)
 - Créés via `/commands` dans le chat ou manuellement
 - Le nom du fichier = le nom de la commande
-- Contenu = le prompt envoye a l'IA (commande = prompt sauvegarde)
+- Contenu = le prompt envoyé à l'IA (commande = prompt sauvegardé)
 
 **Claude Code** :
 - Fichiers Markdown dans `.claude/commands/` (projet) ou `~/.claude/commands/` (perso)
 - Frontmatter YAML : `description`, `argument-hint`, `allowed-tools`, `model`
 - Variables dynamiques : `$ARGUMENTS`, `$0`-`$N`, `${CLAUDE_SESSION_ID}`
 - Injection de contexte dynamique : `` !`commande` `` — la sortie shell remplace le placeholder
-- **Note importante** : dans Claude Code, les commandes custom convergent vers les Skills (invocables aussi en slash commands) ; ce n'est pas une deprecation universelle de toutes les plateformes agentiques
+- **Note importante** : dans Claude Code, les commandes custom convergent vers les Skills (invocables aussi en slash commands) ; ce n'est pas une dépréciation universelle de toutes les plateformes agentiques
 
 **Démo live** :
 1. Montrer un fichier `.cursor/commands/lint.md`
@@ -120,7 +120,7 @@
   - **Commandes** = vous les déclenchez manuellement avec `/nom`
   - **Skills** = l'IA peut les découvrir et les utiliser automatiquement quand c'est pertinent
 - Une skill = un dossier avec un `SKILL.md` + fichiers optionnels
-- Dans Claude Code: convergence commandes custom -> skills ; ailleurs, commandes toujours valides
+- Dans Claude Code : convergence commandes custom -> skills ; ailleurs, commandes toujours valides
 - Cursor v2.4 (janvier 2026) a introduit les Skills + un outil de migration `/migrate-to-skills`
 
 **Annotation au stylet** : Dessiner le logo agentskills.io, montrer la portabilité entre outils
@@ -151,9 +151,9 @@ my-skill/
 - `context: fork` : exécuter dans un sous-agent isolé
 - `agent` : type de sous-agent (`Explore`, `Plan`, `general-purpose`)
 
-**Point cle a expliciter** :
-- Dans la boucle agentique, l'IA ne charge pas tout le contenu detaille de toutes les skills
-- Le frontmatter (surtout `name` + `description`) guide la decision d'invocation
+**Point clé à expliciter** :
+- Dans la boucle agentique, l'IA ne charge pas tout le contenu détaillé de toutes les skills
+- Le frontmatter (surtout `name` + `description`) guide la décision d'invocation
 - Donc la description doit inclure des intentions et cas d'usage concrets
 
 **Annotation au stylet** : Dessiner le dossier, entourer `description` comme élément critique
@@ -260,8 +260,8 @@ my-skill/
 
 **Message clé** : Ces quatre mécanismes sont complémentaires, pas en compétition
 
-**Nuance de deprecation** :
-- "Commands deprecated" concerne surtout l'evolution de Claude Code
+**Nuance de dépréciation** :
+- "Commands deprecated" concerne surtout l'évolution de Claude Code
 - Le concept de commande reste pertinent dans d'autres technologies agentiques
 
 **Annotation au stylet** : Dessiner un schéma en couches : Rules (base) → Commands (actions) → Skills (intelligence) → Modes (environnement)
@@ -272,12 +272,12 @@ my-skill/
 
 **Slide** : "Les 6 règles d'or"
 
-1. **Partir d'un irritant reel** — Ex: lint CI, review PR, migration repetitive
-2. **Commande d'abord** — Quand un prompt revient 3x, creer une commande (`/lint`)
+1. **Partir d'un irritant réel** — Ex: lint CI, review PR, migration répétitive
+2. **Commande d'abord** — Quand un prompt revient 3x, créer une commande (`/lint`)
 3. **Skill ensuite** — Quand il faut scripts/assets/references + activation auto
-4. **Description = decouverte** — C'est le signal principal d'invocation automatique
-5. **Versionner dans Git** — Cree une facon officielle et partagee d'utiliser l'IA en equipe
-6. **SKILL.md < 500 lignes** — Mettre le detail dans `references/` pour le chargement a la demande
+4. **Description = découverte** — C'est le signal principal d'invocation automatique
+5. **Versionner dans Git** — Crée une façon officielle et partagée d'utiliser l'IA en équipe
+6. **SKILL.md < 500 lignes** — Mettre le détail dans `references/` pour le chargement à la demande
 
 **Annotation au stylet** : Cocher chaque point comme une checklist
 
@@ -287,13 +287,13 @@ my-skill/
 
 **Slide** : "Récapitulatif"
 
-- Les **Commands** = des prompts sauvegardes, simples et rapides a invoquer
-- Les **Skills** = des capacites modulaires, chargees selon la tache
+- Les **Commands** = des prompts sauvegardés, simples et rapides à invoquer
+- Les **Skills** = des capacités modulaires, chargées selon la tâche
 - **Standard ouvert** Agent Skills — fonctionne dans Cursor ET Claude Code
 - Dans Claude Code, les commandes custom convergent vers les skills
-- Les commands, skills, rules et modes sont **complementaires**
+- Les commands, skills, rules et modes sont **complémentaires**
 
-**Call to action** : "Choisissez un irritant de votre equipe et automatisez-le aujourd'hui avec une commande ou une skill."
+**Call to action** : "Choisissez un irritant de votre équipe et automatisez-le aujourd'hui avec une commande ou une skill."
 
 ---
 

@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 11</span>
+        <span class="slide-counter" id="slideCounter">1 / 12</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -48,6 +48,9 @@
           Arrêtez de vous répéter.<br>
           Donnez des instructions persistantes à votre IA.
         </p>
+        <div class="analogy animate-fade-in" style="--delay: 0.68s">
+          🎬 Capsule recommandée en premier : commencez par <strong>Rules</strong>, puis enchaînez avec <strong>Commands & Skills</strong>.
+        </div>
         <div class="hero-keys animate-fade-in" style="--delay: 0.8s">
           <kbd>→</kbd> ou <kbd>Espace</kbd> pour avancer
         </div>
@@ -168,6 +171,10 @@
                 YAML frontmatter + Markdown
               </div>
               <div class="versus-item">
+                <span class="versus-label">Extension</span>
+                <code>.mdc</code> = Markdown Cursor (extension spécifique)
+              </div>
+              <div class="versus-item">
                 <span class="versus-label">Ciblage</span>
                 <code>globs</code> + 4 types
               </div>
@@ -220,6 +227,10 @@
                 YAML frontmatter + Markdown
               </div>
               <div class="versus-item">
+                <span class="versus-label">Extension</span>
+                <code>.md</code> = Markdown standard
+              </div>
+              <div class="versus-item">
                 <span class="versus-label">Ciblage</span>
                 <code>paths</code> (globs)
               </div>
@@ -244,6 +255,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.6s">
+          💡 Rappel utile : <code>.md</code> est le format Markdown standard. Cursor utilise <code>.mdc</code> ("Markdown Cursor") pour repérer ses rules dans le codebase.
         </div>
       </div>
     </section>
@@ -749,8 +763,56 @@ paths:
       </div>
     </section>
 
-    <!-- SLIDE 11 : Bonnes Pratiques + Conclusion -->
-    <section class="slide slide--best" data-slide="11">
+    <!-- SLIDE 11 : Recette de redaction -->
+    <section class="slide slide--create" data-slide="11">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Rédaction</div>
+        <h2 class="slide-title animate-slide-up">Comment écrire une bonne rule</h2>
+        <div class="create-dual">
+          <div class="create-col animate-card" style="--delay: 0.2s">
+            <div class="create-col-header cursor-header">✅ Pattern "recette"</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Commencez par une intention claire (1 ligne)</div>
+              <div class="cs"><span class="cs-num">2</span> Écrivez des verbes à l'impératif</div>
+              <div class="cs"><span class="cs-num">3</span> Donnez une séquence d'actions vérifiable</div>
+              <div class="cs"><span class="cs-num">4</span> Ajoutez des contraintes explicites (never/always)</div>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-heading"># Rule: Corriger avant commit</span>
+Open changed files only.
+Verify lint errors first.
+Run project linter.
+Fix all reported errors.
+Re-run linter until zero errors.
+Summarize changes briefly.
+Never skip failing checks.</code></pre>
+            </div>
+          </div>
+          <div class="create-col animate-card" style="--delay: 0.35s">
+            <div class="create-col-header cc-header">⚠️ À éviter</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Formules vagues : "écris du bon code"</div>
+              <div class="cs"><span class="cs-num">2</span> Objectifs non mesurables</div>
+              <div class="cs"><span class="cs-num">3</span> Instructions contradictoires</div>
+              <div class="cs"><span class="cs-num">4</span> Trop de contexte dans un seul fichier</div>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-comment"># Mauvais exemple</span>
+Fais propre.
+Optimise si possible.
+Teste un peu.
+Fais au mieux.</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.58s">
+          🧪 Checklist rapide : actionnable, testable, spécifique au contexte, et assez courte pour rester lisible.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 : Bonnes Pratiques + Conclusion -->
+    <section class="slide slide--best" data-slide="12">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 7 règles d'or</h2>

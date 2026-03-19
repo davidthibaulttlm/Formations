@@ -59,27 +59,27 @@
     <section class="slide slide--problem" data-slide="2">
       <div class="slide-content">
         <div class="section-label animate-pop">Le Problème</div>
-        <h2 class="slide-title animate-slide-up">Pourquoi s'en servir en equipe ?</h2>
+        <h2 class="slide-title animate-slide-up">Pourquoi s'en servir en équipe ?</h2>
         <div class="problem-grid">
           <div class="problem-card animate-card" style="--delay: 0.2s">
             <div class="problem-icon">🔄</div>
-            <h3>Equipe non standardisee</h3>
-            <p>Chaque dev pilote l'IA a sa facon, les resultats divergent et les conventions se brisent.</p>
+            <h3>Équipe non standardisée</h3>
+            <p>Chaque dev pilote l'IA à sa façon, les résultats divergent et les conventions se brisent.</p>
           </div>
           <div class="problem-card animate-card" style="--delay: 0.35s">
             <div class="problem-icon">😵</div>
-            <h3>Rituel repetitif</h3>
-            <p>Tannant de re-ecrire: "roule le linter, corrige pour que le CI passe". Une commande <code>/lint</code> le fait en un geste.</p>
+            <h3>Rituel répétitif</h3>
+            <p>Tannant de réécrire : "roule le linter, corrige pour que le CI passe". Une commande <code>/lint</code> le fait en un geste.</p>
           </div>
           <div class="problem-card animate-card" style="--delay: 0.5s">
             <div class="problem-icon">🐘</div>
             <h3>Trop de rules, trop de bruit</h3>
-            <p>Le contexte gonfle, ca ralentit et coute plus cher. Les skills chargent a la demande et regroupent docs/scripts/assets dans un seul dossier.</p>
+            <p>Le contexte gonfle, ça ralentit et coûte plus cher. Les skills chargent à la demande et regroupent docs/scripts/assets dans un seul dossier.</p>
           </div>
         </div>
         <div class="solution-banner animate-fade-in" style="--delay: 0.8s">
           <span class="solution-arrow">→</span>
-          <strong>Rules + Commands + Skills</strong> versionnees dans Git = une facon officielle et partagee d'utiliser l'IA dans l'equipe
+          <strong>Rules + Commands + Skills</strong> versionnées dans Git = une façon officielle et partagée d'utiliser l'IA dans l'équipe
         </div>
       </div>
     </section>
@@ -112,7 +112,7 @@
           </div>
         </div>
         <div class="create-note animate-fade-in" style="--delay: 0.65s">
-          💡 Les commandes restent des prompts sauvegardes reutilisables. Dans Claude Code, il y a convergence vers les skills (executables aussi comme slash commands), mais ce n'est pas une deprecation universelle de toutes les plateformes.
+          💡 Les commandes restent des prompts sauvegardés réutilisables. Dans Claude Code, il y a convergence vers les skills (exécutables aussi comme slash commands), mais ce n'est pas une dépréciation universelle de toutes les plateformes.
         </div>
       </div>
     </section>
@@ -179,7 +179,7 @@ les scripts fournis.
           </div>
         </div>
         <div class="create-note animate-fade-in" style="--delay: 0.6s">
-          ⚠️ Dans la boucle agentique, l'IA voit d'abord surtout le frontmatter (en particulier <strong>name</strong> et <strong>description</strong>) pour decider d'appeler une skill. Ecrivez la description avec des cas d'usage concrets.
+          ⚠️ Dans la boucle agentique, l'IA voit d'abord surtout le frontmatter (en particulier <strong>name</strong> et <strong>description</strong>) pour décider d'appeler une skill. Écrivez la description avec des cas d'usage concrets.
         </div>
       </div>
     </section>
@@ -401,9 +401,9 @@ les scripts fournis.
               <pre><code><span class="code-heading"># Lint Fix CI</span>
 
 Lance le linter du projet.
-Corrige les erreurs detectees.
-Relance le linter jusqu'a zero erreur.
-Resume les changements.
+Corrige les erreurs détectées.
+Relance le linter jusqu'à zéro erreur.
+Résume les changements.
 
 Si le lint passe, confirme que le CI
 devrait passer sur ce point.</code></pre>
@@ -413,7 +413,7 @@ devrait passer sur ce point.</code></pre>
           <div class="create-col animate-card" style="--delay: 0.35s">
             <div class="create-col-header cc-header">▶ Claude Code</div>
             <div class="create-steps">
-              <div class="cs"><span class="cs-num">1</span> Creez <code>.claude/commands/</code> ou <code>.claude/skills/</code></div>
+              <div class="cs"><span class="cs-num">1</span> Créez <code>.claude/commands/</code> ou <code>.claude/skills/</code></div>
               <div class="cs"><span class="cs-num">2</span> Ajoutez un frontmatter YAML</div>
               <div class="cs"><span class="cs-num">3</span> Utilisez <code>$ARGUMENTS</code> pour les paramètres</div>
               <div class="cs"><span class="cs-num">4</span> Utilisez <code>!`cmd`</code> pour injecter du contexte</div>
@@ -430,15 +430,15 @@ model: sonnet
 ---</span>
 
 Lance le linter sur <span class="code-highlight">$ARGUMENTS</span>.
-Contexte: <span class="code-keyword">!`git diff --name-only`</span>
-Corrige jusqu'a ce que ca passe.
+Contexte : <span class="code-keyword">!`git diff --name-only`</span>
+Corrige jusqu'à ce que ça passe.
 
 <span class="code-comment"># Invocation : /lint src/</span></code></pre>
             </div>
           </div>
         </div>
         <div class="create-note animate-fade-in" style="--delay: 0.6s">
-          💡 Les commandes sont des prompts sauvegardes. Dans Claude Code, la direction est de converger vers les skills; ailleurs, les commandes peuvent continuer a vivre tres bien.
+          💡 Les commandes sont des prompts sauvegardés. Dans Claude Code, la direction est de converger vers les skills ; ailleurs, les commandes peuvent continuer à vivre très bien.
         </div>
       </div>
     </section>
@@ -511,7 +511,7 @@ Corrige jusqu'a ce que ca passe.
           </table>
         </div>
         <div class="create-note animate-fade-in" style="--delay: 0.5s">
-          Note: la convergence Commands → Skills concerne surtout Claude Code. Ce n'est pas une regle universelle a tout l'ecosysteme agentique.
+          Note : la convergence Commands → Skills concerne surtout Claude Code. Ce n'est pas une règle universelle à tout l'écosystème agentique.
         </div>
       </div>
     </section>
@@ -604,7 +604,7 @@ Format : <span class="code-keyword">type(scope): description</span>
 Commite automatiquement.</code></pre>
               </div>
               <div class="decision-signal">💡 Vous tapez le même prompt 3x ? Faites-en une commande.</div>
-              <div class="decision-signal">🎯 Exemple ultra utile: <code>/lint</code> pour automatiser "run lint + corriger + revalider".</div>
+              <div class="decision-signal">🎯 Exemple ultra utile : <code>/lint</code> pour automatiser "run lint + corriger + revalider".</div>
             </div>
           </div>
 
@@ -633,7 +633,7 @@ description: Generate a React component
 Use template from <span class="code-keyword">assets/component.tsx</span>
 Follow patterns in <span class="code-string">[references/](references/)</span></code></pre>
               </div>
-              <div class="decision-signal">💡 Besoin de scripts, fichiers de support, declenchement auto et contexte plus leger ? Skill.</div>
+              <div class="decision-signal">💡 Besoin de scripts, fichiers de support, déclenchement auto et contexte plus léger ? Skill.</div>
             </div>
           </div>
 
@@ -649,8 +649,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
         <div class="best-practices-grid">
           <div class="bp-card animate-card" style="--delay: 0.1s">
             <div class="bp-number">1</div>
-            <h3>Partir d'un irritant reel</h3>
-            <p>Ex: "lint CI", "review PR", "deploy". Le meilleur point de depart est une friction repetee.</p>
+            <h3>Partir d'un irritant réel</h3>
+            <p>Ex : "lint CI", "review PR", "deploy". Le meilleur point de départ est une friction répétée.</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.175s">
             <div class="bp-number">2</div>
@@ -660,22 +660,22 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
           <div class="bp-card animate-card" style="--delay: 0.25s">
             <div class="bp-number">3</div>
             <h3>Soigner la description</h3>
-            <p>La description du frontmatter influence directement la decision d'invocation de l'IA.</p>
+            <p>La description du frontmatter influence directement la décision d'invocation de l'IA.</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.325s">
             <div class="bp-number">4</div>
             <h3>SKILL.md &lt; 500 lignes</h3>
-            <p>Deplacer la doc detaillee dans <code>references/</code> pour garder un contexte efficace.</p>
+            <p>Déplacer la doc détaillée dans <code>references/</code> pour garder un contexte efficace.</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.4s">
             <div class="bp-number">5</div>
             <h3>Versionner dans Git</h3>
-            <p>Rules/commands/skills dans le repo = standard equipe, reproductible et officiel.</p>
+            <p>Rules/commands/skills dans le repo = standard équipe, reproductible et officiel.</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.475s">
             <div class="bp-number">6</div>
             <h3>Dossier de skill autonome</h3>
-            <p>Un dossier par skill avec scripts/assets/references pour mieux maintenir et faire evoluer.</p>
+            <p>Un dossier par skill avec scripts/assets/references pour mieux maintenir et faire évoluer.</p>
           </div>
         </div>
       </div>
@@ -687,8 +687,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
         <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
           <h2>🎯 Récapitulatif</h2>
           <div class="conclusion-items">
-            <div class="conclusion-item"><strong>CLAUDE.md</strong> pour le contexte projet, <strong>Rules</strong> pour les conventions, <strong>Commands</strong> pour les raccourcis, <strong>Skills</strong> pour les workflows specialises</div>
-            <div class="conclusion-item">Versionnes en Git, ces mecanismes deviennent la facon officielle d'utiliser l'IA en equipe</div>
+            <div class="conclusion-item"><strong>CLAUDE.md</strong> pour le contexte projet, <strong>Rules</strong> pour les conventions, <strong>Commands</strong> pour les raccourcis, <strong>Skills</strong> pour les workflows spécialisés</div>
+            <div class="conclusion-item">Versionnés en Git, ces mécanismes deviennent la façon officielle d'utiliser l'IA en équipe</div>
             <div class="conclusion-item">Les commandes ne disparaissent pas partout: dans Claude Code elles convergent vers les skills, ailleurs elles restent valides</div>
           </div>
           <div class="cta-box">
