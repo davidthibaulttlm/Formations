@@ -15,40 +15,40 @@
 
 ## Déroulé Détaillé
 
-### 1. Introduction (0:00 — 0:45) ⏱️ 45s
+### 1. Introduction (0:00 — 0:50) ⏱️ 50s
 
 **Slide** : "Les /Commands & Skills — Cursor & Claude Code"
 
 **Points à couvrir** :
-- Rappel : dans la capsule précédente, on a vu les Rules — des instructions persistantes
-- Maintenant on passe au niveau supérieur : les **Commands** et les **Skills**
-- Les Commands = des raccourcis pour déclencher des workflows
-- Les Skills = des capacités modulaires que l'IA découvre et utilise quand c'est pertinent
+- Ouvrir avec une promesse orientee valeur: "Aujourd'hui, on reduit la friction equipe avec Rules/Commands/Skills"
+- Rappel : dans la capsule precedente, on a vu les Rules — des instructions persistantes
+- Les Commands = des prompts sauvegardes et reutilisables
+- Les Skills = des capacites modulaires chargees selon la tache
 - Standard ouvert **Agent Skills** (agentskills.io) — fonctionne dans Cursor, Claude Code, Codex
 
 **Annotation au stylet** : Dessiner Rules → Commands → Skills comme une progression
 
 ---
 
-### 2. Le Problème (0:45 — 1:45) ⏱️ 1 min
+### 2. Les irritants concrets (0:50 — 2:00) ⏱️ 1:10
 
-**Slide** : "Au-delà des Rules"
+**Slide** : "Pourquoi s'en servir en equipe ?"
 
 **Points à couvrir** :
-- Les Rules donnent des instructions persistantes — mais elles ne lancent pas d'actions
-- Sans commands : vous retapez les mêmes prompts complexes à chaque session
-- Sans skills : vos workflows ne sont pas réutilisables ni partageables
-- Trois problèmes concrets :
-  1. **Répétition** : "Review mon code", "Fais un commit conventionnel", "Lance les tests et corrige" — toujours les mêmes prompts
-  2. **Pas de partage** : chaque dev a ses propres raccourcis mentaux, rien de versionné
-  3. **Pas d'automatisation** : l'IA ne peut pas découvrir vos workflows toute seule
-- La solution : Commands pour les actions directes, Skills pour les capacités intelligentes
+- Parler d'irritants vecus avant de parler implementation:
+  1. **Variabilite equipe** : chacun travaille avec l'IA a sa facon, conventions cassees
+  2. **Prompt repetitif** : "roule le linter, corrige, assure que le CI passe" retape sans arret
+  3. **Explosion des rules** : trop de rules = contexte plus lourd, plus lent, plus cher, maintenance difficile
+- Solutions associees:
+  - Rules/Commands/Skills versionnes dans Git = pratique equipe officielle
+  - Une commande ` /lint ` supprime un rituel repetitif
+  - Migrer certaines rules vers des skills pour chargement dynamique et meilleure scalabilite
 
-**Annotation au stylet** : Trois colonnes "Rules = savoir" / "Commands = faire" / "Skills = savoir-faire"
+**Annotation au stylet** : Trois irritants -> trois solutions
 
 ---
 
-### 3. Les Commandes Built-in (1:45 — 3:00) ⏱️ 1:15
+### 3. Les Commandes Built-in (2:00 — 3:10) ⏱️ 1:10
 
 **Slide** : "Commandes intégrées — Cursor vs Claude Code"
 
@@ -81,7 +81,7 @@
 
 ---
 
-### 4. Les Commandes Custom (3:00 — 4:30) ⏱️ 1:30
+### 4. Les Commandes Custom (3:10 — 4:35) ⏱️ 1:25
 
 **Slide** : "Créer vos propres commandes"
 
@@ -91,25 +91,25 @@
 - Fichiers Markdown dans `.cursor/commands/` (projet) ou `~/.cursor/commands/` (global)
 - Créés via `/commands` dans le chat ou manuellement
 - Le nom du fichier = le nom de la commande
-- Contenu = le prompt envoyé à l'IA
+- Contenu = le prompt envoye a l'IA (commande = prompt sauvegarde)
 
 **Claude Code** :
 - Fichiers Markdown dans `.claude/commands/` (projet) ou `~/.claude/commands/` (perso)
 - Frontmatter YAML : `description`, `argument-hint`, `allowed-tools`, `model`
 - Variables dynamiques : `$ARGUMENTS`, `$0`-`$N`, `${CLAUDE_SESSION_ID}`
 - Injection de contexte dynamique : `` !`commande` `` — la sortie shell remplace le placeholder
-- **Note importante** : les commandes custom ont été fusionnées dans le système de Skills — `.claude/commands/` fonctionne toujours mais les Skills sont recommandées
+- **Note importante** : dans Claude Code, les commandes custom convergent vers les Skills (invocables aussi en slash commands) ; ce n'est pas une deprecation universelle de toutes les plateformes agentiques
 
 **Démo live** :
-1. Montrer un fichier `.cursor/commands/review.md`
-2. Montrer un fichier `.claude/commands/fix-issue.md` avec frontmatter et `$ARGUMENTS`
-3. Invoquer `/review` dans Cursor et `/fix-issue 123` dans Claude Code
+1. Montrer un fichier `.cursor/commands/lint.md`
+2. Montrer un fichier `.claude/commands/lint.md` avec frontmatter et `$ARGUMENTS`
+3. Invoquer `/lint` dans Cursor et `/lint src/` dans Claude Code
 
 **Annotation au stylet** : Entourer le frontmatter de Claude Code comme différenciateur, montrer que Cursor est plus simple (juste du Markdown)
 
 ---
 
-### 5. Les Skills — Le Standard Ouvert (4:30 — 5:30) ⏱️ 1 min
+### 5. Les Skills — Le Standard Ouvert (4:35 — 5:35) ⏱️ 1 min
 
 **Slide** : "Skills — Un standard ouvert"
 
@@ -120,14 +120,14 @@
   - **Commandes** = vous les déclenchez manuellement avec `/nom`
   - **Skills** = l'IA peut les découvrir et les utiliser automatiquement quand c'est pertinent
 - Une skill = un dossier avec un `SKILL.md` + fichiers optionnels
-- Les commandes custom de Claude Code ont été fusionnées dans les skills
+- Dans Claude Code: convergence commandes custom -> skills ; ailleurs, commandes toujours valides
 - Cursor v2.4 (janvier 2026) a introduit les Skills + un outil de migration `/migrate-to-skills`
 
 **Annotation au stylet** : Dessiner le logo agentskills.io, montrer la portabilité entre outils
 
 ---
 
-### 6. Anatomie d'une Skill (5:30 — 6:30) ⏱️ 1 min
+### 6. Anatomie d'une Skill (5:35 — 6:45) ⏱️ 1:10
 
 **Slide** : "Anatomie d'un SKILL.md"
 
@@ -151,13 +151,16 @@ my-skill/
 - `context: fork` : exécuter dans un sous-agent isolé
 - `agent` : type de sous-agent (`Explore`, `Plan`, `general-purpose`)
 
-**Point clé** : la description est la partie la plus importante — c'est elle qui détermine si l'IA active la skill automatiquement
+**Point cle a expliciter** :
+- Dans la boucle agentique, l'IA ne charge pas tout le contenu detaille de toutes les skills
+- Le frontmatter (surtout `name` + `description`) guide la decision d'invocation
+- Donc la description doit inclure des intentions et cas d'usage concrets
 
 **Annotation au stylet** : Dessiner le dossier, entourer `description` comme élément critique
 
 ---
 
-### 7. Skills en Action — Cursor vs Claude Code (6:30 — 7:30) ⏱️ 1 min
+### 7. Skills en Action — Cursor vs Claude Code (6:45 — 7:35) ⏱️ 50s
 
 **Slide** : "Skills dans les deux outils"
 
@@ -187,7 +190,7 @@ my-skill/
 
 ---
 
-### 8. Skills Bundled — Claude Code (7:30 — 8:15) ⏱️ 45s
+### 8. Skills Bundled — Claude Code (7:35 — 8:15) ⏱️ 40s
 
 **Slide** : "Skills intégrées — Claude Code"
 
@@ -218,7 +221,7 @@ my-skill/
 
 ---
 
-### 9. Custom Modes — Cursor (8:15 — 8:45) ⏱️ 30s
+### 9. Custom Modes — Cursor (8:15 — 8:40) ⏱️ 25s
 
 **Slide** : "Modes personnalisés — Cursor"
 
@@ -239,7 +242,7 @@ my-skill/
 
 ---
 
-### 10. Le Grand Comparatif (8:45 — 9:15) ⏱️ 30s
+### 10. Le Grand Comparatif (8:40 — 9:15) ⏱️ 35s
 
 **Slide** : "Commands vs Skills vs Rules vs Modes"
 
@@ -257,37 +260,40 @@ my-skill/
 
 **Message clé** : Ces quatre mécanismes sont complémentaires, pas en compétition
 
+**Nuance de deprecation** :
+- "Commands deprecated" concerne surtout l'evolution de Claude Code
+- Le concept de commande reste pertinent dans d'autres technologies agentiques
+
 **Annotation au stylet** : Dessiner un schéma en couches : Rules (base) → Commands (actions) → Skills (intelligence) → Modes (environnement)
 
 ---
 
-### 11. Bonnes Pratiques (9:15 — 9:45) ⏱️ 30s
+### 11. Bonnes Pratiques (9:15 — 9:50) ⏱️ 35s
 
 **Slide** : "Les 6 règles d'or"
 
-1. **Commencer par les commandes** — Créez une commande quand vous tapez le même prompt 3 fois
-2. **Migrer vers les skills** — Quand la commande a besoin de fichiers de support ou de déclenchement auto
-3. **Description = découverte** — La description de la skill détermine si l'IA l'active — soignez-la
-4. **`disable-model-invocation`** pour les actions à effets de bord — `/deploy`, `/commit`, `/send-email`
-5. **Versionner dans Git** — L'équipe en profite, les skills voyagent avec le projet
-6. **SKILL.md < 500 lignes** — Déplacer la documentation détaillée dans `references/`
+1. **Partir d'un irritant reel** — Ex: lint CI, review PR, migration repetitive
+2. **Commande d'abord** — Quand un prompt revient 3x, creer une commande (`/lint`)
+3. **Skill ensuite** — Quand il faut scripts/assets/references + activation auto
+4. **Description = decouverte** — C'est le signal principal d'invocation automatique
+5. **Versionner dans Git** — Cree une facon officielle et partagee d'utiliser l'IA en equipe
+6. **SKILL.md < 500 lignes** — Mettre le detail dans `references/` pour le chargement a la demande
 
 **Annotation au stylet** : Cocher chaque point comme une checklist
 
 ---
 
-### 12. Conclusion & Récapitulatif (9:45 — 10:00) ⏱️ 15s
+### 12. Conclusion & Récapitulatif (9:50 — 10:00) ⏱️ 10s
 
 **Slide** : "Récapitulatif"
 
-- Les **Commands** = des raccourcis pour vos workflows récurrents
-- Les **Skills** = des capacités modulaires que l'IA découvre et utilise intelligemment
+- Les **Commands** = des prompts sauvegardes, simples et rapides a invoquer
+- Les **Skills** = des capacites modulaires, chargees selon la tache
 - **Standard ouvert** Agent Skills — fonctionne dans Cursor ET Claude Code
-- Les commandes custom de Claude Code sont désormais des skills
-- Cursor v2.4 a introduit les skills avec `/migrate-to-skills`
-- Les commands, skills, rules et modes sont **complémentaires**
+- Dans Claude Code, les commandes custom convergent vers les skills
+- Les commands, skills, rules et modes sont **complementaires**
 
-**Call to action** : "Créez votre première Skill dès aujourd'hui !"
+**Call to action** : "Choisissez un irritant de votre equipe et automatisez-le aujourd'hui avec une commande ou une skill."
 
 ---
 

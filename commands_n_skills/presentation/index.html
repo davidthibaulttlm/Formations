@@ -59,27 +59,27 @@
     <section class="slide slide--problem" data-slide="2">
       <div class="slide-content">
         <div class="section-label animate-pop">Le Problème</div>
-        <h2 class="slide-title animate-slide-up">Au-delà des Rules</h2>
+        <h2 class="slide-title animate-slide-up">Pourquoi s'en servir en equipe ?</h2>
         <div class="problem-grid">
           <div class="problem-card animate-card" style="--delay: 0.2s">
             <div class="problem-icon">🔄</div>
-            <h3>Prompts répétitifs</h3>
-            <p>Vous retapez les mêmes prompts complexes à chaque session — review, commit, tests…</p>
+            <h3>Equipe non standardisee</h3>
+            <p>Chaque dev pilote l'IA a sa facon, les resultats divergent et les conventions se brisent.</p>
           </div>
           <div class="problem-card animate-card" style="--delay: 0.35s">
-            <div class="problem-icon">🚫</div>
-            <h3>Pas de partage</h3>
-            <p>Chaque dev a ses propres raccourcis mentaux — rien de versionné ni partagé en équipe</p>
+            <div class="problem-icon">😵</div>
+            <h3>Rituel repetitif</h3>
+            <p>Tannant de re-ecrire: "roule le linter, corrige pour que le CI passe". Une commande <code>/lint</code> le fait en un geste.</p>
           </div>
           <div class="problem-card animate-card" style="--delay: 0.5s">
-            <div class="problem-icon">🤖</div>
-            <h3>Pas d'automatisation</h3>
-            <p>L'IA ne peut pas découvrir vos workflows toute seule — elle attend vos instructions</p>
+            <div class="problem-icon">🐘</div>
+            <h3>Trop de rules, trop de bruit</h3>
+            <p>Le contexte gonfle, ca ralentit et coute plus cher. Les skills chargent a la demande et regroupent docs/scripts/assets dans un seul dossier.</p>
           </div>
         </div>
         <div class="solution-banner animate-fade-in" style="--delay: 0.8s">
           <span class="solution-arrow">→</span>
-          <strong>Commands</strong> = actions directes &nbsp;|&nbsp; <strong>Skills</strong> = capacités intelligentes que l'IA découvre et utilise
+          <strong>Rules + Commands + Skills</strong> versionnees dans Git = une facon officielle et partagee d'utiliser l'IA dans l'equipe
         </div>
       </div>
     </section>
@@ -112,7 +112,7 @@
           </div>
         </div>
         <div class="create-note animate-fade-in" style="--delay: 0.65s">
-          💡 Les commandes custom de Claude Code ont été <strong>fusionnées</strong> dans les skills. <code>.claude/commands/</code> fonctionne toujours, mais les skills sont recommandées. Cursor v2.4 (janv. 2026) a introduit les skills + <code>/migrate-to-skills</code>.
+          💡 Les commandes restent des prompts sauvegardes reutilisables. Dans Claude Code, il y a convergence vers les skills (executables aussi comme slash commands), mais ce n'est pas une deprecation universelle de toutes les plateformes.
         </div>
       </div>
     </section>
@@ -179,7 +179,7 @@ les scripts fournis.
           </div>
         </div>
         <div class="create-note animate-fade-in" style="--delay: 0.6s">
-          ⚠️ La <strong>description</strong> est la partie la plus critique — c'est elle qui détermine si l'IA active la skill automatiquement. Soignez-la !
+          ⚠️ Dans la boucle agentique, l'IA voit d'abord surtout le frontmatter (en particulier <strong>name</strong> et <strong>description</strong>) pour decider d'appeler une skill. Ecrivez la description avec des cas d'usage concrets.
         </div>
       </div>
     </section>
@@ -392,53 +392,53 @@ les scripts fournis.
               <div class="cs"><span class="cs-num">1</span> Créez un fichier <code>.md</code> dans <code>.cursor/commands/</code></div>
               <div class="cs"><span class="cs-num">2</span> Le nom du fichier = nom de la commande</div>
               <div class="cs"><span class="cs-num">3</span> Le contenu = le prompt envoyé à l'IA</div>
-              <div class="cs"><span class="cs-num">4</span> Invoquez avec <code>/nom</code> dans le chat</div>
+              <div class="cs"><span class="cs-num">4</span> Invoquez avec <code>/nom</code> dans le chat (ex: <code>/lint</code>)</div>
             </div>
             <div class="create-result">
-              <code>.cursor/commands/review.md</code>
+              <code>.cursor/commands/lint.md</code>
             </div>
             <div class="create-format">
-              <pre><code><span class="code-heading"># Code Review</span>
+              <pre><code><span class="code-heading"># Lint Fix CI</span>
 
-Fais une review complète du code
-dans les fichiers modifiés.
+Lance le linter du projet.
+Corrige les erreurs detectees.
+Relance le linter jusqu'a zero erreur.
+Resume les changements.
 
-Vérifie :
-- La <span class="code-highlight">lisibilité</span>
-- Les <span class="code-highlight">erreurs potentielles</span>
-- Les <span class="code-keyword">bonnes pratiques</span>
-- La <span class="code-keyword">performance</span></code></pre>
+Si le lint passe, confirme que le CI
+devrait passer sur ce point.</code></pre>
             </div>
           </div>
 
           <div class="create-col animate-card" style="--delay: 0.35s">
             <div class="create-col-header cc-header">▶ Claude Code</div>
             <div class="create-steps">
-              <div class="cs"><span class="cs-num">1</span> Créez <code>.claude/commands/</code> ou <code>.claude/skills/</code></div>
+              <div class="cs"><span class="cs-num">1</span> Creez <code>.claude/commands/</code> ou <code>.claude/skills/</code></div>
               <div class="cs"><span class="cs-num">2</span> Ajoutez un frontmatter YAML</div>
               <div class="cs"><span class="cs-num">3</span> Utilisez <code>$ARGUMENTS</code> pour les paramètres</div>
               <div class="cs"><span class="cs-num">4</span> Utilisez <code>!`cmd`</code> pour injecter du contexte</div>
             </div>
             <div class="create-result">
-              <code>.claude/commands/fix-issue.md</code>
+              <code>.claude/commands/lint.md</code>
             </div>
             <div class="create-format">
               <pre><code><span class="code-frontmatter">---
-description: Corrige un issue GitHub
-argument-hint: [issue-number]
+description: Lance lint et corrige les erreurs CI
+argument-hint: [scope optionnel]
 allowed-tools: Read, Edit, Bash
 model: sonnet
 ---</span>
 
-Corrige l'issue GitHub <span class="code-highlight">$ARGUMENTS</span>.
-Contexte : <span class="code-keyword">!`gh issue view $0`</span>
+Lance le linter sur <span class="code-highlight">$ARGUMENTS</span>.
+Contexte: <span class="code-keyword">!`git diff --name-only`</span>
+Corrige jusqu'a ce que ca passe.
 
-<span class="code-comment"># Invocation : /fix-issue 123</span></code></pre>
+<span class="code-comment"># Invocation : /lint src/</span></code></pre>
             </div>
           </div>
         </div>
         <div class="create-note animate-fade-in" style="--delay: 0.6s">
-          💡 Claude Code offre plus de contrôle (frontmatter, arguments, injection dynamique). Cursor est plus simple (Markdown pur). Les deux se versionnent dans Git.
+          💡 Les commandes sont des prompts sauvegardes. Dans Claude Code, la direction est de converger vers les skills; ailleurs, les commandes peuvent continuer a vivre tres bien.
         </div>
       </div>
     </section>
@@ -509,6 +509,9 @@ Contexte : <span class="code-keyword">!`gh issue view $0`</span>
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.5s">
+          Note: la convergence Commands → Skills concerne surtout Claude Code. Ce n'est pas une regle universelle a tout l'ecosysteme agentique.
         </div>
       </div>
     </section>
@@ -601,6 +604,7 @@ Format : <span class="code-keyword">type(scope): description</span>
 Commite automatiquement.</code></pre>
               </div>
               <div class="decision-signal">💡 Vous tapez le même prompt 3x ? Faites-en une commande.</div>
+              <div class="decision-signal">🎯 Exemple ultra utile: <code>/lint</code> pour automatiser "run lint + corriger + revalider".</div>
             </div>
           </div>
 
@@ -629,7 +633,7 @@ description: Generate a React component
 Use template from <span class="code-keyword">assets/component.tsx</span>
 Follow patterns in <span class="code-string">[references/](references/)</span></code></pre>
               </div>
-              <div class="decision-signal">💡 Besoin de scripts, fichiers de support, ou déclenchement auto ? Skill.</div>
+              <div class="decision-signal">💡 Besoin de scripts, fichiers de support, declenchement auto et contexte plus leger ? Skill.</div>
             </div>
           </div>
 
@@ -645,33 +649,33 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
         <div class="best-practices-grid">
           <div class="bp-card animate-card" style="--delay: 0.1s">
             <div class="bp-number">1</div>
-            <h3>SKILL.md &lt; 500 lignes</h3>
-            <p>Déplacer la doc détaillée dans <code>references/</code> — l'IA charge à la demande</p>
+            <h3>Partir d'un irritant reel</h3>
+            <p>Ex: "lint CI", "review PR", "deploy". Le meilleur point de depart est une friction repetee.</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.175s">
             <div class="bp-number">2</div>
-            <h3>Tester avec <code>/context</code></h3>
-            <p>Vérifiez que vos skills apparaissent et ne dépassent pas le budget (~2% du contexte)</p>
+            <h3>Commande avant skill</h3>
+            <p>Commencez simple en commande; migrez en skill quand il faut scripts, assets ou activation auto.</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.25s">
             <div class="bp-number">3</div>
-            <h3>User vs Projet</h3>
-            <p>Skills perso dans <code>~/.cursor/skills/</code> — skills équipe dans le repo Git</p>
+            <h3>Soigner la description</h3>
+            <p>La description du frontmatter influence directement la decision d'invocation de l'IA.</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.325s">
             <div class="bp-number">4</div>
-            <h3>Un dossier par skill</h3>
-            <p>Ne pas mélanger — chaque skill a son propre dossier avec son <code>SKILL.md</code></p>
+            <h3>SKILL.md &lt; 500 lignes</h3>
+            <p>Deplacer la doc detaillee dans <code>references/</code> pour garder un contexte efficace.</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.4s">
             <div class="bp-number">5</div>
-            <h3>Scripts idempotents</h3>
-            <p>Les scripts dans <code>scripts/</code> doivent pouvoir être relancés sans casser</p>
+            <h3>Versionner dans Git</h3>
+            <p>Rules/commands/skills dans le repo = standard equipe, reproductible et officiel.</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.475s">
             <div class="bp-number">6</div>
-            <h3>Utiliser <code>/migrate-to-skills</code></h3>
-            <p>Cursor convertit automatiquement vos rules dynamiques et commandes en skills</p>
+            <h3>Dossier de skill autonome</h3>
+            <p>Un dossier par skill avec scripts/assets/references pour mieux maintenir et faire evoluer.</p>
           </div>
         </div>
       </div>
@@ -683,9 +687,9 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
         <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
           <h2>🎯 Récapitulatif</h2>
           <div class="conclusion-items">
-            <div class="conclusion-item"><strong>CLAUDE.md</strong> pour le contexte projet, <strong>Rules</strong> pour les conventions, <strong>Commands</strong> pour les actions, <strong>Skills</strong> pour les workflows intelligents</div>
-            <div class="conclusion-item">Le standard <strong>Agent Skills</strong> est portable — une même skill fonctionne dans Cursor, Claude Code et Codex</div>
-            <div class="conclusion-item">Ces quatre mécanismes sont <strong>complémentaires</strong> — choisissez le bon outil pour chaque besoin</div>
+            <div class="conclusion-item"><strong>CLAUDE.md</strong> pour le contexte projet, <strong>Rules</strong> pour les conventions, <strong>Commands</strong> pour les raccourcis, <strong>Skills</strong> pour les workflows specialises</div>
+            <div class="conclusion-item">Versionnes en Git, ces mecanismes deviennent la facon officielle d'utiliser l'IA en equipe</div>
+            <div class="conclusion-item">Les commandes ne disparaissent pas partout: dans Claude Code elles convergent vers les skills, ailleurs elles restent valides</div>
           </div>
           <div class="cta-box">
             Créez votre première Skill dès aujourd'hui !<br>
