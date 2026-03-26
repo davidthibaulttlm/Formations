@@ -97,29 +97,28 @@
 
 ---
 
-### 5. Les Commandes Custom (3:35 — 5:00) ⏱️ 1:25
+### 5. Les Commandes Custom (legacy) (3:35 — 5:00) ⏱️ 1:25
 
-**Slide** : "Créer vos propres commandes"
+**Slide** : "Commandes existantes : migrer vers des skills"
 
 **Points à couvrir** :
 
 **Cursor** :
-- Fichiers Markdown dans `.cursor/commands/` (projet) ou `~/.cursor/commands/` (global)
-- Créés via `/commands` dans le chat ou manuellement
-- Le nom du fichier = le nom de la commande
-- Contenu = le prompt envoyé à l'IA (commande = prompt sauvegardé)
+- Repérer les commands existantes dans `.cursor/commands/` (projet) ou `~/.cursor/commands/` (global)
+- Identifier les commands fréquentes à migrer en priorité
+- Transformer chaque logique en skill dédiée
 
 **Claude Code** :
 - Fichiers Markdown dans `.claude/commands/` (projet) ou `~/.claude/commands/` (perso)
 - Frontmatter YAML : `description`, `argument-hint`, `allowed-tools`, `model`
 - Variables dynamiques : `$ARGUMENTS`, `$0`-`$N`, `${CLAUDE_SESSION_ID}`
 - Injection de contexte dynamique : `` !`commande` `` — la sortie shell remplace le placeholder
-- **Note importante** : dans Claude Code, les commandes custom convergent vers les Skills (invocables aussi en slash commands) ; ce n'est pas une dépréciation universelle de toutes les plateformes agentiques
+- **Note importante** : dans cette formation, on n'ouvre plus de nouveaux usages via commands ; on crée des skills
 
 **Démo live** :
-1. Montrer un fichier `.cursor/commands/lint.md`
-2. Montrer un fichier `.claude/commands/lint.md` avec frontmatter et `$ARGUMENTS`
-3. Invoquer `/lint` dans Cursor et `/lint src/` dans Claude Code
+1. Montrer une command existante `.cursor/commands/lint.md`
+2. Montrer sa version skill cible
+3. Expliquer la transition command -> skill
 
 **Annotation au stylet** : Entourer le frontmatter de Claude Code comme différenciateur, montrer que Cursor est plus simple (juste du Markdown)
 
@@ -255,24 +254,7 @@ my-skill/
 
 ---
 
-### 11. Commandes deprecated ? Clarifier le scope (8:10 — 8:40) ⏱️ 30s
-
-**Slide** : "Deprecated, mais où exactement ?"
-
-**Points à couvrir** :
-- La convergence Commands -> Skills concerne surtout **Claude Code**
-- Dans Claude Code : les skills peuvent être invoquées en slash commands
-- Ailleurs : les commandes peuvent rester supportées longtemps
-- Une commande reste un prompt sauvegardé et réutilisable, ce n'est pas un anti-pattern
-
-**Message clé** :
-- Ne pas généraliser "commands deprecated" à tout l'écosystème agentique
-
-**Annotation au stylet** : Deux colonnes "Claude Code" vs "Autres outils"
-
----
-
-### 12. Custom Modes — Cursor (8:40 — 9:00) ⏱️ 20s
+### 11. Custom Modes — Cursor (8:10 — 8:30) ⏱️ 20s
 
 **Slide** : "Modes personnalisés — Cursor"
 
@@ -293,7 +275,7 @@ my-skill/
 
 ---
 
-### 13. Le Grand Comparatif (9:00 — 9:25) ⏱️ 25s
+### 12. Le Grand Comparatif (8:30 — 9:00) ⏱️ 30s
 
 **Slide** : "Commands vs Skills vs Rules vs Modes"
 
@@ -311,20 +293,20 @@ my-skill/
 
 **Message clé** : Ces quatre mécanismes sont complémentaires, pas en compétition
 
-**Nuance de dépréciation** :
-- "Commands deprecated" concerne surtout l'évolution de Claude Code
-- Le concept de commande reste pertinent dans d'autres technologies agentiques
+**Position pédagogique de la capsule** :
+- Recommandation : **skills-first** pour tous les nouveaux cas d'usage
+- Garder les commands uniquement comme héritage transitoire à migrer
 
 **Annotation au stylet** : Dessiner un schéma en couches : Rules (base) → Commands (actions) → Skills (intelligence) → Modes (environnement)
 
 ---
 
-### 14. Bonnes Pratiques (9:25 — 9:50) ⏱️ 25s
+### 13. Bonnes Pratiques (9:00 — 9:50) ⏱️ 50s
 
 **Slide** : "Les 6 règles d'or"
 
 1. **Partir d'un irritant réel** — Ex: lint CI, review PR, migration répétitive
-2. **Pour du nouveau, privilégier les skills** — Garder les commands pour les raccourcis manuels simples
+2. **Nouveau besoin = nouvelle skill** — Ne pas créer de nouvelle command
 3. **Skill ensuite** — Quand il faut scripts/assets/references + activation auto
 4. **Description = découverte** — C'est le signal principal d'invocation automatique
 5. **Versionner dans Git** — Crée une façon officielle et partagée d'utiliser l'IA en équipe
@@ -334,17 +316,16 @@ my-skill/
 
 ---
 
-### 15. Conclusion & Récapitulatif (9:50 — 10:00) ⏱️ 10s
+### 14. Conclusion & Récapitulatif (9:50 — 10:00) ⏱️ 10s
 
 **Slide** : "Récapitulatif"
 
-- Les **Commands** = des prompts sauvegardés, simples et rapides à invoquer
 - Les **Skills** = des capacités modulaires, chargées selon la tâche
 - **Standard ouvert** Agent Skills — fonctionne dans Cursor ET Claude Code
-- Dans Claude Code, les commandes custom convergent vers les skills
-- Les commands, skills, rules et modes sont **complémentaires**
+- Approche recommandée : skills-first + migration progressive des commands existantes
+- Skills, rules et modes sont **complémentaires**
 
-**Call to action** : "Choisissez un irritant de votre équipe et automatisez-le aujourd'hui avec une commande ou une skill."
+**Call to action** : "Choisissez un irritant de votre équipe et automatisez-le aujourd'hui avec une skill."
 
 ---
 

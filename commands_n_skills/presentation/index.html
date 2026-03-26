@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 16</span>
+        <span class="slide-counter" id="slideCounter">1 / 15</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -440,19 +440,19 @@ les scripts fournis.
       </div>
     </section>
 
-    <!-- SLIDE 10 : Commandes Custom -->
+    <!-- SLIDE 10 : Commandes Custom (legacy) -->
     <section class="slide slide--custom" data-slide="10">
       <div class="slide-content">
         <div class="section-label animate-pop">Custom</div>
-        <h2 class="slide-title animate-slide-up">Créer vos propres commandes</h2>
+        <h2 class="slide-title animate-slide-up">Commandes existantes : migrer vers des skills</h2>
         <div class="create-dual">
           <div class="create-col animate-card" style="--delay: 0.2s">
             <div class="create-col-header cursor-header">⚡ Cursor</div>
             <div class="create-steps">
-              <div class="cs"><span class="cs-num">1</span> Créez un fichier <code>.md</code> dans <code>.cursor/commands/</code></div>
-              <div class="cs"><span class="cs-num">2</span> Le nom du fichier = nom de la commande</div>
-              <div class="cs"><span class="cs-num">3</span> Le contenu = le prompt envoyé à l'IA</div>
-              <div class="cs"><span class="cs-num">4</span> Invoquez avec <code>/nom</code> dans le chat (ex: <code>/lint</code>)</div>
+              <div class="cs"><span class="cs-num">1</span> Identifiez les commands existantes dans <code>.cursor/commands/</code></div>
+              <div class="cs"><span class="cs-num">2</span> Repérez les plus utilisées (ex: <code>/lint</code>)</div>
+              <div class="cs"><span class="cs-num">3</span> Convertissez leur logique en <code>SKILL.md</code></div>
+              <div class="cs"><span class="cs-num">4</span> Conservez la command seulement pendant la transition</div>
             </div>
             <div class="create-result">
               <code>.cursor/commands/lint.md</code>
@@ -473,10 +473,10 @@ devrait passer sur ce point.</code></pre>
           <div class="create-col animate-card" style="--delay: 0.35s">
             <div class="create-col-header cc-header">▶ Claude Code</div>
             <div class="create-steps">
-              <div class="cs"><span class="cs-num">1</span> Créez <code>.claude/commands/</code> ou <code>.claude/skills/</code></div>
-              <div class="cs"><span class="cs-num">2</span> Ajoutez un frontmatter YAML</div>
-              <div class="cs"><span class="cs-num">3</span> Utilisez <code>$ARGUMENTS</code> pour les paramètres</div>
-              <div class="cs"><span class="cs-num">4</span> Utilisez <code>!`cmd`</code> pour injecter du contexte</div>
+              <div class="cs"><span class="cs-num">1</span> Déplacez les nouveaux usages vers <code>.claude/skills/</code></div>
+              <div class="cs"><span class="cs-num">2</span> Gardez un frontmatter clair orienté déclenchement</div>
+              <div class="cs"><span class="cs-num">3</span> Utilisez <code>$ARGUMENTS</code> si invocation manuelle</div>
+              <div class="cs"><span class="cs-num">4</span> Supprimez progressivement les commands obsolètes</div>
             </div>
             <div class="create-result">
               <code>.claude/commands/lint.md</code>
@@ -498,48 +498,13 @@ Corrige jusqu'à ce que ça passe.
           </div>
         </div>
         <div class="create-note animate-fade-in" style="--delay: 0.6s">
-          💡 Les commandes sont des prompts sauvegardés. Dans Claude Code, la direction est de converger vers les skills ; ailleurs, les commandes peuvent continuer à vivre très bien.
+          💡 Direction recommandée : ne plus créer de nouvelles commands ; migrer l'existant vers des skills.
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 11 : Deprecation des commandes -->
-    <section class="slide slide--builtin" data-slide="11">
-      <div class="slide-content">
-        <div class="section-label animate-pop">Évolution</div>
-        <h2 class="slide-title animate-slide-up">Commandes : deprecated, ou pas ?</h2>
-        <div class="versus-grid">
-          <div class="versus-col animate-card" style="--delay: 0.2s">
-            <div class="versus-header cc-header">
-              <span class="versus-logo">▶</span>
-              Claude Code
-            </div>
-            <div class="versus-body">
-              <div class="cmd-item"><span class="cmd-name cc-cmd">Convergence Commands → Skills</span></div>
-              <div class="cmd-item"><span class="cmd-desc">Les commandes custom convergent vers les skills.</span></div>
-              <div class="cmd-item"><span class="cmd-desc">Les skills peuvent aussi être exécutées comme slash commands.</span></div>
-            </div>
-          </div>
-          <div class="versus-col animate-card" style="--delay: 0.35s">
-            <div class="versus-header cursor-header">
-              <span class="versus-logo">🌐</span>
-              Écosystème agentique
-            </div>
-            <div class="versus-body">
-              <div class="cmd-item"><span class="cmd-name cursor-cmd">Pas de dépréciation universelle</span></div>
-              <div class="cmd-item"><span class="cmd-desc">D'autres outils peuvent continuer à supporter les commandes.</span></div>
-              <div class="cmd-item"><span class="cmd-desc">Une commande reste un prompt sauvegardé et réutilisable.</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="create-note create-note--top-space animate-fade-in" style="--delay: 0.58s">
-          ✅ Message clé : ce qui est "deprecated" dépend de l'outil. Ne pas généraliser le cas Claude Code à tout l'écosystème.
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 12 : Comparatif -->
-    <section class="slide slide--compare" data-slide="12">
+    <!-- SLIDE 11 : Comparatif -->
+    <section class="slide slide--compare" data-slide="11">
       <div class="slide-content">
         <div class="section-label animate-pop">Comparatif</div>
         <h2 class="slide-title animate-slide-up">Le grand tableau comparatif</h2>
@@ -606,13 +571,13 @@ Corrige jusqu'à ce que ça passe.
           </table>
         </div>
         <div class="create-note animate-fade-in" style="--delay: 0.5s">
-          Note : la convergence Commands → Skills concerne surtout Claude Code. Ce n'est pas une règle universelle à tout l'écosystème agentique.
+          Note : recommandation pratique de cette formation = skills-first pour tous les nouveaux cas d'usage.
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 13 : Quand utiliser quoi ? -->
-    <section class="slide slide--decision" data-slide="13">
+    <!-- SLIDE 12 : Quand utiliser quoi ? -->
+    <section class="slide slide--decision" data-slide="12">
       <div class="slide-content">
         <div class="section-label animate-pop">Guide de Décision</div>
         <h2 class="slide-title animate-slide-up">Quand utiliser quoi ?</h2>
@@ -698,8 +663,8 @@ en <span class="code-highlight">Conventional Commits</span>.
 Format : <span class="code-keyword">type(scope): description</span>
 Commite automatiquement.</code></pre>
               </div>
-              <div class="decision-signal">💡 Vous tapez le même prompt 3x ? Faites-en une commande.</div>
-              <div class="decision-signal">🎯 Exemple ultra utile : <code>/lint</code> pour automatiser "run lint + corriger + revalider".</div>
+              <div class="decision-signal">💡 Si vous avez déjà une command équivalente, planifiez sa migration vers une skill.</div>
+              <div class="decision-signal">🎯 Si vous avez déjà une command, convertissez-la en skill pour la rendre portable et évolutive.</div>
             </div>
           </div>
 
@@ -736,8 +701,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 14 : Bonnes Pratiques -->
-    <section class="slide slide--best" data-slide="14">
+    <!-- SLIDE 13 : Bonnes Pratiques -->
+    <section class="slide slide--best" data-slide="13">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 6 règles d'or</h2>
@@ -749,8 +714,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
           </div>
           <div class="bp-card animate-card" style="--delay: 0.175s">
             <div class="bp-number">2</div>
-            <h3>Pour du nouveau, privilégiez les skills</h3>
-            <p>Créez une command seulement pour un raccourci manuel simple ; sinon, standardisez directement en skill.</p>
+            <h3>Nouveau besoin = nouvelle skill</h3>
+            <p>Pour tout nouveau workflow, créez directement une skill réutilisable et maintenable.</p>
           </div>
           <div class="bp-card animate-card" style="--delay: 0.25s">
             <div class="bp-number">3</div>
@@ -776,15 +741,15 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 15 : Conclusion -->
-    <section class="slide slide--conclusion" data-slide="15">
+    <!-- SLIDE 14 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="14">
       <div class="slide-content">
         <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
           <h2>🎯 Récapitulatif</h2>
           <div class="conclusion-items">
-            <div class="conclusion-item"><strong>CLAUDE.md</strong> pour le contexte projet, <strong>Rules</strong> pour les conventions, <strong>Commands</strong> pour les raccourcis, <strong>Skills</strong> pour les workflows spécialisés</div>
+            <div class="conclusion-item"><strong>CLAUDE.md</strong> pour le contexte projet, <strong>Rules</strong> pour les conventions, <strong>Skills</strong> pour les workflows spécialisés</div>
             <div class="conclusion-item">Versionnés en Git, ces mécanismes deviennent la façon officielle d'utiliser l'IA en équipe</div>
-            <div class="conclusion-item">Les commandes ne disparaissent pas partout: dans Claude Code elles convergent vers les skills, ailleurs elles restent valides</div>
+            <div class="conclusion-item">Approche recommandée : créer en skills par défaut et migrer les commands existantes</div>
           </div>
           <div class="cta-box">
             Créez votre première Skill dès aujourd'hui !<br>
@@ -798,8 +763,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 16 : Ressources -->
-    <section class="slide slide--resources" data-slide="16">
+    <!-- SLIDE 15 : Ressources -->
+    <section class="slide slide--resources" data-slide="15">
       <div class="slide-content">
         <div class="section-label animate-pop">Ressources</div>
         <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>
