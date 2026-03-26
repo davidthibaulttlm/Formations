@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 15</span>
+        <span class="slide-counter" id="slideCounter">1 / 13</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -377,134 +377,8 @@ les scripts fournis.
       </div>
     </section>
 
-    <!-- SLIDE 9 : Commandes Built-in -->
-    <section class="slide slide--builtin" data-slide="9">
-      <div class="slide-content">
-        <div class="section-label animate-pop">Built-in</div>
-        <h2 class="slide-title animate-slide-up">Commandes intégrées</h2>
-        <div class="versus-grid">
-          <div class="versus-col animate-card" style="--delay: 0.2s">
-            <div class="versus-header cursor-header">
-              <span class="versus-logo">⚡</span>
-              Cursor
-              <span class="versus-sub">IDE graphique</span>
-            </div>
-            <div class="versus-body">
-              <div class="cmd-list">
-                <div class="cmd-category">Navigation</div>
-                <div class="cmd-item"><span class="cmd-name cursor-cmd">/plan</span><span class="cmd-desc">Mode planification</span></div>
-                <div class="cmd-item"><span class="cmd-name cursor-cmd">/ask</span><span class="cmd-desc">Question sans modifier de fichiers</span></div>
-                <div class="cmd-item"><span class="cmd-name cursor-cmd">/new-chat</span><span class="cmd-desc">Nouvelle conversation</span></div>
-                <div class="cmd-category">Modèle & Contexte</div>
-                <div class="cmd-item"><span class="cmd-name cursor-cmd">/model</span><span class="cmd-desc">Changer de modèle</span></div>
-                <div class="cmd-item"><span class="cmd-name cursor-cmd">/compress</span><span class="cmd-desc">Compresser le contexte</span></div>
-                <div class="cmd-item"><span class="cmd-name cursor-cmd">/max-mode</span><span class="cmd-desc">Mode max (modèle premium)</span></div>
-                <div class="cmd-category">Outils</div>
-                <div class="cmd-item"><span class="cmd-name cursor-cmd">/rules</span><span class="cmd-desc">Voir les rules actives</span></div>
-                <div class="cmd-item"><span class="cmd-name cursor-cmd">/commands</span><span class="cmd-desc">Gérer les commandes custom</span></div>
-                <div class="cmd-item"><span class="cmd-name cursor-cmd">/mcp list</span><span class="cmd-desc">Lister les serveurs MCP</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="versus-col animate-card" style="--delay: 0.35s">
-            <div class="versus-header cc-header">
-              <span class="versus-logo">▶</span>
-              Claude Code
-              <span class="versus-sub">CLI terminal</span>
-            </div>
-            <div class="versus-body">
-              <div class="cmd-list">
-                <div class="cmd-category">Session</div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/compact</span><span class="cmd-desc">Compresser l'historique</span></div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/clear</span><span class="cmd-desc">Effacer la conversation</span></div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/cost</span><span class="cmd-desc">Tokens et coûts de la session</span></div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/context</span><span class="cmd-desc">Visualiser la fenêtre de contexte</span></div>
-                <div class="cmd-category">Projet</div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/init</span><span class="cmd-desc">Initialiser CLAUDE.md</span></div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/review</span><span class="cmd-desc">Review du code récent</span></div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/add-dir</span><span class="cmd-desc">Ajouter un répertoire de travail</span></div>
-                <div class="cmd-category">Configuration</div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/model</span><span class="cmd-desc">Changer de modèle</span></div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/config</span><span class="cmd-desc">Ouvrir les paramètres</span></div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/permissions</span><span class="cmd-desc">Gérer les permissions</span></div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/mcp</span><span class="cmd-desc">Gérer les serveurs MCP</span></div>
-                <div class="cmd-item"><span class="cmd-name cc-cmd">/doctor</span><span class="cmd-desc">Vérifier l'installation</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="create-note animate-fade-in" style="--delay: 0.6s">
-          💡 Commandes équivalentes : <code>/compress</code> (Cursor) = <code>/compact</code> (Claude Code) &nbsp;|&nbsp; <code>/model</code> existe dans les deux
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 10 : Commandes Custom (legacy) -->
-    <section class="slide slide--custom" data-slide="10">
-      <div class="slide-content">
-        <div class="section-label animate-pop">Custom</div>
-        <h2 class="slide-title animate-slide-up">Commandes existantes : migrer vers des skills</h2>
-        <div class="create-dual">
-          <div class="create-col animate-card" style="--delay: 0.2s">
-            <div class="create-col-header cursor-header">⚡ Cursor</div>
-            <div class="create-steps">
-              <div class="cs"><span class="cs-num">1</span> Identifiez les commands existantes dans <code>.cursor/commands/</code></div>
-              <div class="cs"><span class="cs-num">2</span> Repérez les plus utilisées (ex: <code>/lint</code>)</div>
-              <div class="cs"><span class="cs-num">3</span> Convertissez leur logique en <code>SKILL.md</code></div>
-              <div class="cs"><span class="cs-num">4</span> Conservez la command seulement pendant la transition</div>
-            </div>
-            <div class="create-result">
-              <code>.cursor/commands/lint.md</code>
-            </div>
-            <div class="create-format">
-              <pre><code><span class="code-heading"># Lint Fix CI</span>
-
-Lance le linter du projet.
-Corrige les erreurs détectées.
-Relance le linter jusqu'à zéro erreur.
-Résume les changements.
-
-Si le lint passe, confirme que le CI
-devrait passer sur ce point.</code></pre>
-            </div>
-          </div>
-
-          <div class="create-col animate-card" style="--delay: 0.35s">
-            <div class="create-col-header cc-header">▶ Claude Code</div>
-            <div class="create-steps">
-              <div class="cs"><span class="cs-num">1</span> Déplacez les nouveaux usages vers <code>.claude/skills/</code></div>
-              <div class="cs"><span class="cs-num">2</span> Gardez un frontmatter clair orienté déclenchement</div>
-              <div class="cs"><span class="cs-num">3</span> Utilisez <code>$ARGUMENTS</code> si invocation manuelle</div>
-              <div class="cs"><span class="cs-num">4</span> Supprimez progressivement les commands obsolètes</div>
-            </div>
-            <div class="create-result">
-              <code>.claude/commands/lint.md</code>
-            </div>
-            <div class="create-format">
-              <pre><code><span class="code-frontmatter">---
-description: Lance lint et corrige les erreurs CI
-argument-hint: [scope optionnel]
-allowed-tools: Read, Edit, Bash
-model: sonnet
----</span>
-
-Lance le linter sur <span class="code-highlight">$ARGUMENTS</span>.
-Contexte : <span class="code-keyword">!`git diff --name-only`</span>
-Corrige jusqu'à ce que ça passe.
-
-<span class="code-comment"># Invocation : /lint src/</span></code></pre>
-            </div>
-          </div>
-        </div>
-        <div class="create-note animate-fade-in" style="--delay: 0.6s">
-          💡 Direction recommandée : ne plus créer de nouvelles commands ; migrer l'existant vers des skills.
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 11 : Comparatif -->
-    <section class="slide slide--compare" data-slide="11">
+    <!-- SLIDE 9 : Comparatif -->
+    <section class="slide slide--compare" data-slide="9">
       <div class="slide-content">
         <div class="section-label animate-pop">Comparatif</div>
         <h2 class="slide-title animate-slide-up">Le grand tableau comparatif</h2>
@@ -513,7 +387,6 @@ Corrige jusqu'à ce que ça passe.
             <thead>
               <tr>
                 <th></th>
-                <th><span class="col-badge col--commands">Commands<br><small>Actions directes</small></span></th>
                 <th><span class="col-badge col--skills">Skills<br><small>Capacités intelligentes</small></span></th>
                 <th><span class="col-badge col--rules">Rules<br><small>Instructions persistantes</small></span></th>
               </tr>
@@ -521,37 +394,31 @@ Corrige jusqu'à ce que ça passe.
             <tbody>
               <tr>
                 <td class="row-label">Déclenchement</td>
-                <td>Manuel <code>/nom</code></td>
                 <td>Auto ou manuel</td>
                 <td>Automatique</td>
               </tr>
               <tr>
                 <td class="row-label">Cursor</td>
-                <td class="check"><code>.cursor/commands/</code></td>
                 <td class="check"><code>.cursor/skills/</code></td>
                 <td class="check"><code>.cursor/rules/</code></td>
               </tr>
               <tr>
                 <td class="row-label">Claude Code</td>
-                <td class="check"><code>.claude/commands/</code></td>
                 <td class="check"><code>.claude/skills/</code></td>
                 <td class="check"><code>.claude/rules/</code></td>
               </tr>
               <tr>
                 <td class="row-label">Standard ouvert</td>
-                <td class="cross">✗</td>
                 <td class="check">✓ agentskills.io</td>
                 <td class="cross">✗</td>
               </tr>
               <tr>
                 <td class="row-label">Sous-agents</td>
-                <td class="cross">✗</td>
                 <td class="check">✓ <code>context: fork</code></td>
                 <td class="cross">✗</td>
               </tr>
               <tr>
                 <td class="row-label">Fichiers de support</td>
-                <td class="cross">✗</td>
                 <td class="check">✓ scripts, refs, assets</td>
                 <td class="cross">✗</td>
               </tr>
@@ -559,11 +426,9 @@ Corrige jusqu'à ce que ça passe.
                 <td class="row-label">Versionné Git</td>
                 <td class="check">✓</td>
                 <td class="check">✓</td>
-                <td class="check">✓</td>
               </tr>
               <tr>
                 <td class="row-label">Idéal pour</td>
-                <td>Raccourcis rapides</td>
                 <td>Workflows complexes et réutilisables</td>
                 <td>Conventions permanentes</td>
               </tr>
@@ -576,8 +441,8 @@ Corrige jusqu'à ce que ça passe.
       </div>
     </section>
 
-    <!-- SLIDE 12 : Quand utiliser quoi ? -->
-    <section class="slide slide--decision" data-slide="12">
+    <!-- SLIDE 10 : Quand utiliser quoi ? -->
+    <section class="slide slide--decision" data-slide="10">
       <div class="slide-content">
         <div class="section-label animate-pop">Guide de Décision</div>
         <h2 class="slide-title animate-slide-up">Quand utiliser quoi ?</h2>
@@ -640,35 +505,6 @@ alwaysApply: true
           </div>
 
           <div class="decision-card animate-card" style="--delay: 0.35s">
-            <div class="decision-header decision-header--command">
-              <span class="decision-icon">⌨️</span>
-              <span>Command</span>
-            </div>
-            <div class="decision-body">
-              <div class="decision-when">
-                <strong>Quand ?</strong> Action que <em>vous</em> déclenchez manuellement — un raccourci pour un prompt
-              </div>
-              <div class="decision-examples">
-                <div class="decision-example-label">Exemples concrets :</div>
-                <div class="decision-example"><code>/review</code> — lancer une review de code</div>
-                <div class="decision-example"><code>/commit</code> — commit conventionnel automatique</div>
-                <div class="decision-example"><code>/fix-issue 42</code> — corriger une issue GitHub</div>
-              </div>
-              <div class="decision-code">
-                <pre><code><span class="code-comment"># .cursor/commands/commit.md</span>
-
-Analyse les fichiers modifiés.
-Génère un commit message
-en <span class="code-highlight">Conventional Commits</span>.
-Format : <span class="code-keyword">type(scope): description</span>
-Commite automatiquement.</code></pre>
-              </div>
-              <div class="decision-signal">💡 Si vous avez déjà une command équivalente, planifiez sa migration vers une skill.</div>
-              <div class="decision-signal">🎯 Si vous avez déjà une command, convertissez-la en skill pour la rendre portable et évolutive.</div>
-            </div>
-          </div>
-
-          <div class="decision-card animate-card" style="--delay: 0.45s">
             <div class="decision-header decision-header--skill">
               <span class="decision-icon">🧠</span>
               <span>Skill</span>
@@ -701,8 +537,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 13 : Bonnes Pratiques -->
-    <section class="slide slide--best" data-slide="13">
+    <!-- SLIDE 11 : Bonnes Pratiques -->
+    <section class="slide slide--best" data-slide="11">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 6 règles d'or</h2>
@@ -741,8 +577,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 14 : Conclusion -->
-    <section class="slide slide--conclusion" data-slide="14">
+    <!-- SLIDE 12 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="12">
       <div class="slide-content">
         <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
           <h2>🎯 Récapitulatif</h2>
@@ -763,8 +599,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 15 : Ressources -->
-    <section class="slide slide--resources" data-slide="15">
+    <!-- SLIDE 13 : Ressources -->
+    <section class="slide slide--resources" data-slide="13">
       <div class="slide-content">
         <div class="section-label animate-pop">Ressources</div>
         <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>

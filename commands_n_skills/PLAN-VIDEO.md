@@ -64,67 +64,7 @@
 
 ---
 
-### 4. Les Commandes Built-in (2:25 — 3:35) ⏱️ 1:10
-
-**Slide** : "Commandes intégrées — Cursor vs Claude Code"
-
-**Points à couvrir** :
-
-**Cursor — commandes intégrées** :
-- `/plan` — passer en mode planification
-- `/ask` — poser une question sans modifier de fichiers
-- `/model` — changer de modèle
-- `/compress` — compresser le contexte
-- `/commands` — gérer les commandes custom
-- `/rules` — voir les rules actives
-- `/help` — aide
-- `/mcp list` — lister les serveurs MCP
-- Aussi : `/auto-run`, `/sandbox`, `/max-mode`, `/new-chat`, `/vim`
-
-**Claude Code — commandes intégrées** :
-- `/compact` — compresser l'historique (équivalent `/compress`)
-- `/cost` — voir les tokens et coûts de la session
-- `/context` — visualiser l'utilisation de la fenêtre de contexte
-- `/init` — initialiser un projet avec CLAUDE.md
-- `/config` — ouvrir les paramètres
-- `/model` — changer de modèle
-- `/review` — demander une review de code
-- `/doctor` — vérifier l'installation
-- `/mcp` — gérer les serveurs MCP
-- Aussi : `/clear`, `/help`, `/rename`, `/resume`, `/add-dir`, `/permissions`, `/login`, `/logout`
-
-**Annotation au stylet** : Entourer les commandes équivalentes entre les deux outils (`/compact` ↔ `/compress`, `/model` ↔ `/model`)
-
----
-
-### 5. Les Commandes Custom (legacy) (3:35 — 5:00) ⏱️ 1:25
-
-**Slide** : "Commandes existantes : migrer vers des skills"
-
-**Points à couvrir** :
-
-**Cursor** :
-- Repérer les commands existantes dans `.cursor/commands/` (projet) ou `~/.cursor/commands/` (global)
-- Identifier les commands fréquentes à migrer en priorité
-- Transformer chaque logique en skill dédiée
-
-**Claude Code** :
-- Fichiers Markdown dans `.claude/commands/` (projet) ou `~/.claude/commands/` (perso)
-- Frontmatter YAML : `description`, `argument-hint`, `allowed-tools`, `model`
-- Variables dynamiques : `$ARGUMENTS`, `$0`-`$N`, `${CLAUDE_SESSION_ID}`
-- Injection de contexte dynamique : `` !`commande` `` — la sortie shell remplace le placeholder
-- **Note importante** : dans cette formation, on n'ouvre plus de nouveaux usages via commands ; on crée des skills
-
-**Démo live** :
-1. Montrer une command existante `.cursor/commands/lint.md`
-2. Montrer sa version skill cible
-3. Expliquer la transition command -> skill
-
-**Annotation au stylet** : Entourer le frontmatter de Claude Code comme différenciateur, montrer que Cursor est plus simple (juste du Markdown)
-
----
-
-### 6. Les Skills — Le Standard Ouvert (5:00 — 5:50) ⏱️ 50s
+### 4. Les Skills — Le Standard Ouvert (2:25 — 3:35) ⏱️ 1:10
 
 **Slide** : "Skills — Un standard ouvert"
 
@@ -142,7 +82,7 @@
 
 ---
 
-### 7. Anatomie d'une Skill (5:50 — 6:30) ⏱️ 40s
+### 5. Anatomie d'une Skill (3:35 — 4:35) ⏱️ 1 min
 
 **Slide** : "Anatomie d'un SKILL.md"
 
@@ -175,7 +115,7 @@ my-skill/
 
 ---
 
-### 8. Comment l'IA décide d'appeler une skill (6:30 — 7:05) ⏱️ 35s
+### 6. Comment l'IA décide d'appeler une skill (4:35 — 5:25) ⏱️ 50s
 
 **Slide** : "Boucle agentique — Décision d'invocation"
 
@@ -193,7 +133,7 @@ my-skill/
 
 ---
 
-### 9. Skills en Action — Cursor vs Claude Code (7:05 — 7:45) ⏱️ 40s
+### 7. Skills en Action — Cursor vs Claude Code (5:25 — 6:20) ⏱️ 55s
 
 **Slide** : "Skills dans les deux outils"
 
@@ -223,7 +163,7 @@ my-skill/
 
 ---
 
-### 10. Skills Bundled — Claude Code (7:45 — 8:10) ⏱️ 25s
+### 8. Skills Bundled — Claude Code (6:20 — 6:55) ⏱️ 35s
 
 **Slide** : "Skills intégrées — Claude Code"
 
@@ -254,7 +194,7 @@ my-skill/
 
 ---
 
-### 11. Custom Modes — Cursor (8:10 — 8:30) ⏱️ 20s
+### 9. Custom Modes — Cursor (6:55 — 7:20) ⏱️ 25s
 
 **Slide** : "Modes personnalisés — Cursor"
 
@@ -275,7 +215,7 @@ my-skill/
 
 ---
 
-### 12. Le Grand Comparatif (8:30 — 9:00) ⏱️ 30s
+### 10. Le Grand Comparatif (7:20 — 8:10) ⏱️ 50s
 
 **Slide** : "Commands vs Skills vs Rules vs Modes"
 
@@ -301,7 +241,7 @@ my-skill/
 
 ---
 
-### 13. Bonnes Pratiques (9:00 — 9:50) ⏱️ 50s
+### 11. Bonnes Pratiques (8:10 — 9:15) ⏱️ 1:05
 
 **Slide** : "Les 6 règles d'or"
 
@@ -316,7 +256,7 @@ my-skill/
 
 ---
 
-### 14. Conclusion & Récapitulatif (9:50 — 10:00) ⏱️ 10s
+### 12. Conclusion & Récapitulatif (9:15 — 10:00) ⏱️ 45s
 
 **Slide** : "Récapitulatif"
 
