@@ -30,7 +30,23 @@
 
 ---
 
-### 2. Les irritants concrets (0:50 — 2:00) ⏱️ 1:10
+### 2. Définitions de base (0:50 — 1:25) ⏱️ 35s
+
+**Slide** : "C'est quoi une Command ? C'est quoi une Skill ?"
+
+**Points à couvrir** :
+- **Command** : prompt sauvegardé, déclenchement manuel via `/nom`
+- **Skill** : capacité modulaire (`SKILL.md` + fichiers), invocation auto ou manuelle
+- Donner 1 exemple clair de chaque :
+  - Command : `/lint`
+  - Skill : "generate-component" avec templates/scripts
+- Message ultra simple à dire : "Command = raccourci manuel, Skill = capacité spécialisée"
+
+**Annotation au stylet** : Tableau 2 colonnes "Command" vs "Skill"
+
+---
+
+### 3. Les irritants concrets (1:25 — 2:25) ⏱️ 1 min
 
 **Slide** : "Pourquoi s'en servir en équipe ?"
 
@@ -48,7 +64,7 @@
 
 ---
 
-### 3. Les Commandes Built-in (2:00 — 3:10) ⏱️ 1:10
+### 4. Les Commandes Built-in (2:25 — 3:35) ⏱️ 1:10
 
 **Slide** : "Commandes intégrées — Cursor vs Claude Code"
 
@@ -81,7 +97,7 @@
 
 ---
 
-### 4. Les Commandes Custom (3:10 — 4:35) ⏱️ 1:25
+### 5. Les Commandes Custom (3:35 — 5:00) ⏱️ 1:25
 
 **Slide** : "Créer vos propres commandes"
 
@@ -109,7 +125,7 @@
 
 ---
 
-### 5. Les Skills — Le Standard Ouvert (4:35 — 5:35) ⏱️ 1 min
+### 6. Les Skills — Le Standard Ouvert (5:00 — 5:50) ⏱️ 50s
 
 **Slide** : "Skills — Un standard ouvert"
 
@@ -127,7 +143,7 @@
 
 ---
 
-### 6. Anatomie d'une Skill (5:35 — 6:25) ⏱️ 50s
+### 7. Anatomie d'une Skill (5:50 — 6:30) ⏱️ 40s
 
 **Slide** : "Anatomie d'un SKILL.md"
 
@@ -160,7 +176,7 @@ my-skill/
 
 ---
 
-### 7. Comment l'IA décide d'appeler une skill (6:25 — 7:00) ⏱️ 35s
+### 8. Comment l'IA décide d'appeler une skill (6:30 — 7:05) ⏱️ 35s
 
 **Slide** : "Boucle agentique — Décision d'invocation"
 
@@ -178,7 +194,7 @@ my-skill/
 
 ---
 
-### 8. Skills en Action — Cursor vs Claude Code (7:00 — 7:45) ⏱️ 45s
+### 9. Skills en Action — Cursor vs Claude Code (7:05 — 7:45) ⏱️ 40s
 
 **Slide** : "Skills dans les deux outils"
 
@@ -208,7 +224,7 @@ my-skill/
 
 ---
 
-### 9. Skills Bundled — Claude Code (7:45 — 8:15) ⏱️ 30s
+### 10. Skills Bundled — Claude Code (7:45 — 8:10) ⏱️ 25s
 
 **Slide** : "Skills intégrées — Claude Code"
 
@@ -239,7 +255,7 @@ my-skill/
 
 ---
 
-### 10. Commandes deprecated ? Clarifier le scope (8:15 — 8:45) ⏱️ 30s
+### 11. Commandes deprecated ? Clarifier le scope (8:10 — 8:40) ⏱️ 30s
 
 **Slide** : "Deprecated, mais où exactement ?"
 
@@ -256,7 +272,7 @@ my-skill/
 
 ---
 
-### 11. Custom Modes — Cursor (8:45 — 9:05) ⏱️ 20s
+### 12. Custom Modes — Cursor (8:40 — 9:00) ⏱️ 20s
 
 **Slide** : "Modes personnalisés — Cursor"
 
@@ -277,7 +293,7 @@ my-skill/
 
 ---
 
-### 12. Le Grand Comparatif (9:05 — 9:30) ⏱️ 25s
+### 13. Le Grand Comparatif (9:00 — 9:25) ⏱️ 25s
 
 **Slide** : "Commands vs Skills vs Rules vs Modes"
 
@@ -303,7 +319,7 @@ my-skill/
 
 ---
 
-### 13. Bonnes Pratiques (9:30 — 9:50) ⏱️ 20s
+### 14. Bonnes Pratiques (9:25 — 9:50) ⏱️ 25s
 
 **Slide** : "Les 6 règles d'or"
 
@@ -318,7 +334,7 @@ my-skill/
 
 ---
 
-### 14. Conclusion & Récapitulatif (9:50 — 10:00) ⏱️ 10s
+### 15. Conclusion & Récapitulatif (9:50 — 10:00) ⏱️ 10s
 
 **Slide** : "Récapitulatif"
 
