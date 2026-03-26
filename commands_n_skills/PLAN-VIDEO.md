@@ -308,7 +308,7 @@ my-skill/
 **Slide** : "Les 6 règles d'or"
 
 1. **Partir d'un irritant réel** — Ex: lint CI, review PR, migration répétitive
-2. **Commande d'abord** — Quand un prompt revient 3x, créer une commande (`/lint`)
+2. **Pour du nouveau, privilégier les skills** — Garder les commands pour les raccourcis manuels simples
 3. **Skill ensuite** — Quand il faut scripts/assets/references + activation auto
 4. **Description = découverte** — C'est le signal principal d'invocation automatique
 5. **Versionner dans Git** — Crée une façon officielle et partagée d'utiliser l'IA en équipe

@@ -498,6 +498,10 @@ code {
   color: var(--text-dim);
 }
 
+.create-note--top-space {
+  margin-top: 1.25rem;
+}
+
 /* SKILL STANDARD SLIDE */
 .standard-layout {
   display: grid;
