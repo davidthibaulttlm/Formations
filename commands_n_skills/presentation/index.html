@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 13</span>
+        <span class="slide-counter" id="slideCounter">1 / 15</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -184,8 +184,33 @@ les scripts fournis.
       </div>
     </section>
 
-    <!-- SLIDE 5 : Skills en Action -->
+    <!-- SLIDE 5 : Decision d'invocation -->
     <section class="slide slide--action" data-slide="5">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Boucle Agentique</div>
+        <h2 class="slide-title animate-slide-up">Comment l'IA décide d'appeler une skill</h2>
+        <div class="invocation-grid animate-fade-in" style="--delay: 0.2s">
+          <div class="invocation-card">
+            <h4>1) Ce qui est dans le contexte</h4>
+            <p>Pour la découverte, l'IA voit surtout le frontmatter du <code>SKILL.md</code> (<code>name</code>, <code>description</code>, contraintes).</p>
+          </div>
+          <div class="invocation-card">
+            <h4>2) Décision d'invocation</h4>
+            <p>Dans sa boucle agentique, elle compare la demande utilisateur avec ces métadonnées pour décider d'installer/invoquer la skill.</p>
+          </div>
+          <div class="invocation-card">
+            <h4>3) Chargement ciblé</h4>
+            <p>Si pertinent, la skill est chargée et exécutée ; sinon, elle n'est pas ajoutée au contexte pour éviter le bruit.</p>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.55s">
+          ⚠️ Implication pratique : la qualité du frontmatter, surtout la <strong>description</strong>, influence directement la probabilité d'activation automatique.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 : Skills en Action -->
+    <section class="slide slide--action" data-slide="6">
       <div class="slide-content">
         <div class="section-label animate-pop">En Action</div>
         <h2 class="slide-title animate-slide-up">Skills dans les deux outils</h2>
@@ -276,8 +301,8 @@ les scripts fournis.
       </div>
     </section>
 
-    <!-- SLIDE 6 : Bundled Skills Claude Code -->
-    <section class="slide slide--bundled" data-slide="6">
+    <!-- SLIDE 7 : Bundled Skills Claude Code -->
+    <section class="slide slide--bundled" data-slide="7">
       <div class="slide-content">
         <div class="section-label animate-pop">Bundled Skills</div>
         <h2 class="slide-title animate-slide-up">Skills intégrées — Claude Code</h2>
@@ -317,8 +342,8 @@ les scripts fournis.
       </div>
     </section>
 
-    <!-- SLIDE 7 : Commandes Built-in -->
-    <section class="slide slide--builtin" data-slide="7">
+    <!-- SLIDE 8 : Commandes Built-in -->
+    <section class="slide slide--builtin" data-slide="8">
       <div class="slide-content">
         <div class="section-label animate-pop">Built-in</div>
         <h2 class="slide-title animate-slide-up">Commandes intégrées</h2>
@@ -380,8 +405,8 @@ les scripts fournis.
       </div>
     </section>
 
-    <!-- SLIDE 8 : Commandes Custom -->
-    <section class="slide slide--custom" data-slide="8">
+    <!-- SLIDE 9 : Commandes Custom -->
+    <section class="slide slide--custom" data-slide="9">
       <div class="slide-content">
         <div class="section-label animate-pop">Custom</div>
         <h2 class="slide-title animate-slide-up">Créer vos propres commandes</h2>
@@ -443,8 +468,43 @@ Corrige jusqu'à ce que ça passe.
       </div>
     </section>
 
-    <!-- SLIDE 9 : Comparatif -->
-    <section class="slide slide--compare" data-slide="9">
+    <!-- SLIDE 10 : Deprecation des commandes -->
+    <section class="slide slide--builtin" data-slide="10">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Évolution</div>
+        <h2 class="slide-title animate-slide-up">Commandes : deprecated, ou pas ?</h2>
+        <div class="versus-grid">
+          <div class="versus-col animate-card" style="--delay: 0.2s">
+            <div class="versus-header cc-header">
+              <span class="versus-logo">▶</span>
+              Claude Code
+            </div>
+            <div class="versus-body">
+              <div class="cmd-item"><span class="cmd-name cc-cmd">Convergence Commands → Skills</span></div>
+              <div class="cmd-item"><span class="cmd-desc">Les commandes custom convergent vers les skills.</span></div>
+              <div class="cmd-item"><span class="cmd-desc">Les skills peuvent aussi être exécutées comme slash commands.</span></div>
+            </div>
+          </div>
+          <div class="versus-col animate-card" style="--delay: 0.35s">
+            <div class="versus-header cursor-header">
+              <span class="versus-logo">🌐</span>
+              Écosystème agentique
+            </div>
+            <div class="versus-body">
+              <div class="cmd-item"><span class="cmd-name cursor-cmd">Pas de dépréciation universelle</span></div>
+              <div class="cmd-item"><span class="cmd-desc">D'autres outils peuvent continuer à supporter les commandes.</span></div>
+              <div class="cmd-item"><span class="cmd-desc">Une commande reste un prompt sauvegardé et réutilisable.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.58s">
+          ✅ Message clé : ce qui est "deprecated" dépend de l'outil. Ne pas généraliser le cas Claude Code à tout l'écosystème.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11 : Comparatif -->
+    <section class="slide slide--compare" data-slide="11">
       <div class="slide-content">
         <div class="section-label animate-pop">Comparatif</div>
         <h2 class="slide-title animate-slide-up">Le grand tableau comparatif</h2>
@@ -516,8 +576,8 @@ Corrige jusqu'à ce que ça passe.
       </div>
     </section>
 
-    <!-- SLIDE 10 : Quand utiliser quoi ? -->
-    <section class="slide slide--decision" data-slide="10">
+    <!-- SLIDE 12 : Quand utiliser quoi ? -->
+    <section class="slide slide--decision" data-slide="12">
       <div class="slide-content">
         <div class="section-label animate-pop">Guide de Décision</div>
         <h2 class="slide-title animate-slide-up">Quand utiliser quoi ?</h2>
@@ -641,8 +701,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 11 : Bonnes Pratiques -->
-    <section class="slide slide--best" data-slide="11">
+    <!-- SLIDE 13 : Bonnes Pratiques -->
+    <section class="slide slide--best" data-slide="13">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 6 règles d'or</h2>
@@ -681,8 +741,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 12 : Conclusion -->
-    <section class="slide slide--conclusion" data-slide="12">
+    <!-- SLIDE 14 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="14">
       <div class="slide-content">
         <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
           <h2>🎯 Récapitulatif</h2>
@@ -703,8 +763,8 @@ Follow patterns in <span class="code-string">[references/](references/)</span></
       </div>
     </section>
 
-    <!-- SLIDE 13 : Ressources -->
-    <section class="slide slide--resources" data-slide="13">
+    <!-- SLIDE 15 : Ressources -->
+    <section class="slide slide--resources" data-slide="15">
       <div class="slide-content">
         <div class="section-label animate-pop">Ressources</div>
         <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>

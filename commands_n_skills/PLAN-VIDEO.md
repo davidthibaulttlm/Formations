@@ -127,7 +127,7 @@
 
 ---
 
-### 6. Anatomie d'une Skill (5:35 — 6:45) ⏱️ 1:10
+### 6. Anatomie d'une Skill (5:35 — 6:25) ⏱️ 50s
 
 **Slide** : "Anatomie d'un SKILL.md"
 
@@ -160,7 +160,25 @@ my-skill/
 
 ---
 
-### 7. Skills en Action — Cursor vs Claude Code (6:45 — 7:35) ⏱️ 50s
+### 7. Comment l'IA décide d'appeler une skill (6:25 — 7:00) ⏱️ 35s
+
+**Slide** : "Boucle agentique — Décision d'invocation"
+
+**Points à couvrir** :
+- Différence majeure vs rules : l'activation d'une skill est une **décision dynamique**
+- Pour la découverte, l'IA voit surtout le frontmatter de `SKILL.md`
+- La décision d'invoquer/installer la skill se fait pendant la boucle agentique
+- Si la skill n'est pas pertinente, elle n'est pas chargée (économie de contexte)
+- Conséquence : la qualité de `name` + `description` influence directement l'activation
+
+**Message à marteler** :
+- "Le frontmatter n'est pas décoratif : c'est la clé de sélection de la skill."
+
+**Annotation au stylet** : Schéma "Demande utilisateur -> Match frontmatter -> Invocation (ou non)"
+
+---
+
+### 8. Skills en Action — Cursor vs Claude Code (7:00 — 7:45) ⏱️ 45s
 
 **Slide** : "Skills dans les deux outils"
 
@@ -190,7 +208,7 @@ my-skill/
 
 ---
 
-### 8. Skills Bundled — Claude Code (7:35 — 8:15) ⏱️ 40s
+### 9. Skills Bundled — Claude Code (7:45 — 8:15) ⏱️ 30s
 
 **Slide** : "Skills intégrées — Claude Code"
 
@@ -221,7 +239,24 @@ my-skill/
 
 ---
 
-### 9. Custom Modes — Cursor (8:15 — 8:40) ⏱️ 25s
+### 10. Commandes deprecated ? Clarifier le scope (8:15 — 8:45) ⏱️ 30s
+
+**Slide** : "Deprecated, mais où exactement ?"
+
+**Points à couvrir** :
+- La convergence Commands -> Skills concerne surtout **Claude Code**
+- Dans Claude Code : les skills peuvent être invoquées en slash commands
+- Ailleurs : les commandes peuvent rester supportées longtemps
+- Une commande reste un prompt sauvegardé et réutilisable, ce n'est pas un anti-pattern
+
+**Message clé** :
+- Ne pas généraliser "commands deprecated" à tout l'écosystème agentique
+
+**Annotation au stylet** : Deux colonnes "Claude Code" vs "Autres outils"
+
+---
+
+### 11. Custom Modes — Cursor (8:45 — 9:05) ⏱️ 20s
 
 **Slide** : "Modes personnalisés — Cursor"
 
@@ -242,7 +277,7 @@ my-skill/
 
 ---
 
-### 10. Le Grand Comparatif (8:40 — 9:15) ⏱️ 35s
+### 12. Le Grand Comparatif (9:05 — 9:30) ⏱️ 25s
 
 **Slide** : "Commands vs Skills vs Rules vs Modes"
 
@@ -268,7 +303,7 @@ my-skill/
 
 ---
 
-### 11. Bonnes Pratiques (9:15 — 9:50) ⏱️ 35s
+### 13. Bonnes Pratiques (9:30 — 9:50) ⏱️ 20s
 
 **Slide** : "Les 6 règles d'or"
 
@@ -283,7 +318,7 @@ my-skill/
 
 ---
 
-### 12. Conclusion & Récapitulatif (9:50 — 10:00) ⏱️ 10s
+### 14. Conclusion & Récapitulatif (9:50 — 10:00) ⏱️ 10s
 
 **Slide** : "Récapitulatif"
 
