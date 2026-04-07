@@ -35,7 +35,7 @@
 
 **Points à couvrir** :
 - **Vibe Coding** : on donne des instructions vagues à l'IA et on espère — "prompt and pray"
-  - 66% des développeurs disent que l'IA produit du code "presque correct mais pas tout à fait"
+  - L'IA produit du code "à peu près correct" qu'il faut constamment corriger et re-prompter
 - **Dérive silencieuse** : l'IA fait des choix implicites (librairies, architecture, conventions)
   - Après 3 mois, le projet est un "legacy IA" — de la dette technique invisible
 - **Perte de savoir** : sans documentation de l'intention, les features deviennent des mystères
@@ -58,7 +58,7 @@
   - Les specs sont la documentation vivante permanente du système
   - Quand du travail arrive : on met à jour les specs concernées d'abord, puis l'IA implémente contre elles
 - Analogie : "La spec est à l'app ce que le plan d'architecte est à l'immeuble. On ne jette pas le plan après la construction — on le met à jour quand on ajoute un étage."
-- Le SDD n'est pas nouveau (OpenAPI, SQL DDL, Figma) — mais l'IA le rend 10x plus puissant car **la spec EST le prompt**
+- Le SDD n'est pas nouveau (OpenAPI, SQL DDL, Figma) — mais l'IA le rend bien plus puissant car **la spec EST le prompt**
 - Parentage : SDD est le parent en amont de TDD. TDD dit "écris les tests d'abord". SDD dit "écris l'INTENTION d'abord — puis dérive les tests ET le code"
 
 **Annotation au stylet** :
