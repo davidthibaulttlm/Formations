@@ -140,6 +140,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Spec sub-tabs (inside example slide)
+  const specTabBtns = document.querySelectorAll('.spec-tab-btn');
+  const specTabPanels = document.querySelectorAll('.spec-tab-panel');
+
+  specTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.spectab;
+      specTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      specTabPanels.forEach(p => p.classList.remove('active'));
+      document.getElementById(`spectab-${tab}`).classList.add('active');
+    });
+  });
+
   updateSlide();
 
   setTimeout(() => { nav.style.opacity = '1'; }, 500);

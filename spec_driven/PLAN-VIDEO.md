@@ -175,17 +175,46 @@
 
 ---
 
-### 9. Exemple Concret — Ajouter l'Authentification (14:00 — 16:00) ⏱️ 2 min
+### 9. Anatomie d'une Spec de Changement (14:00 — 15:15) ⏱️ 1:15
+
+**Slide** : "Que contient une spec de changement ?"
+
+**Points à couvrir** :
+- Chaque spec dans `.specs/` se décompose en 3 couches — du plus abstrait au plus concret :
+  1. **requirements.md** (Le Quoi) :
+     - Problème — pourquoi ce changement existe
+     - Acceptance Criteria — conditions de succès (notation EARS)
+     - Contraintes — performance, sécurité, compatibilité
+     - Hors scope — ce qu'on ne fait PAS (aussi important que ce qu'on fait)
+  2. **design.md** (Le Comment) :
+     - Architecture — composants impactés, flux de données
+     - Modèle de données — nouveaux modèles, champs, relations
+     - Contrats API — endpoints, payloads, codes de retour
+     - Décisions techniques — choix faits et pourquoi (mini-ADR)
+  3. **tasks.md** (Le Plan) :
+     - Tâches atomiques — chaque tâche touche max 3 fichiers
+     - Fichiers concernés — liste explicite de ce qui est créé/modifié
+     - Dépendances — ordre d'exécution entre tâches
+     - Definition of Done — critères de complétion par tâche
+- "L'IA lit les requirements pour comprendre le besoin, le design pour savoir comment construire, les tasks pour exécuter étape par étape."
+
+**Annotation au stylet** :
+- Dessiner les 3 couches empilées avec une flèche descendante "Abstrait → Concret"
+- Entourer "Hors scope" : souvent oublié mais évite la dérive
+
+---
+
+### 10. Exemple Concret — Ajouter l'Authentification (15:15 — 17:00) ⏱️ 1:45
 
 **Slide** : "Exemple — Ajouter l'authentification par email"
 
 **Points à couvrir** :
 - Fil rouge : on ajoute l'auth par email à une app existante
 - **Avant** : `user-management/SPEC.md` sans auth, `schema.prisma` basique, pas de routes auth
-- **Après le workflow SDD** :
-  - `.specs/feat--email-auth/requirements.md` : user stories, acceptance criteria
-  - `.specs/feat--email-auth/design.md` : architecture, modèle Session, endpoints
-  - `.specs/feat--email-auth/tasks.md` : 5 tâches atomiques
+- **Après le workflow SDD** (montrer les 3 onglets de spec) :
+  - `.specs/feat--email-auth/requirements.md` : problème, acceptance criteria EARS, contraintes, hors scope
+  - `.specs/feat--email-auth/design.md` : architecture, modèle Session, endpoints, décision JWT vs sessions
+  - `.specs/feat--email-auth/tasks.md` : 4 tâches atomiques avec fichiers, dépendances, DoD
   - Mise à jour de `SPEC.md`, `schema.prisma`, `openapi.yaml`
 - Montrer les deux outils :
   - **Cursor** : Plan Mode → Agent Mode → Task tool
@@ -197,7 +226,7 @@
 
 ---
 
-### 10. Notation EARS pour les Requirements (16:00 — 17:00) ⏱️ 1 min
+### 11. Notation EARS pour les Requirements (17:00 — 18:00) ⏱️ 1 min
 
 **Slide** : "Écrire des requirements avec EARS"
 
@@ -219,7 +248,7 @@
 
 ---
 
-### 11. Implémenter avec des Sous-agents (17:00 — 18:00) ⏱️ 1 min
+### 12. Implémenter avec des Sous-agents (18:00 — 18:45) ⏱️ 45s
 
 **Slide** : "Déléguer aux sous-agents"
 
@@ -241,7 +270,7 @@
 
 ---
 
-### 12. Vibe Coding vs SDD (18:00 — 18:45) ⏱️ 45s
+### 13. Vibe Coding vs SDD (18:45 — 19:15) ⏱️ 30s
 
 **Slide** : "Quand utiliser quoi ?"
 
@@ -256,7 +285,7 @@
 
 ---
 
-### 13. Bonnes Pratiques (18:45 — 19:30) ⏱️ 45s
+### 14. Bonnes Pratiques (19:15 — 19:45) ⏱️ 30s
 
 **Slide** : "Les 8 règles d'or"
 
@@ -273,7 +302,7 @@
 
 ---
 
-### 14. Conclusion (19:30 — 19:50) ⏱️ 20s
+### 15. Conclusion (19:45 — 19:55) ⏱️ 10s
 
 **Slide** : "Récapitulatif"
 
@@ -287,7 +316,7 @@
 
 ---
 
-### 15. Ressources (19:50 — 20:00) ⏱️ 10s
+### 16. Ressources (19:55 — 20:00) ⏱️ 5s
 
 **Slide** : "Pour aller plus loin"
 
@@ -311,16 +340,17 @@
 | 5 | La pyramide des specs (Layering) | Concept | 2 min |
 | 6 | Organiser le projet | Configuration | 1:30 |
 | 7 | Connecter les specs à l'IA | Configuration | 1:30 |
-| 8 | Le workflow en 4 phases | Exemples | 2 min |
-| 9 | Exemple — Authentification | Exemples (tabs) | 2 min |
-| 10 | Notation EARS | Exemples | 1 min |
-| 11 | Sous-agents | Concept | 1 min |
-| 12 | Vibe Coding vs SDD | Versus | 45s |
-| 13 | Bonnes Pratiques | Conseils | 45s |
-| 14 | Conclusion | Récap | 20s |
-| 15 | Ressources | Liens | 10s |
+| 8 | Le workflow en 4 phases | Workflow | 2 min |
+| 9 | Anatomie d'une spec de changement | Anatomie | 1:15 |
+| 10 | Exemple — Authentification | Exemples (tabs) | 1:45 |
+| 11 | Notation EARS | Exemples | 1 min |
+| 12 | Sous-agents | Concept | 45s |
+| 13 | Vibe Coding vs SDD | Versus | 30s |
+| 14 | Bonnes Pratiques | Conseils | 30s |
+| 15 | Conclusion | Récap | 10s |
+| 16 | Ressources | Liens | 5s |
 
-**Total : ~20 minutes — 15 slides**
+**Total : ~20 minutes — 16 slides**
 
 ---
 

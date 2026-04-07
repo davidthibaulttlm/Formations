@@ -774,7 +774,127 @@ code {
   flex-shrink: 0;
 }
 
-/* EARS GRID (Slide 10) */
+/* ANATOMY LAYERS (Slide 9) */
+.anatomy-layers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 1.25rem;
+}
+
+.anatomy-arrow {
+  font-size: 1.3rem;
+  color: var(--accent-light);
+  line-height: 1;
+  padding: 0.2rem 0;
+}
+
+.anatomy-layer {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.anatomy-layer-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.anatomy-layer--req .anatomy-layer-header { background: rgba(108, 92, 231, 0.12); }
+.anatomy-layer--design .anatomy-layer-header { background: rgba(0, 184, 148, 0.12); }
+.anatomy-layer--tasks .anatomy-layer-header { background: rgba(253, 203, 110, 0.12); }
+
+.anatomy-layer-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.anatomy-layer--req .anatomy-layer-number { background: var(--accent); color: white; }
+.anatomy-layer--design .anatomy-layer-number { background: var(--green); color: white; }
+.anatomy-layer--tasks .anatomy-layer-number { background: var(--orange); color: var(--bg); }
+
+.anatomy-layer-title {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.anatomy-layer-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.anatomy-layer-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+}
+
+.anatomy-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-card);
+}
+
+.anatomy-section-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.anatomy-section-desc {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  line-height: 1.3;
+}
+
+/* SPEC SUB-TABS (inside example slide) */
+.spec-tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.spec-tab-btn {
+  padding: 0.4rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.spec-tab-btn:hover { color: var(--text); border-color: var(--border-light); }
+.spec-tab-btn.active { background: var(--accent-glow); color: var(--accent-light); border-color: var(--accent); }
+
+.spec-tab-panel { display: none; }
+.spec-tab-panel.active { display: block; }
+
+/* EARS GRID (Slide 11) */
 .ears-grid {
   display: flex;
   flex-direction: column;

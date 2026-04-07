@@ -19,7 +19,7 @@
         <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="slide-counter" id="slideCounter">1 / 15</span>
+        <span class="slide-counter" id="slideCounter">1 / 16</span>
         <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -423,8 +423,101 @@
       </div>
     </section>
 
-    <!-- SLIDE 9 : Exemple concret — Authentification -->
-    <section class="slide slide--examples" data-slide="9">
+    <!-- SLIDE 9 : Anatomie d'une spec de changement -->
+    <section class="slide slide--anatomy" data-slide="9">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Anatomie</div>
+        <h2 class="slide-title animate-slide-up">Que contient une spec de changement ?</h2>
+        <p class="concept-desc animate-fade-in" style="--delay: 0.2s">
+          Chaque spec dans <code>.specs/</code> se décompose en <strong>3 couches</strong> — du plus abstrait au plus concret.
+        </p>
+        <div class="anatomy-layers animate-fade-in" style="--delay: 0.35s">
+          <div class="anatomy-layer anatomy-layer--req">
+            <div class="anatomy-layer-header">
+              <span class="anatomy-layer-number">1</span>
+              <span class="anatomy-layer-title">requirements.md</span>
+              <span class="anatomy-layer-subtitle">Le Quoi</span>
+            </div>
+            <div class="anatomy-layer-sections">
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Problème</span>
+                <span class="anatomy-section-desc">Pourquoi ce changement existe</span>
+              </div>
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Acceptance Criteria</span>
+                <span class="anatomy-section-desc">Conditions de succès (notation EARS)</span>
+              </div>
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Contraintes</span>
+                <span class="anatomy-section-desc">Performance, sécurité, compatibilité</span>
+              </div>
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Hors scope</span>
+                <span class="anatomy-section-desc">Ce qu'on ne fait PAS (aussi important)</span>
+              </div>
+            </div>
+          </div>
+          <div class="anatomy-arrow">↓</div>
+          <div class="anatomy-layer anatomy-layer--design">
+            <div class="anatomy-layer-header">
+              <span class="anatomy-layer-number">2</span>
+              <span class="anatomy-layer-title">design.md</span>
+              <span class="anatomy-layer-subtitle">Le Comment</span>
+            </div>
+            <div class="anatomy-layer-sections">
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Architecture</span>
+                <span class="anatomy-section-desc">Composants impactés, flux de données</span>
+              </div>
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Modèle de données</span>
+                <span class="anatomy-section-desc">Nouveaux modèles, champs, relations</span>
+              </div>
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Contrats API</span>
+                <span class="anatomy-section-desc">Endpoints, payloads, codes de retour</span>
+              </div>
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Décisions techniques</span>
+                <span class="anatomy-section-desc">Choix faits et pourquoi (mini-ADR)</span>
+              </div>
+            </div>
+          </div>
+          <div class="anatomy-arrow">↓</div>
+          <div class="anatomy-layer anatomy-layer--tasks">
+            <div class="anatomy-layer-header">
+              <span class="anatomy-layer-number">3</span>
+              <span class="anatomy-layer-title">tasks.md</span>
+              <span class="anatomy-layer-subtitle">Le Plan</span>
+            </div>
+            <div class="anatomy-layer-sections">
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Tâches atomiques</span>
+                <span class="anatomy-section-desc">Chaque tâche = max 3 fichiers à toucher</span>
+              </div>
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Fichiers concernés</span>
+                <span class="anatomy-section-desc">Liste explicite des fichiers à créer/modifier</span>
+              </div>
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Dépendances</span>
+                <span class="anatomy-section-desc">Ordre d'exécution entre tâches</span>
+              </div>
+              <div class="anatomy-section">
+                <span class="anatomy-section-name">Definition of Done</span>
+                <span class="anatomy-section-desc">Critères de complétion par tâche</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.7s">
+          💡 L'IA lit les <strong>requirements</strong> pour comprendre le besoin, le <strong>design</strong> pour savoir comment construire, les <strong>tasks</strong> pour exécuter étape par étape.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 : Exemple concret — Authentification -->
+    <section class="slide slide--examples" data-slide="10">
       <div class="slide-content">
         <div class="section-label animate-pop">Exemple Concret</div>
         <h2 class="slide-title animate-slide-up">Ajouter l'authentification par email</h2>
@@ -484,12 +577,18 @@
             <span class="example-context-label">Spec de changement</span>
             <span>.specs/feat--email-auth/ — les 3 couches</span>
           </div>
-          <div class="code-block">
-            <div class="code-header">
-              <span class="code-filename">.specs/feat--email-auth/requirements.md</span>
-              <span class="code-lang cc-lang">Requirements</span>
-            </div>
-            <pre><code><span class="code-heading"># Auth par Email — Requirements</span>
+          <div class="spec-tabs animate-fade-in" style="--delay: 0.1s">
+            <button class="spec-tab-btn active" data-spectab="req">requirements.md</button>
+            <button class="spec-tab-btn" data-spectab="design">design.md</button>
+            <button class="spec-tab-btn" data-spectab="tasks">tasks.md</button>
+          </div>
+          <div class="spec-tab-panel active" id="spectab-req">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-filename">.specs/feat--email-auth/requirements.md</span>
+                <span class="code-lang cc-lang">Requirements — Le Quoi</span>
+              </div>
+              <pre><code><span class="code-heading"># Auth par Email — Requirements</span>
 
 <span class="code-comment">## Problème</span>
 <span class="code-string">L'app n'a pas d'authentification.</span>
@@ -504,9 +603,75 @@
   <span class="code-highlight">LE SYSTÈME DOIT</span> verrouiller le
   compte pendant 15 minutes.
 
+<span class="code-comment">## Contraintes</span>
+<span class="code-string">- Passwords hashés bcrypt (cost 12)</span>
+<span class="code-string">- JWT expire après 24h</span>
+
 <span class="code-comment">## Hors scope</span>
 <span class="code-string">- Social login (Phase 2)</span>
 <span class="code-string">- 2FA (Phase 3)</span></code></pre>
+            </div>
+          </div>
+          <div class="spec-tab-panel" id="spectab-design">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-filename">.specs/feat--email-auth/design.md</span>
+                <span class="code-lang" style="background: var(--green-bg); color: var(--green);">Design — Le Comment</span>
+              </div>
+              <pre><code><span class="code-heading"># Auth par Email — Design</span>
+
+<span class="code-comment">## Architecture</span>
+<span class="code-string">Nouveau module</span> <span class="code-highlight">src/features/auth/</span>
+<span class="code-string">Middleware JWT sur toutes les routes protégées</span>
+
+<span class="code-comment">## Modèle de données</span>
+<span class="code-keyword">model</span> <span class="code-highlight">Session</span> {
+  id        String   @id
+  userId    String   → User.id
+  token     String   @unique
+  expiresAt DateTime
+}
+<span class="code-keyword">model</span> <span class="code-highlight">User</span> { + passwordHash String }
+
+<span class="code-comment">## Endpoints API</span>
+<span class="code-keyword">POST</span> <span class="code-string">/api/auth/register</span>  → 201 { token }
+<span class="code-keyword">POST</span> <span class="code-string">/api/auth/login</span>     → 200 { token }
+<span class="code-keyword">POST</span> <span class="code-string">/api/auth/logout</span>    → 204
+
+<span class="code-comment">## Décision technique</span>
+<span class="code-string">JWT > sessions serveur (stateless, scalable)</span></code></pre>
+            </div>
+          </div>
+          <div class="spec-tab-panel" id="spectab-tasks">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-filename">.specs/feat--email-auth/tasks.md</span>
+                <span class="code-lang" style="background: rgba(253, 203, 110, 0.12); color: var(--orange);">Tasks — Le Plan</span>
+              </div>
+              <pre><code><span class="code-heading"># Auth par Email — Tasks</span>
+
+<span class="code-comment">## Task 1 — Modèle de données</span>
+<span class="code-string">Fichiers:</span> <span class="code-highlight">prisma/schema.prisma</span>
+<span class="code-string">DoD:</span> Migration OK, modèle Session créé
+<span class="code-string">Dépend de:</span> aucune
+
+<span class="code-comment">## Task 2 — Service auth</span>
+<span class="code-string">Fichiers:</span> <span class="code-highlight">src/features/auth/service.ts</span>
+           <span class="code-highlight">src/features/auth/utils/jwt.ts</span>
+<span class="code-string">DoD:</span> register() + login() + logout()
+<span class="code-string">Dépend de:</span> Task 1
+
+<span class="code-comment">## Task 3 — Routes API</span>
+<span class="code-string">Fichiers:</span> <span class="code-highlight">src/features/auth/routes.ts</span>
+           <span class="code-highlight">src/features/auth/middleware.ts</span>
+<span class="code-string">DoD:</span> 3 endpoints + middleware JWT
+<span class="code-string">Dépend de:</span> Task 2
+
+<span class="code-comment">## Task 4 — Tests</span>
+<span class="code-string">Fichiers:</span> <span class="code-highlight">src/features/auth/__tests__/</span>
+<span class="code-string">DoD:</span> register, login, lockout, JWT expiry
+<span class="code-string">Dépend de:</span> Task 3</code></pre>
+            </div>
           </div>
         </div>
 
@@ -578,8 +743,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 10 : Notation EARS -->
-    <section class="slide slide--examples" data-slide="10">
+    <!-- SLIDE 11 : Notation EARS -->
+    <section class="slide slide--examples" data-slide="11">
       <div class="slide-content">
         <div class="section-label animate-pop">EARS</div>
         <h2 class="slide-title animate-slide-up">Écrire des requirements avec EARS</h2>
@@ -616,8 +781,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 11 : Sous-agents -->
-    <section class="slide slide--concept" data-slide="11">
+    <!-- SLIDE 12 : Sous-agents -->
+    <section class="slide slide--concept" data-slide="12">
       <div class="slide-content">
         <div class="section-label animate-pop">Implémentation</div>
         <h2 class="slide-title animate-slide-up">Déléguer aux sous-agents</h2>
@@ -674,8 +839,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 12 : Vibe Coding vs SDD -->
-    <section class="slide slide--versus" data-slide="12">
+    <!-- SLIDE 13 : Vibe Coding vs SDD -->
+    <section class="slide slide--versus" data-slide="13">
       <div class="slide-content">
         <div class="section-label animate-pop">Comparaison</div>
         <h2 class="slide-title animate-slide-up">Quand utiliser quoi ?</h2>
@@ -713,8 +878,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 13 : Bonnes Pratiques -->
-    <section class="slide slide--best" data-slide="13">
+    <!-- SLIDE 14 : Bonnes Pratiques -->
+    <section class="slide slide--best" data-slide="14">
       <div class="slide-content">
         <div class="section-label animate-pop">Bonnes Pratiques</div>
         <h2 class="slide-title animate-slide-up">Les 8 règles d'or</h2>
@@ -763,8 +928,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 14 : Conclusion -->
-    <section class="slide slide--conclusion" data-slide="14">
+    <!-- SLIDE 15 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="15">
       <div class="slide-content">
         <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
           <h2>📐 Récapitulatif</h2>
@@ -783,8 +948,8 @@
       </div>
     </section>
 
-    <!-- SLIDE 15 : Ressources -->
-    <section class="slide slide--resources" data-slide="15">
+    <!-- SLIDE 16 : Ressources -->
+    <section class="slide slide--resources" data-slide="16">
       <div class="slide-content">
         <div class="section-label animate-pop">Ressources</div>
         <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>
