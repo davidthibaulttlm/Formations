@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Spec-Driven AI Coding — Cursor & Claude Code — Formation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav class="slide-nav" id="slideNav">
+    <div class="nav-inner">
+      <span class="nav-title">Spec-Driven AI Coding — Cursor & Claude Code</span>
+      <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="slide-counter" id="slideCounter">1 / 15</span>
+        <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <button class="nav-btn fullscreen-btn" id="fullscreenBtn" aria-label="Plein écran">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="slides-container" id="slidesContainer">
+
+    <!-- SLIDE 1 : Hero -->
+    <section class="slide slide--hero active" data-slide="1">
+      <div class="slide-content">
+        <div class="hero-badge animate-pop">Formation</div>
+        <h1 class="hero-title">
+          <span class="animate-slide-up" style="--delay: 0.1s">Le <span class="gradient-text">Spec-Driven</span></span>
+          <span class="animate-slide-up" style="--delay: 0.2s"><span class="gradient-text">AI Coding</span></span>
+          <span class="animate-slide-up hero-tools" style="--delay: 0.35s">
+            <span class="tool-tag tool-tag--cursor">Cursor</span>
+            <span class="tool-amp">&</span>
+            <span class="tool-tag tool-tag--claude">Claude Code</span>
+          </span>
+        </h1>
+        <p class="hero-subtitle animate-fade-in" style="--delay: 0.55s">
+          Définissez le plan avant de construire la maison.
+        </p>
+        <div class="hero-keys animate-fade-in" style="--delay: 0.8s">
+          <kbd>→</kbd> ou <kbd>Espace</kbd> pour avancer
+        </div>
+      </div>
+      <div class="hero-bg-grid"></div>
+    </section>
+
+    <!-- SLIDE 2 : Le Problème -->
+    <section class="slide slide--problem" data-slide="2">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Le Problème</div>
+        <h2 class="slide-title animate-slide-up">Pourquoi le vibe coding ne suffit plus</h2>
+        <div class="problem-grid">
+          <div class="problem-card animate-card" style="--delay: 0.2s">
+            <div class="problem-icon">🎲</div>
+            <h3>Vibe Coding</h3>
+            <p>Instructions vagues, "prompt and pray" — 66% des devs disent que l'IA produit du code "presque correct mais pas tout à fait"</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.35s">
+            <div class="problem-icon">🏚️</div>
+            <h3>Dérive silencieuse</h3>
+            <p>L'IA fait des choix implicites (librairies, architecture, conventions). Après 3 mois, le projet est un "legacy IA"</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.5s">
+            <div class="problem-icon">❓</div>
+            <h3>Perte de savoir</h3>
+            <p>Sans documentation de l'intention, les features deviennent des mystères. Le code existe mais personne ne sait POURQUOI</p>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.8s">
+          <span class="solution-arrow">→</span>
+          Le SDD fait de la <strong>spec — pas du code</strong> — la source de vérité. Le code est bon marché. <strong>La clarté est chère.</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 : Définition SDD -->
+    <section class="slide slide--concept" data-slide="3">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Concept</div>
+        <h2 class="slide-title animate-slide-up">Qu'est-ce que le Spec-Driven Development ?</h2>
+        <div class="concept-flow animate-fade-in" style="--delay: 0.3s">
+          <div class="concept-formula">
+            <span class="concept-input">Spec existante</span>
+            <span class="concept-arrow">→</span>
+            <span class="concept-input">Nouveau besoin</span>
+            <span class="concept-arrow">→</span>
+            <span class="concept-input">Mise à jour spec</span>
+            <span class="concept-arrow">→</span>
+            <span class="concept-output">Implémentation IA</span>
+          </div>
+        </div>
+        <p class="concept-desc animate-fade-in" style="--delay: 0.45s">
+          Le SDD est une discipline d'ingénierie où l'on rédige des spécifications détaillées <strong>AVANT</strong> d'écrire du code. Ce n'est PAS "une spec par tâche" — c'est <strong>"l'app entière est spécifiée"</strong>. Les specs sont la documentation vivante permanente du système.
+        </p>
+        <div class="concept-types animate-fade-in" style="--delay: 0.55s">
+          <div class="concept-type">
+            <div class="concept-type-header concept-type--vibe">
+              <span>🎲</span> Vibe Coding
+            </div>
+            <div class="concept-type-body">
+              Décrire au fur et à mesure — rapide mais fragile
+            </div>
+            <div class="concept-note">Le code EST l'artefact principal</div>
+          </div>
+          <div class="concept-type">
+            <div class="concept-type-header concept-type--sdd">
+              <span>📐</span> Spec-Driven
+            </div>
+            <div class="concept-type-body">
+              Spécifier d'abord — plus lent au départ, fiable en production
+            </div>
+            <div class="concept-note">La spec EST l'artefact principal</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.7s">
+          💡 Le SDD est le parent en amont de <strong>TDD</strong>. TDD = "tests d'abord". SDD = "intention d'abord — puis dérive tests ET code".
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 : Types de specs -->
+    <section class="slide slide--types" data-slide="4">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Types de Specs</div>
+        <h2 class="slide-title animate-slide-up">Les specs dans un projet réel</h2>
+        <div class="spec-types-grid">
+          <div class="spec-type-card animate-card" style="--delay: 0.1s">
+            <div class="spec-type-icon">🔌</div>
+            <div class="spec-type-name">APIs</div>
+            <div class="spec-type-format">OpenAPI / Swagger</div>
+            <div class="spec-type-desc">Contrats d'interface entre services</div>
+          </div>
+          <div class="spec-type-card animate-card" style="--delay: 0.175s">
+            <div class="spec-type-icon">🗄️</div>
+            <div class="spec-type-name">Base de données</div>
+            <div class="spec-type-format">Prisma / SQL DDL</div>
+            <div class="spec-type-desc">Structure et relations des données</div>
+          </div>
+          <div class="spec-type-card animate-card" style="--delay: 0.25s">
+            <div class="spec-type-icon">🎨</div>
+            <div class="spec-type-name">UI / UX</div>
+            <div class="spec-type-format">Figma + Interaction specs</div>
+            <div class="spec-type-desc">Comportement visuel et interactions</div>
+          </div>
+          <div class="spec-type-card animate-card" style="--delay: 0.325s">
+            <div class="spec-type-icon">🏗️</div>
+            <div class="spec-type-name">Architecture</div>
+            <div class="spec-type-format">ADRs</div>
+            <div class="spec-type-desc">Pourquoi on a choisi X plutôt que Y</div>
+          </div>
+          <div class="spec-type-card animate-card" style="--delay: 0.4s">
+            <div class="spec-type-icon">📋</div>
+            <div class="spec-type-name">Produit</div>
+            <div class="spec-type-format">PRDs</div>
+            <div class="spec-type-desc">Besoins et critères d'acceptation</div>
+          </div>
+          <div class="spec-type-card animate-card" style="--delay: 0.475s">
+            <div class="spec-type-icon">🤖</div>
+            <div class="spec-type-name">Agents IA</div>
+            <div class="spec-type-format">Prompt specs</div>
+            <div class="spec-type-desc">Comment l'IA doit se comporter</div>
+          </div>
+          <div class="spec-type-card animate-card" style="--delay: 0.55s">
+            <div class="spec-type-icon">📝</div>
+            <div class="spec-type-name">Design système</div>
+            <div class="spec-type-format">RFC documents</div>
+            <div class="spec-type-desc">Propositions techniques détaillées</div>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.7s">
+          <span class="solution-arrow">→</span>
+          Vous avez probablement déjà des specs sans le savoir — votre <code>schema.prisma</code>, votre <code>openapi.yaml</code>. Le SDD, c'est les traiter comme <strong>source de vérité</strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 : La pyramide des specs -->
+    <section class="slide slide--lifecycle" data-slide="5">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Layering</div>
+        <h2 class="slide-title animate-slide-up">La pyramide des specs</h2>
+        <div class="pyramid-container animate-fade-in" style="--delay: 0.3s">
+          <div class="pyramid">
+            <div class="pyramid-level pyramid-level--project">
+              <div class="pyramid-level-header">
+                <span class="pyramid-level-icon">🏛️</span>
+                <span class="pyramid-level-title">Niveau Projet</span>
+                <span class="pyramid-level-freq">Rarement modifié</span>
+              </div>
+              <div class="pyramid-level-items">
+                <span class="pyramid-item"><code>CLAUDE.md</code> / Rules</span>
+                <span class="pyramid-item">ADRs</span>
+                <span class="pyramid-item"><code>schema.prisma</code></span>
+                <span class="pyramid-item"><code>openapi.yaml</code></span>
+              </div>
+            </div>
+            <div class="pyramid-level pyramid-level--module">
+              <div class="pyramid-level-header">
+                <span class="pyramid-level-icon">📦</span>
+                <span class="pyramid-level-title">Niveau Module / Domaine</span>
+                <span class="pyramid-level-freq">Évolue avec le domaine</span>
+              </div>
+              <div class="pyramid-level-items">
+                <span class="pyramid-item"><code>coaching-plans/SPEC.md</code></span>
+                <span class="pyramid-item"><code>user-management/SPEC.md</code></span>
+                <span class="pyramid-item"><code>billing/SPEC.md</code></span>
+              </div>
+            </div>
+            <div class="pyramid-level pyramid-level--feature">
+              <div class="pyramid-level-header">
+                <span class="pyramid-level-icon">🔧</span>
+                <span class="pyramid-level-title">Niveau Feature / Changement</span>
+                <span class="pyramid-level-freq">À chaque itération</span>
+              </div>
+              <div class="pyramid-level-items">
+                <span class="pyramid-item"><code>.specs/feat--email-auth/</code></span>
+                <span class="pyramid-item">Requirements + Design + Tasks</span>
+              </div>
+            </div>
+          </div>
+          <div class="pyramid-arrow">
+            <span>L'IA lit de haut en bas</span>
+            <span class="pyramid-arrow-icon">↓</span>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.7s">
+          ⚠️ Sans le niveau Projet, l'IA réinvente l'architecture. Sans le niveau Module, elle ignore les règles métier. Sans le niveau Feature, elle improvise.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 : Organisation du projet -->
+    <section class="slide slide--config" data-slide="6">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Organisation</div>
+        <h2 class="slide-title animate-slide-up">Organiser le projet pour le SDD</h2>
+        <div class="dual-code animate-fade-in" style="--delay: 0.3s">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">Structure de dossier recommandée</span>
+              <span class="code-lang cc-lang">Projet</span>
+            </div>
+            <pre><code><span class="code-heading">projet/</span>
+  <span class="code-highlight">CLAUDE.md</span>                    <span class="code-comment">← Spec projet</span>
+  <span class="code-keyword">docs/</span>
+    adrs/                       <span class="code-comment">← Décisions archi</span>
+      <span class="code-string">001-choix-nextjs.md</span>
+      <span class="code-string">002-auth-jwt-vs-session.md</span>
+    api/
+      <span class="code-highlight">openapi.yaml</span>              <span class="code-comment">← Contrat API</span>
+  <span class="code-keyword">prisma/</span>
+    <span class="code-highlight">schema.prisma</span>               <span class="code-comment">← Spec DB</span>
+  <span class="code-keyword">src/features/</span>
+    coaching-plans/             <span class="code-comment">← Domaine métier</span>
+      <span class="code-highlight">SPEC.md</span>                   <span class="code-comment">← Spec du module</span>
+      components/ api/ __tests__/
+    user-management/
+      <span class="code-highlight">SPEC.md</span>
+      components/ api/
+    billing/
+      <span class="code-highlight">SPEC.md</span>
+      components/ api/</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">Specs de changement (WIP)</span>
+              <span class="code-lang cursor-lang">Temporaire</span>
+            </div>
+            <pre><code><span class="code-heading">.specs/</span>                        <span class="code-comment">← Features en cours</span>
+  <span class="code-keyword">feat--onboarding-flow/</span>
+    <span class="code-string">requirements.md</span>          <span class="code-comment">← Le Quoi</span>
+    <span class="code-string">design.md</span>                <span class="code-comment">← Le Comment</span>
+    <span class="code-string">tasks.md</span>                 <span class="code-comment">← Le Plan</span>
+  <span class="code-keyword">feat--email-auth/</span>
+    <span class="code-string">requirements.md</span>
+    <span class="code-string">design.md</span>
+    <span class="code-string">tasks.md</span>
+
+<span class="code-heading">2 catégories :</span>
+
+<span class="code-highlight">Permanentes</span> (dans le code)
+  SPEC.md, schema.prisma,
+  openapi.yaml, ADRs
+  → État actuel du système
+
+<span class="code-highlight">Changements</span> (dans .specs/)
+  requirements + design + tasks
+  → Temporaires, archivées
+    après merge</code></pre>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.6s">
+          💡 Organiser par <strong>feature/domaine</strong> (pas par couche technique) — chaque sous-agent reçoit un scope clair et isolé.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 : Connecter les specs à l'IA -->
+    <section class="slide slide--config" data-slide="7">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Découverte</div>
+        <h2 class="slide-title animate-slide-up">Connecter les specs à l'IA</h2>
+        <p class="concept-desc animate-fade-in" style="--delay: 0.2s">
+          Avec des dizaines de specs, <strong>tout charger = gaspillage de tokens</strong>. Solution : une découverte en 3 tiers.
+        </p>
+        <div class="tiers-grid animate-fade-in" style="--delay: 0.35s">
+          <div class="tier-card tier-card--t1">
+            <div class="tier-header">
+              <span class="tier-number">1</span>
+              <span class="tier-label">CLAUDE.md</span>
+              <span class="tier-cost">Toujours chargé</span>
+            </div>
+            <div class="tier-body">
+              <p>Pointeur léger + index des specs (~5-10 lignes)</p>
+              <pre><code><span class="code-heading">## Specs</span>
+<span class="code-string">- DB: prisma/schema.prisma</span>
+<span class="code-string">- API: docs/api/openapi.yaml</span>
+<span class="code-string">- ADRs: docs/adrs/</span>
+<span class="code-string">- Modules have SPEC.md files</span>
+
+<span class="code-highlight">Before implementing, read the</span>
+<span class="code-highlight">relevant SPEC.md first.</span></code></pre>
+            </div>
+            <div class="tier-footer">Coût contexte : quasi nul</div>
+          </div>
+          <div class="tier-card tier-card--t2">
+            <div class="tier-header">
+              <span class="tier-number">2</span>
+              <span class="tier-label">Rule agent-decided</span>
+              <span class="tier-cost">Chargée si pertinent</span>
+            </div>
+            <div class="tier-body">
+              <p>Workflow SDD complet dans une Rule</p>
+              <pre><code><span class="code-comment"># .cursor/rules/spec-workflow.mdc</span>
+<span class="code-comment"># .claude/rules/spec-workflow.md</span>
+<span class="code-heading">description:</span> <span class="code-string">"When implementing</span>
+<span class="code-string">features or modifying archi"</span>
+
+<span class="code-highlight">→ Contient le workflow</span>
+<span class="code-highlight">  Explorer → Spécifier →</span>
+<span class="code-highlight">  Implémenter → Valider</span></code></pre>
+            </div>
+            <div class="tier-footer">Chargée uniquement quand pertinent</div>
+          </div>
+          <div class="tier-card tier-card--t3">
+            <div class="tier-header">
+              <span class="tier-number">3</span>
+              <span class="tier-label">Skill /spec</span>
+              <span class="tier-cost">À l'invocation</span>
+            </div>
+            <div class="tier-body">
+              <p>Loop complet encapsulé dans une skill</p>
+              <pre><code><span class="code-comment"># .cursor/skills/spec/SKILL.md</span>
+<span class="code-comment"># .claude/skills/spec/SKILL.md</span>
+
+<span class="code-highlight">1. Explorer le code + specs</span>
+<span class="code-highlight">2. Rédiger/mettre à jour spec</span>
+<span class="code-highlight">3. Implémenter par tâche</span>
+<span class="code-highlight">4. Valider + boucler</span></code></pre>
+            </div>
+            <div class="tier-footer">Chargée uniquement quand invoquée</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.65s">
+          💡 Le CLAUDE.md est la <strong>table des matières</strong>, pas le livre entier. L'IA sait OÙ chercher sans tout charger.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 : Le workflow SDD -->
+    <section class="slide slide--examples" data-slide="8">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Workflow</div>
+        <h2 class="slide-title animate-slide-up">Le workflow SDD en 4 phases</h2>
+        <div class="workflow-grid animate-fade-in" style="--delay: 0.3s">
+          <div class="workflow-phase">
+            <div class="workflow-phase-number">1</div>
+            <div class="workflow-phase-title">Explorer</div>
+            <div class="workflow-phase-desc">L'IA lit le code ET les specs existantes</div>
+            <div class="workflow-phase-rule">Ne PAS écrire de code</div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-phase">
+            <div class="workflow-phase-number">2</div>
+            <div class="workflow-phase-title">Spécifier</div>
+            <div class="workflow-phase-desc">Mettre à jour les specs ou créer une spec dans <code>.specs/</code></div>
+            <div class="workflow-phase-layers">
+              <span>Requirements</span>
+              <span>Design</span>
+              <span>Tasks</span>
+            </div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-phase">
+            <div class="workflow-phase-number">3</div>
+            <div class="workflow-phase-title">Implémenter</div>
+            <div class="workflow-phase-desc">Déléguer chaque tâche à un sous-agent</div>
+            <div class="workflow-phase-rule">Commit après chaque tâche</div>
+          </div>
+          <div class="workflow-arrow">→</div>
+          <div class="workflow-phase workflow-phase--highlight">
+            <div class="workflow-phase-number">4</div>
+            <div class="workflow-phase-title">Boucler</div>
+            <div class="workflow-phase-desc">Review, tests, et mettre à jour les <strong>specs permanentes</strong></div>
+            <div class="workflow-phase-rule">SPEC.md + schema + OpenAPI</div>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.65s">
+          <span class="solution-arrow">→</span>
+          La boucle se ferme quand les <strong>specs permanentes sont à jour</strong>. Sinon, la prochaine fois, l'IA travaillera avec des specs obsolètes.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 : Exemple concret — Authentification -->
+    <section class="slide slide--examples" data-slide="9">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Exemple Concret</div>
+        <h2 class="slide-title animate-slide-up">Ajouter l'authentification par email</h2>
+
+        <div class="examples-tabs animate-fade-in" style="--delay: 0.2s">
+          <button class="tab-btn active" data-tab="before">📂 Avant</button>
+          <button class="tab-btn" data-tab="spec">📝 Spec créée</button>
+          <button class="tab-btn" data-tab="cursor">⚡ Cursor</button>
+          <button class="tab-btn" data-tab="claude">▶ Claude Code</button>
+        </div>
+
+        <!-- TAB: Avant -->
+        <div class="tab-panel active" id="tab-before">
+          <div class="example-context">
+            <span class="example-context-label">État initial</span>
+            <span>Le module user-management existe mais sans authentification</span>
+          </div>
+          <div class="dual-code">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-filename">user-management/SPEC.md</span>
+                <span class="code-lang cc-lang">Avant</span>
+              </div>
+              <pre><code><span class="code-heading"># User Management</span>
+
+<span class="code-comment">## Modèle</span>
+<span class="code-string">- User: id, email, name</span>
+<span class="code-string">- CRUD basique via API REST</span>
+
+<span class="code-comment">## Endpoints</span>
+<span class="code-keyword">GET</span>  <span class="code-string">/api/users</span>
+<span class="code-keyword">POST</span> <span class="code-string">/api/users</span>
+<span class="code-keyword">GET</span>  <span class="code-string">/api/users/:id</span>
+
+<span class="code-comment">⚠️ Pas d'auth, pas de sessions</span></code></pre>
+            </div>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-filename">prisma/schema.prisma</span>
+                <span class="code-lang cursor-lang">Avant</span>
+              </div>
+              <pre><code><span class="code-keyword">model</span> <span class="code-highlight">User</span> {
+  <span class="code-string">id</span>    String @id @default(uuid())
+  <span class="code-string">email</span> String @unique
+  <span class="code-string">name</span>  String
+}
+
+<span class="code-comment">// Pas de modèle Session</span>
+<span class="code-comment">// Pas de champ password</span></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Spec créée -->
+        <div class="tab-panel" id="tab-spec">
+          <div class="example-context">
+            <span class="example-context-label">Spec de changement</span>
+            <span>.specs/feat--email-auth/ — les 3 couches</span>
+          </div>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">.specs/feat--email-auth/requirements.md</span>
+              <span class="code-lang cc-lang">Requirements</span>
+            </div>
+            <pre><code><span class="code-heading"># Auth par Email — Requirements</span>
+
+<span class="code-comment">## Problème</span>
+<span class="code-string">L'app n'a pas d'authentification.</span>
+
+<span class="code-comment">## Acceptance Criteria (EARS)</span>
+<span class="code-keyword">QUAND</span> un utilisateur soumet le formulaire
+  <span class="code-keyword">AVEC</span> un email valide,
+  <span class="code-highlight">LE SYSTÈME DOIT</span> créer un compte
+  et retourner un token JWT.
+
+<span class="code-keyword">SI</span> l'utilisateur échoue 5 tentatives,
+  <span class="code-highlight">LE SYSTÈME DOIT</span> verrouiller le
+  compte pendant 15 minutes.
+
+<span class="code-comment">## Hors scope</span>
+<span class="code-string">- Social login (Phase 2)</span>
+<span class="code-string">- 2FA (Phase 3)</span></code></pre>
+          </div>
+        </div>
+
+        <!-- TAB: Cursor -->
+        <div class="tab-panel" id="tab-cursor">
+          <div class="example-context">
+            <span class="example-context-label">Cursor</span>
+            <span>Plan Mode → Agent Mode → Task tool</span>
+          </div>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">Workflow Cursor</span>
+              <span class="code-lang cursor-lang">Cursor</span>
+            </div>
+            <pre><code><span class="code-comment">// 1. Basculer en Plan Mode</span>
+<span class="code-highlight">Shift+Tab</span> → Mode Plan activé
+
+<span class="code-comment">// 2. Demander la spec</span>
+<span class="code-string">"Lis user-management/SPEC.md et</span>
+<span class="code-string"> schema.prisma. Rédige une spec</span>
+<span class="code-string"> pour ajouter l'auth par email</span>
+<span class="code-string"> dans .specs/feat--email-auth/"</span>
+
+<span class="code-comment">// 3. Basculer en Agent Mode</span>
+<span class="code-highlight">Shift+Tab</span> → Mode Agent activé
+
+<span class="code-comment">// 4. Implémenter via Task tool</span>
+<span class="code-string">"Lis .specs/feat--email-auth/</span>
+<span class="code-string"> et implémente. Utilise le Task</span>
+<span class="code-string"> tool pour chaque tâche.</span>
+<span class="code-string"> Commit après chaque tâche."</span></code></pre>
+          </div>
+        </div>
+
+        <!-- TAB: Claude Code -->
+        <div class="tab-panel" id="tab-claude">
+          <div class="example-context">
+            <span class="example-context-label">Claude Code</span>
+            <span>Plan Mode → Sous-agents → Commits atomiques</span>
+          </div>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">Workflow Claude Code</span>
+              <span class="code-lang cc-lang">Claude Code</span>
+            </div>
+            <pre><code><span class="code-comment"># 1. Plan Mode</span>
+<span class="code-highlight">Shift+Tab</span> → Plan Mode activé
+
+<span class="code-comment"># 2. Explorer + Spécifier</span>
+<span class="code-string">"Lis user-management/SPEC.md,</span>
+<span class="code-string"> schema.prisma et openapi.yaml.</span>
+<span class="code-string"> Rédige les specs pour l'auth</span>
+<span class="code-string"> email dans .specs/feat--email-auth/</span>
+<span class="code-string"> (requirements, design, tasks)."</span>
+
+<span class="code-comment"># 3. Implémenter</span>
+<span class="code-string">"Read .specs/feat--email-auth/</span>
+<span class="code-string"> and implement. Use subagents</span>
+<span class="code-string"> for each task. Commit after</span>
+<span class="code-string"> each task."</span>
+
+<span class="code-comment"># 4. Boucler</span>
+<span class="code-string">"Mets à jour user-management/</span>
+<span class="code-string"> SPEC.md, schema.prisma et</span>
+<span class="code-string"> openapi.yaml pour refléter</span>
+<span class="code-string"> l'auth ajoutée."</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 : Notation EARS -->
+    <section class="slide slide--examples" data-slide="10">
+      <div class="slide-content">
+        <div class="section-label animate-pop">EARS</div>
+        <h2 class="slide-title animate-slide-up">Écrire des requirements avec EARS</h2>
+        <p class="concept-desc animate-fade-in" style="--delay: 0.2s">
+          <strong>Easy Approach to Requirements Syntax</strong> — popularisé par AWS Kiro. Des patterns simples pour des specs sans ambiguïté.
+        </p>
+        <div class="ears-grid animate-fade-in" style="--delay: 0.35s">
+          <div class="ears-card">
+            <div class="ears-pattern">Ubiquitaire</div>
+            <div class="ears-syntax"><span class="ears-keyword">LE SYSTÈME DOIT</span> [capacité]</div>
+            <div class="ears-example">LE SYSTÈME DOIT hasher les mots de passe avec bcrypt</div>
+          </div>
+          <div class="ears-card">
+            <div class="ears-pattern">Événementiel</div>
+            <div class="ears-syntax"><span class="ears-keyword">QUAND</span> [événement] <span class="ears-keyword">LE SYSTÈME DOIT</span> [réponse]</div>
+            <div class="ears-example">QUAND un utilisateur soumet le formulaire d'inscription, LE SYSTÈME DOIT créer un compte et retourner un JWT</div>
+          </div>
+          <div class="ears-card">
+            <div class="ears-pattern">État</div>
+            <div class="ears-syntax"><span class="ears-keyword">TANT QUE</span> [état] <span class="ears-keyword">LE SYSTÈME DOIT</span> [comportement]</div>
+            <div class="ears-example">TANT QUE le compte est verrouillé, LE SYSTÈME DOIT rejeter toute tentative de connexion</div>
+          </div>
+          <div class="ears-card">
+            <div class="ears-pattern">Conditionnel</div>
+            <div class="ears-syntax"><span class="ears-keyword">SI</span> [condition] <span class="ears-keyword">LE SYSTÈME DOIT</span> [action]</div>
+            <div class="ears-example">SI l'utilisateur échoue 5 tentatives, LE SYSTÈME DOIT verrouiller le compte 15 minutes</div>
+          </div>
+          <div class="ears-card">
+            <div class="ears-pattern">Complexe</div>
+            <div class="ears-syntax"><span class="ears-keyword">QUAND</span> [evt] <span class="ears-keyword">TANT QUE</span> [état] <span class="ears-keyword">SI</span> [cond] <span class="ears-keyword">LE SYSTÈME DOIT</span> [réponse]</div>
+            <div class="ears-example">QUAND un login est tenté TANT QUE le rate-limit est actif SI l'IP est blacklistée, LE SYSTÈME DOIT retourner 429</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11 : Sous-agents -->
+    <section class="slide slide--concept" data-slide="11">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Implémentation</div>
+        <h2 class="slide-title animate-slide-up">Déléguer aux sous-agents</h2>
+        <div class="subagent-flow animate-fade-in" style="--delay: 0.3s">
+          <div class="subagent-source">
+            <span class="subagent-source-icon">📐</span>
+            <span>Specs à jour</span>
+          </div>
+          <div class="subagent-arrow">→</div>
+          <div class="subagent-main">
+            <span class="subagent-main-icon">🧠</span>
+            <span>Agent principal lit les specs</span>
+          </div>
+          <div class="subagent-arrow">→</div>
+          <div class="subagent-tasks">
+            <div class="subagent-task">
+              <span class="subagent-task-icon">⚡</span>
+              <span>Sous-agent A</span>
+              <small>Task 1 → commit</small>
+            </div>
+            <div class="subagent-task">
+              <span class="subagent-task-icon">⚡</span>
+              <span>Sous-agent B</span>
+              <small>Task 2 → commit</small>
+            </div>
+            <div class="subagent-task">
+              <span class="subagent-task-icon">⚡</span>
+              <span>Sous-agent C</span>
+              <small>Task 3 → commit</small>
+            </div>
+          </div>
+        </div>
+        <div class="subagent-benefits animate-fade-in" style="--delay: 0.5s">
+          <div class="subagent-benefit">
+            <span>🧹</span>
+            <div><strong>Contexte propre</strong><br>Pas de dégradation — chaque sous-agent repart à zéro</div>
+          </div>
+          <div class="subagent-benefit">
+            <span>⚡</span>
+            <div><strong>Parallélisation</strong><br>Plusieurs tâches en même temps</div>
+          </div>
+          <div class="subagent-benefit">
+            <span>↩️</span>
+            <div><strong>Commits atomiques</strong><br>Réversibles, review facile</div>
+          </div>
+          <div class="subagent-benefit">
+            <span>🎯</span>
+            <div><strong>Scope isolé</strong><br>Chaque sous-agent reçoit les specs du module concerné</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.65s">
+          💡 <strong>1 tâche = 1 sous-agent = 1 commit</strong> — c'est la règle d'or de l'implémentation SDD.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 : Vibe Coding vs SDD -->
+    <section class="slide slide--versus" data-slide="12">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Comparaison</div>
+        <h2 class="slide-title animate-slide-up">Quand utiliser quoi ?</h2>
+        <div class="versus-grid animate-fade-in" style="--delay: 0.3s">
+          <div class="versus-col versus-col--vibe">
+            <div class="versus-header">🎲 Vibe Coding</div>
+            <div class="versus-items">
+              <div class="versus-item">Prototypes rapides</div>
+              <div class="versus-item">Exploration de solutions</div>
+              <div class="versus-item">Petites features isolées</div>
+              <div class="versus-item">Projets personnels</div>
+              <div class="versus-item">Apprentissage</div>
+            </div>
+            <div class="versus-verdict">Rapide mais fragile</div>
+          </div>
+          <div class="versus-separator">
+            <div class="versus-vs">VS</div>
+          </div>
+          <div class="versus-col versus-col--sdd">
+            <div class="versus-header">📐 Spec-Driven</div>
+            <div class="versus-items">
+              <div class="versus-item">Systèmes de production</div>
+              <div class="versus-item">Features complexes</div>
+              <div class="versus-item">Travail en équipe</div>
+              <div class="versus-item">Systèmes critiques</div>
+              <div class="versus-item">Projets long terme</div>
+            </div>
+            <div class="versus-verdict">Plus lent au départ, fiable</div>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.6s">
+          <span class="solution-arrow">→</span>
+          L'approche hybride : <strong>Vibe-codez pour découvrir les besoins</strong>, puis formalisez en spec avant la production. Les deux sont complémentaires.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13 : Bonnes Pratiques -->
+    <section class="slide slide--best" data-slide="13">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Bonnes Pratiques</div>
+        <h2 class="slide-title animate-slide-up">Les 8 règles d'or</h2>
+        <div class="best-practices-grid bp-grid--4col">
+          <div class="bp-card animate-card" style="--delay: 0.1s">
+            <div class="bp-number">1</div>
+            <h3>Spec = source de vérité</h3>
+            <p>L'app entière est spécifiée. Le code est dérivé des specs, pas l'inverse.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.15s">
+            <div class="bp-number">2</div>
+            <h3>Maintenir la pyramide</h3>
+            <p>Projet + Module + Feature. L'IA a besoin de tous les niveaux.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.2s">
+            <div class="bp-number">3</div>
+            <h3>Organiser par domaine</h3>
+            <p>Un dossier par feature métier. Meilleur scope pour l'IA.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.25s">
+            <div class="bp-number">4</div>
+            <h3>Permanentes vs WIP</h3>
+            <p><code>SPEC.md</code> par module + <code>.specs/</code> pour les changements en cours.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.3s">
+            <div class="bp-number">5</div>
+            <h3>Boucler la boucle</h3>
+            <p>Après implémentation, mettre à jour les specs permanentes. Sinon = IA perdue.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.35s">
+            <div class="bp-number">6</div>
+            <h3>Contexte en 3 tiers</h3>
+            <p>CLAUDE.md (pointeur) + Rule (workflow) + Skill (loop). Ne pas tout charger.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.4s">
+            <div class="bp-number">7</div>
+            <h3>Tâches atomiques</h3>
+            <p>Max 3 fichiers par tâche, definition of done, commit par tâche.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.45s">
+            <div class="bp-number">8</div>
+            <h3>La spec est le prompt</h3>
+            <p>Plus la spec est précise, meilleur est le code. Garbage in, garbage out.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="14">
+      <div class="slide-content">
+        <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
+          <h2>📐 Récapitulatif</h2>
+          <div class="conclusion-items">
+            <div class="conclusion-item"><strong>Le code est bon marché. La clarté est chère.</strong> Le SDD investit dans la clarté.</div>
+            <div class="conclusion-item">Les specs documentent <strong>TOUT le système</strong> : API, DB, ADRs, PRDs, modules, features</div>
+            <div class="conclusion-item">La pyramide : <strong>Projet &gt; Module &gt; Feature</strong> — l'IA lit de haut en bas</div>
+            <div class="conclusion-item">Workflow : Explorer → Spécifier → Implémenter → <strong>Boucler</strong> (mettre à jour les specs)</div>
+            <div class="conclusion-item">Combiné avec Rules, Commands/Skills et Hooks = <strong>workflow complet</strong></div>
+          </div>
+          <div class="cta-box">
+            Commencez par créer un SPEC.md pour votre module principal.<br>
+            Puis spécifiez votre prochaine feature !
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 15 : Ressources -->
+    <section class="slide slide--resources" data-slide="15">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Ressources</div>
+        <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>
+        <div class="resources-grid">
+          <div class="resource-group animate-card" style="--delay: 0.15s">
+            <div class="resource-group-header">Outils & Frameworks</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://github.com/github/spec-kit" target="_blank">
+                <span class="resource-icon">🔧</span>
+                <div>
+                  <div class="resource-name">GitHub Spec Kit</div>
+                  <div class="resource-url">github.com/github/spec-kit</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://kiro.dev/docs/specs" target="_blank">
+                <span class="resource-icon">🔧</span>
+                <div>
+                  <div class="resource-name">AWS Kiro — Spec Writing Guide</div>
+                  <div class="resource-url">kiro.dev/docs/specs</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://github.com/Weaverse/spec-driven-development" target="_blank">
+                <span class="resource-icon">🔧</span>
+                <div>
+                  <div class="resource-name">Weaverse SDD Standard</div>
+                  <div class="resource-url">github.com/Weaverse/spec-driven-development</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.25s">
+            <div class="resource-group-header">Guides & Articles</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://gahmed.com/blog/spec-driven-development-claude-code/" target="_blank">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">SDD with Claude Code</div>
+                  <div class="resource-url">gahmed.com/blog/spec-driven-development-claude-code</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://www.augmentcode.com/guides/what-is-spec-driven-development" target="_blank">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">Augment Code — What is SDD?</div>
+                  <div class="resource-url">augmentcode.com/guides/what-is-spec-driven-development</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.35s">
+            <div class="resource-group-header">Standards de Specs</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://spec.openapis.org/oas/latest.html" target="_blank">
+                <span class="resource-icon">📋</span>
+                <div>
+                  <div class="resource-name">OpenAPI Specification</div>
+                  <div class="resource-url">spec.openapis.org/oas/latest.html</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://adr.github.io/" target="_blank">
+                <span class="resource-icon">📋</span>
+                <div>
+                  <div class="resource-name">Architecture Decision Records</div>
+                  <div class="resource-url">adr.github.io</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

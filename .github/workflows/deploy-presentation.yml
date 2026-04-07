@@ -8,11 +8,13 @@
 #   /rules/                  → Rules presentation
 #   /commands_n_skills/      → Commands & Skills presentation
 #   /hooks/                  → Hooks presentation
+#   /spec_driven/            → Spec-Driven AI Coding presentation
 #
 # Live URLs:
 #   https://davidthibaulttlm.github.io/Formations/rules
 #   https://davidthibaulttlm.github.io/Formations/commands_n_skills
 #   https://davidthibaulttlm.github.io/Formations/hooks
+#   https://davidthibaulttlm.github.io/Formations/spec_driven
 
 name: Deploy presentations to GitHub Pages
 
@@ -23,6 +25,7 @@ on:
       - 'rules/presentation/**'
       - 'commands_n_skills/presentation/**'
       - 'hooks/presentation/**'
+      - 'spec_driven/presentation/**'
       - '.github/workflows/deploy-presentation.yml'
   workflow_dispatch:
 
@@ -50,10 +53,11 @@ jobs:
 
       - name: Build combined site
         run: |
-          mkdir -p _site/rules _site/commands_n_skills _site/hooks
+          mkdir -p _site/rules _site/commands_n_skills _site/hooks _site/spec_driven
           cp rules/presentation/* _site/rules/
           cp commands_n_skills/presentation/* _site/commands_n_skills/
           cp hooks/presentation/* _site/hooks/
+          cp spec_driven/presentation/* _site/spec_driven/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -70,3 +74,4 @@ jobs:
           echo "👉 Rules:              ${{ steps.deployment.outputs.page_url }}rules/"
           echo "👉 Commands & Skills:  ${{ steps.deployment.outputs.page_url }}commands_n_skills/"
           echo "👉 Hooks:              ${{ steps.deployment.outputs.page_url }}hooks/"
+          echo "👉 Spec-Driven:        ${{ steps.deployment.outputs.page_url }}spec_driven/"
