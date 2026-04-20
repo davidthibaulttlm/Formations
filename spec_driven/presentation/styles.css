@@ -309,12 +309,16 @@ code {
   border-radius: var(--radius);
   padding: 1.25rem 2rem;
   font-size: 1.05rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  line-height: 1.5;
 }
 
-.solution-arrow { font-size: 1.5rem; color: var(--accent-light); }
+.solution-arrow {
+  font-size: 1.5rem;
+  color: var(--accent-light);
+  margin-right: 0.6rem;
+  display: inline;
+  vertical-align: baseline;
+}
 
 /* CONCEPT SLIDE */
 .concept-flow {
