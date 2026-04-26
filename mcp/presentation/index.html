@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP — Model Context Protocol — Formation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav class="slide-nav" id="slideNav">
+    <div class="nav-inner">
+      <span class="nav-title">MCP — Model Context Protocol</span>
+      <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="slide-counter" id="slideCounter">1 / 14</span>
+        <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <button class="nav-btn fullscreen-btn" id="fullscreenBtn" aria-label="Plein écran">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="slides-container" id="slidesContainer">
+
+    <!-- SLIDE 1 : Hero -->
+    <section class="slide slide--hero active" data-slide="1">
+      <div class="slide-content">
+        <div class="hero-badge animate-pop">Formation</div>
+        <h1 class="hero-title">
+          <span class="animate-slide-up" style="--delay: 0.1s"><span class="gradient-text">MCP</span></span>
+          <span class="animate-slide-up hero-tools" style="--delay: 0.25s">
+            <span class="tool-tag tool-tag--cursor">Model Context Protocol</span>
+          </span>
+        </h1>
+        <p class="hero-subtitle animate-fade-in" style="--delay: 0.5s">
+          Qu’est-ce que c’est, comment ça fonctionne, et comment créer votre propre serveur de A à Z.
+        </p>
+        <div class="hero-keys animate-fade-in" style="--delay: 0.8s">
+          <kbd>→</kbd> ou <kbd>Espace</kbd> pour avancer
+        </div>
+      </div>
+      <div class="hero-bg-grid"></div>
+    </section>
+
+    <!-- SLIDE 2 : Problème -->
+    <section class="slide slide--problem" data-slide="2">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Le Problème</div>
+        <h2 class="slide-title animate-slide-up">Intégrations éclatées</h2>
+        <div class="problem-grid">
+          <div class="problem-card animate-card" style="--delay: 0.2s">
+            <div class="problem-icon">🔌</div>
+            <h3>N × connecteurs</h3>
+            <p>Un bricolage par outil, par API : formats différents, même idée réécrite plusieurs fois</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.35s">
+            <div class="problem-icon">📦</div>
+            <h3>Contexte &amp; actions</h3>
+            <p>Besoin récurrent : donner des <strong>données</strong> au modèle et lui permettre d’<strong>agir</strong> sur vos systèmes</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.5s">
+            <div class="problem-icon">🧩</div>
+            <h3>Interopérabilité</h3>
+            <p>Sans standard, chaque hôte (IDE, chat…) impose son propre modèle d’extension</p>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.8s">
+          <span class="solution-arrow">→</span>
+          Le MCP = un <strong>contrat ouvert</strong> (comme le LSP pour les langages) entre <strong>hôtes</strong> et <strong>serveurs</strong> de contexte
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 : Définition -->
+    <section class="slide slide--concept" data-slide="3">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Définition</div>
+        <h2 class="slide-title animate-slide-up">Model Context Protocol</h2>
+        <div class="concept-flow animate-fade-in" style="--delay: 0.3s">
+          <div class="concept-formula">
+            <span class="concept-input">Applications LLM</span>
+            <span class="concept-arrow">+</span>
+            <span class="concept-input">JSON-RPC 2.0</span>
+            <span class="concept-arrow">+</span>
+            <span class="concept-output">Données &amp; outils standardisés</span>
+          </div>
+        </div>
+        <p class="concept-desc animate-fade-in" style="--delay: 0.45s">
+          Protocole <strong>ouvert</strong> pour brancher des assistants sur des sources de données, des APIs et des outils. Messages <strong>UTF-8</strong>, sessions <strong>avec état</strong>, négociation des <strong>capabilities</strong>. La spécification officielle vit sur <strong>modelcontextprotocol.io</strong>.
+        </p>
+        <div class="create-note animate-fade-in" style="--delay: 0.65s">
+          💡 Analogie pédagogique : le <strong>LSP</strong> a unifié les éditeurs autour des langages ; le MCP vise la même clarté pour le <strong>contexte</strong> et les <strong>actions</strong> des agents.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 : Architecture -->
+    <section class="slide slide--lifecycle" data-slide="4">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Architecture</div>
+        <h2 class="slide-title animate-slide-up">Hôte, client, serveur</h2>
+        <div class="mcp-triple-grid">
+          <div class="lifecycle-category animate-card" style="--delay: 0.15s">
+            <div class="lifecycle-icon">🖥️</div>
+            <h3>Hôte (host)</h3>
+            <p class="lifecycle-note" style="margin-top:0;font-size:0.78rem;color:var(--text-dim);font-weight:400;line-height:1.4">
+              L’application (IDE, client chat…) qui orchestre les sessions, applique les politiques de <strong>sécurité</strong> et le <strong>consentement</strong> utilisateur.
+            </p>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.28s">
+            <div class="lifecycle-icon">🔌</div>
+            <h3>Client MCP</h3>
+            <p class="lifecycle-note" style="margin-top:0;font-size:0.78rem;color:var(--text-dim);font-weight:400;line-height:1.4">
+              Composant dans l’hôte qui ouvre une <strong>connexion</strong> vers un serveur (souvent une connexion par serveur).
+            </p>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.4s">
+            <div class="lifecycle-icon">⚙️</div>
+            <h3>Serveur MCP</h3>
+            <p class="lifecycle-note" style="margin-top:0;font-size:0.78rem;color:var(--text-dim);font-weight:400;line-height:1.4">
+              Expose <strong>resources</strong>, <strong>tools</strong>, <strong>prompts</strong> — local (stdio) ou distant (HTTP streamable).
+            </p>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.55s">
+          ⚠️ La <strong>confiance</strong> se gère côté <strong>hôte</strong> : le protocole ne remplace pas une revue de sécurité ni une politique d’accès.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 : Primitives serveur -->
+    <section class="slide slide--types" data-slide="5">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Côté serveur</div>
+        <h2 class="slide-title animate-slide-up">Resources, tools, prompts</h2>
+        <div class="mcp-triple-grid">
+          <div class="hook-type-card animate-card" style="--delay: 0.15s">
+            <div class="hook-type-icon">📄</div>
+            <div class="hook-type-name">Resources</div>
+            <div class="hook-type-availability">Lecture contextualisée</div>
+            <div class="hook-type-desc">Données adressables (URI), fichiers, extractions d’API — ce que le modèle peut <strong>consulter</strong>.</div>
+            <div class="hook-type-tag">Contexte</div>
+          </div>
+          <div class="hook-type-card animate-card" style="--delay: 0.28s">
+            <div class="hook-type-icon">🔧</div>
+            <div class="hook-type-name">Tools</div>
+            <div class="hook-type-availability">Actions invocables</div>
+            <div class="hook-type-desc">Fonctions avec schéma d’entrée ; souvent soumises à <strong>approbation</strong> utilisateur dans l’hôte.</div>
+            <div class="hook-type-tag">Exécution</div>
+          </div>
+          <div class="hook-type-card animate-card" style="--delay: 0.4s">
+            <div class="hook-type-icon">📝</div>
+            <div class="hook-type-name">Prompts</div>
+            <div class="hook-type-availability">Gabarits</div>
+            <div class="hook-type-desc">Modèles de messages ou workflows réutilisables pour guider l’utilisateur ou le client.</div>
+            <div class="hook-type-tag">Templates</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.55s">
+          💡 Voir aussi les concepts détaillés sur <strong>modelcontextprotocol.io</strong> (server concepts, cycle de vie).
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 : Capacités client -->
+    <section class="slide slide--lifecycle" data-slide="6">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Côté client</div>
+        <h2 class="slide-title animate-slide-up">Ce que le serveur peut demander</h2>
+        <div class="mcp-triple-grid">
+          <div class="lifecycle-category animate-card" style="--delay: 0.15s">
+            <div class="lifecycle-icon">🎲</div>
+            <h3>Sampling</h3>
+            <div class="lifecycle-note">Le serveur peut demander des complétions LLM via le client — sous contrôle utilisateur.</div>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.28s">
+            <div class="lifecycle-icon">📁</div>
+            <h3>Roots</h3>
+            <div class="lifecycle-note">Ancres (fichiers, URIs) pour délimiter la portée des accès côté workspace.</div>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.4s">
+            <div class="lifecycle-icon">💬</div>
+            <h3>Elicitation</h3>
+            <div class="lifecycle-note">Demander des informations complémentaires à l’utilisateur via l’hôte.</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.55s">
+          💡 Utile pour des flux <strong>agentiques</strong> avancés ; la plupart des intégrations « fichier + API » commencent par <strong>tools</strong> + <strong>resources</strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 : Transports -->
+    <section class="slide slide--config" data-slide="7">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Transports</div>
+        <h2 class="slide-title animate-slide-up">stdio &amp; HTTP streamable</h2>
+        <div class="create-dual">
+          <div class="create-col animate-card" style="--delay: 0.2s">
+            <div class="create-col-header cursor-header">stdio (local)</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> L’hôte lance votre serveur en <strong>processus enfant</strong></div>
+              <div class="cs"><span class="cs-num">2</span> Messages JSON-RPC sur <strong>stdin</strong> / <strong>stdout</strong></div>
+              <div class="cs"><span class="cs-num">3</span> Cursor, Claude Desktop, CLI — cas le plus courant</div>
+            </div>
+            <div class="create-note" style="margin:0 1.25rem 1rem;font-size:0.82rem">
+              ⚠️ Rien d’autre sur <strong>stdout</strong> (pas de <code>console.log</code> oublié) — sinon le JSON-RPC casse.
+            </div>
+          </div>
+          <div class="create-col animate-card" style="--delay: 0.35s">
+            <div class="create-col-header cc-header">Streamable HTTP</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Serveur <strong>réseau</strong> (API MCP)</div>
+              <div class="cs"><span class="cs-num">2</span> Sessions <strong>stateful</strong> ou <strong>stateless</strong> selon config</div>
+              <div class="cs"><span class="cs-num">3</span> Idéal pour SaaS, passerelles d’équipe, plusieurs clients</div>
+            </div>
+            <div class="create-note" style="margin:0 1.25rem 1rem;font-size:0.82rem">
+              Détails : spec <strong>Transports</strong> sur modelcontextprotocol.io (sessions, reprise, SSE/JSON…).
+            </div>
+          </div>
+        </div>
+        <div class="hook-flow animate-fade-in" style="--delay: 0.5s">
+          <div class="hook-flow-step">initialize</div>
+          <div class="hook-flow-arrow">→</div>
+          <div class="hook-flow-step hook-flow-step--accent">négociation capabilities</div>
+          <div class="hook-flow-arrow">→</div>
+          <div class="hook-flow-step">tools / resources / prompts</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 : Sécurité -->
+    <section class="slide slide--problem" data-slide="8">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Sécurité</div>
+        <h2 class="slide-title animate-slide-up">Confiance &amp; consentement</h2>
+        <div class="problem-grid">
+          <div class="problem-card animate-card" style="--delay: 0.15s">
+            <div class="problem-icon">✋</div>
+            <h3>Consentement</h3>
+            <p>L’utilisateur doit comprendre quelles données sont exposées et quels outils peuvent s’exécuter</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.3s">
+            <div class="problem-icon">⚡</div>
+            <h3>Tools = pouvoir</h3>
+            <p>Traiter les descriptions d’outils comme <strong>non fiables</strong> si le serveur n’est pas sûr</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.45s">
+            <div class="problem-icon">🔒</div>
+            <h3>Données &amp; sampling</h3>
+            <p>Pas d’exfiltration opaque ; contrôle des requêtes <strong>sampling</strong> initiées par le serveur</p>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.65s">
+          <span class="solution-arrow">→</span>
+          Aligné sur la spec : <strong>Security and Trust &amp; Safety</strong> — principes que le <strong>hôte</strong> doit appliquer dans l’UI et les politiques
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 : Trois étapes -->
+    <section class="slide slide--config" data-slide="9">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Implémentation</div>
+        <h2 class="slide-title animate-slide-up">Créer un serveur en 3 étapes</h2>
+        <div class="create-dual">
+          <div class="create-col animate-card" style="--delay: 0.2s">
+            <div class="create-col-header cursor-header">SDK TypeScript officiel</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> <code>McpServer</code> — nom, version, <code>instructions</code> optionnelles</div>
+              <div class="cs"><span class="cs-num">2</span> Enregistrer tools / resources / prompts (<strong>Zod v4</strong> / Standard Schema)</div>
+              <div class="cs"><span class="cs-num">3</span> <code>StdioServerTransport</code> (local) ou transport HTTP (distant) puis <code>connect</code></div>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-comment">// Paquets : @modelcontextprotocol/server, zod</span>
+<span class="code-keyword">import</span> { McpServer, StdioServerTransport }
+  <span class="code-keyword">from</span> <span class="code-string">'@modelcontextprotocol/server'</span>;
+<span class="code-keyword">import</span> * <span class="code-keyword">as</span> z <span class="code-keyword">from</span> <span class="code-string">'zod/v4'</span>;</code></pre>
+            </div>
+          </div>
+          <div class="create-col animate-card" style="--delay: 0.35s">
+            <div class="create-col-header cc-header">Scaffolding</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> CLI <strong>create-typescript-server</strong> (dépôt MCP officiel)</div>
+              <div class="cs"><span class="cs-num">2</span> Adapter les tools à votre domaine métier</div>
+              <div class="cs"><span class="cs-num">3</span> Publié sur GitHub : <code>modelcontextprotocol/create-typescript-server</code></div>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-comment"># Exemple (voir doc du repo pour la commande exacte)</span>
+npx <span class="code-highlight">@modelcontextprotocol/create-typescript-server</span> mon-serveur</code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.55s">
+          💡 Les <code>instructions</code> serveur guident les workflows (ex. ordre des appels) — ne pas répéter ce qui est déjà dans chaque description d’outil.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 : Exemple onglets -->
+    <section class="slide slide--examples" data-slide="10">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Exemple</div>
+        <h2 class="slide-title animate-slide-up">Un outil minimal + stdio</h2>
+
+        <div class="examples-tabs animate-fade-in" style="--delay: 0.2s">
+          <button class="tab-btn active" data-tab="ts">TypeScript</button>
+          <button class="tab-btn" data-tab="py">Python</button>
+        </div>
+
+        <div class="tab-panel active" id="tab-ts">
+          <div class="example-context">
+            <span class="example-context-label">Pattern</span>
+            <span><code>registerTool</code> + handler async + <code>StdioServerTransport</code></span>
+          </div>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">src/index.ts</span>
+              <span class="code-lang cursor-lang">MCP TS SDK</span>
+            </div>
+            <pre><code><span class="code-keyword">const</span> server = <span class="code-keyword">new</span> <span class="code-highlight">McpServer</span>({ name: <span class="code-string">'demo'</span>, version: <span class="code-string">'1.0.0'</span> });
+
+server.<span class="code-highlight">registerTool</span>(
+  <span class="code-string">'calculate-bmi'</span>,
+  {
+    title: <span class="code-string">'IMC'</span>,
+    description: <span class="code-string">'Calcule l’indice de masse corporelle'</span>,
+    inputSchema: z.object({
+      weightKg: z.number(),
+      heightM: z.number()
+    }),
+    outputSchema: z.object({ bmi: z.number() })
+  },
+  <span class="code-keyword">async</span> ({ weightKg, heightM }) =&gt; {
+    <span class="code-keyword">const</span> output = { bmi: weightKg / (heightM * heightM) };
+    <span class="code-keyword">return</span> {
+      content: [{ type: <span class="code-string">'text'</span>, text: JSON.stringify(output) }],
+      structuredContent: output
+    };
+  }
+);
+
+<span class="code-keyword">const</span> transport = <span class="code-keyword">new</span> <span class="code-highlight">StdioServerTransport</span>();
+<span class="code-keyword">await</span> server.connect(transport);</code></pre>
+          </div>
+          <div class="create-note">
+            💡 Schémas stricts = moins d’appels invalides ; <code>structuredContent</code> facilite les réponses typées côté client.
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-py">
+          <div class="example-context">
+            <span class="example-context-label">Équivalent</span>
+            <span>SDK Python <code>mcp</code> — même trio : serveur, outil décoré, transport stdio</span>
+          </div>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">server.py</span>
+              <span class="code-lang cc-lang">MCP Python</span>
+            </div>
+            <pre><code><span class="code-keyword">from</span> mcp.server.fastmcp <span class="code-keyword">import</span> FastMCP
+
+mcp = FastMCP(<span class="code-string">'demo'</span>)
+
+@mcp.tool()
+<span class="code-keyword">def</span> calculate_bmi(weight_kg: float, height_m: float) -&gt; dict:
+    <span class="code-string">"""Calcule l’IMC"""</span>
+    bmi = weight_kg / (height_m ** <span class="code-highlight">2</span>)
+    <span class="code-keyword">return</span> {<span class="code-string">'bmi'</span>: bmi}
+
+<span class="code-keyword">if</span> __name__ == <span class="code-string">'__main__'</span>:
+    mcp.run()</code></pre>
+          </div>
+          <div class="create-note">
+            💡 Les noms de packages et API évoluent — toujours vérifier le README officiel du SDK Python sur GitHub <strong>modelcontextprotocol/python-sdk</strong>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11 : Config hôtes -->
+    <section class="slide slide--config" data-slide="11">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Configuration</div>
+        <h2 class="slide-title animate-slide-up">Brancher Cursor &amp; Claude Desktop</h2>
+        <div class="create-dual">
+          <div class="create-col animate-card" style="--delay: 0.2s">
+            <div class="create-col-header cursor-header">⚡ Cursor</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> <code>.cursor/mcp.json</code> (projet) ou <code>~/.cursor/mcp.json</code> (global)</div>
+              <div class="cs"><span class="cs-num">2</span> Fusion des deux ; préférence au projet</div>
+              <div class="cs"><span class="cs-num">3</span> Secrets via <code>env</code>, pas en dur dans le JSON</div>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-frontmatter">{</span>
+  <span class="code-string">"mcpServers"</span>: <span class="code-frontmatter">{</span>
+    <span class="code-string">"mon-serveur"</span>: <span class="code-frontmatter">{</span>
+      <span class="code-string">"command"</span>: <span class="code-keyword">"node"</span>,
+      <span class="code-string">"args"</span>: [<span class="code-keyword">"dist/index.js"</span>],
+      <span class="code-string">"env"</span>: <span class="code-frontmatter">{</span> <span class="code-string">"API_KEY"</span>: <span class="code-keyword">"${API_KEY}"</span> <span class="code-frontmatter">}</span>
+    <span class="code-frontmatter">}</span>
+  <span class="code-frontmatter">}</span>
+<span class="code-frontmatter">}</span></code></pre>
+            </div>
+          </div>
+          <div class="create-col animate-card" style="--delay: 0.35s">
+            <div class="create-col-header cc-header">▶ Claude Desktop</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Fichier de config MCP (chemin selon OS)</div>
+              <div class="cs"><span class="cs-num">2</span> Entrée <code>mcpServers</code> avec <code>command</code> + <code>args</code></div>
+              <div class="cs"><span class="cs-num">3</span> Redémarrer l’app après modification</div>
+            </div>
+            <div class="create-format">
+              <pre><code><span class="code-frontmatter">{</span>
+  <span class="code-string">"mcpServers"</span>: <span class="code-frontmatter">{</span>
+    <span class="code-string">"mon-serveur"</span>: <span class="code-frontmatter">{</span>
+      <span class="code-string">"command"</span>: <span class="code-keyword">"node"</span>,
+      <span class="code-string">"args"</span>: [<span class="code-string">"/chemin/absolu/dist/index.js"</span>]
+    <span class="code-frontmatter">}</span>
+  <span class="code-frontmatter">}</span>
+<span class="code-frontmatter">}</span></code></pre>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.55s">
+          💡 Pour MCP distant : clé <code>url</code> (+ en-têtes / auth selon doc Cursor). Voir la doc Cursor sur <strong>MCP</strong> et le cookbook <strong>building MCP server</strong>.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 : Bonnes pratiques -->
+    <section class="slide slide--best" data-slide="12">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Bonnes pratiques</div>
+        <h2 class="slide-title animate-slide-up">7 règles d’or</h2>
+        <div class="best-practices-grid">
+          <div class="bp-card animate-card" style="--delay: 0.08s">
+            <div class="bp-number">1</div>
+            <h3>Descriptions explicites</h3>
+            <p>Le modèle choisit les outils d’après le texte — soignez titre et description.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.14s">
+            <div class="bp-number">2</div>
+            <h3>Schémas stricts</h3>
+            <p>Valider toutes les entrées ; erreurs claires si validation échoue.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.2s">
+            <div class="bp-number">3</div>
+            <h3>Effets de bord</h3>
+            <p>Documenter idempotence, risques, et ce qu’une tool modifie réellement.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.26s">
+            <div class="bp-number">4</div>
+            <h3>Timeouts &amp; erreurs</h3>
+            <p>Réponses exploitables par l’agent ; éviter les stack traces brutes.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.32s">
+            <div class="bp-number">5</div>
+            <h3>Moindre privilège</h3>
+            <p>Exposer le minimum de ressources et d’outils nécessaires.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.38s">
+            <div class="bp-number">6</div>
+            <h3>stdout propre (stdio)</h3>
+            <p>Logger sur stderr ou fichier — jamais de bruit sur stdout.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.44s">
+            <div class="bp-number">7</div>
+            <h3>Version &amp; doc d’équipe</h3>
+            <p>Nom, version, changelog — surtout en monorepo partagé.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="13">
+      <div class="slide-content">
+        <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
+          <h2>🎯 Récapitulatif</h2>
+          <div class="conclusion-items">
+            <div class="conclusion-item">MCP = protocole <strong>ouvert</strong> (JSON-RPC, capabilities, transports stdio / HTTP)</div>
+            <div class="conclusion-item"><strong>Serveur</strong> : resources, tools, prompts — <strong>hôte</strong> : sécurité &amp; consentement</div>
+            <div class="conclusion-item">Implémentation : <strong>McpServer</strong> + schémas + transport + <code>connect</code></div>
+            <div class="conclusion-item">S’aligne avec vos capsules <strong>Rules / Skills / Hooks / Spec</strong> : contrats explicites de bout en bout</div>
+          </div>
+          <div class="cta-box">
+            Scaffoldez un serveur, exposez <strong>un</strong> outil utile, branchez-le dans Cursor.<br>
+            <span class="cta-dual">
+              <span>📘 <code>modelcontextprotocol.io</code></span>
+              <span class="cta-sep">|</span>
+              <span>⚡ <code>.cursor/mcp.json</code></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14 : Ressources -->
+    <section class="slide slide--resources" data-slide="14">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Ressources</div>
+        <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>
+        <div class="resources-grid">
+          <div class="resource-group animate-card" style="--delay: 0.15s">
+            <div class="resource-group-header">Spécification &amp; apprentissage</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://modelcontextprotocol.io/specification/latest" target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">📘</span>
+                <div>
+                  <div class="resource-name">Specification (latest)</div>
+                  <div class="resource-url">modelcontextprotocol.io/specification/latest</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://modelcontextprotocol.io/" target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">🏠</span>
+                <div>
+                  <div class="resource-name">Site MCP — documentation</div>
+                  <div class="resource-url">modelcontextprotocol.io</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.25s">
+            <div class="resource-group-header">SDK &amp; outils</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://github.com/modelcontextprotocol/typescript-sdk" target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">⬢</span>
+                <div>
+                  <div class="resource-name">TypeScript SDK</div>
+                  <div class="resource-url">github.com/modelcontextprotocol/typescript-sdk</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://github.com/modelcontextprotocol/create-typescript-server" target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">🚀</span>
+                <div>
+                  <div class="resource-name">create-typescript-server</div>
+                  <div class="resource-url">github.com/modelcontextprotocol/create-typescript-server</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">🐍</span>
+                <div>
+                  <div class="resource-name">Python SDK</div>
+                  <div class="resource-url">github.com/modelcontextprotocol/python-sdk</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.35s">
+            <div class="resource-group-header">Produit &amp; IDE</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">◆</span>
+                <div>
+                  <div class="resource-name">Anthropic — annonce MCP</div>
+                  <div class="resource-url">anthropic.com/news/model-context-protocol</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://cursor.com/docs/context/mcp" target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">⚡</span>
+                <div>
+                  <div class="resource-name">Cursor — MCP</div>
+                  <div class="resource-url">cursor.com/docs/context/mcp</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://cursor.com/docs/cookbook/building-mcp-server" target="_blank" rel="noopener noreferrer">
+                <span class="resource-icon">⚡</span>
+                <div>
+                  <div class="resource-name">Cursor — Building an MCP Server</div>
+                  <div class="resource-url">cursor.com/docs/cookbook/building-mcp-server</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
