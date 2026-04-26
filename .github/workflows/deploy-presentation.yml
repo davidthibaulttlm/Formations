@@ -10,6 +10,7 @@
 #   /hooks/                  → Hooks presentation
 #   /spec_driven/            → Spec-Driven AI Coding presentation
 #   /mcp/                    → MCP (Model Context Protocol) presentation
+#   /subagents/              → Sous-agents (délégation) presentation
 #
 # Live URLs:
 #   https://davidthibaulttlm.github.io/Formations/rules
@@ -17,6 +18,7 @@
 #   https://davidthibaulttlm.github.io/Formations/hooks
 #   https://davidthibaulttlm.github.io/Formations/spec_driven
 #   https://davidthibaulttlm.github.io/Formations/mcp
+#   https://davidthibaulttlm.github.io/Formations/subagents
 
 name: Deploy presentations to GitHub Pages
 
@@ -29,6 +31,7 @@ on:
       - 'hooks/presentation/**'
       - 'spec_driven/presentation/**'
       - 'mcp/presentation/**'
+      - 'subagents/presentation/**'
       - '.github/workflows/deploy-presentation.yml'
   workflow_dispatch:
 
@@ -56,12 +59,13 @@ jobs:
 
       - name: Build combined site
         run: |
-          mkdir -p _site/rules _site/commands_n_skills _site/hooks _site/spec_driven _site/mcp
+          mkdir -p _site/rules _site/commands_n_skills _site/hooks _site/spec_driven _site/mcp _site/subagents
           cp rules/presentation/* _site/rules/
           cp commands_n_skills/presentation/* _site/commands_n_skills/
           cp hooks/presentation/* _site/hooks/
           cp spec_driven/presentation/* _site/spec_driven/
           cp mcp/presentation/* _site/mcp/
+          cp subagents/presentation/* _site/subagents/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -80,3 +84,4 @@ jobs:
           echo "👉 Hooks:              ${{ steps.deployment.outputs.page_url }}hooks/"
           echo "👉 Spec-Driven:        ${{ steps.deployment.outputs.page_url }}spec_driven/"
           echo "👉 MCP:                ${{ steps.deployment.outputs.page_url }}mcp/"
+          echo "👉 Sous-agents:        ${{ steps.deployment.outputs.page_url }}subagents/"

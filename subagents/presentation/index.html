@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les sous-agents — Cursor & Claude Code — Formation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav class="slide-nav" id="slideNav">
+    <div class="nav-inner">
+      <span class="nav-title">Sous-agents — Cursor & Claude Code</span>
+      <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="slide-counter" id="slideCounter">1 / 14</span>
+        <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <button class="nav-btn fullscreen-btn" id="fullscreenBtn" aria-label="Plein écran">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="slides-container" id="slidesContainer">
+
+    <!-- SLIDE 1 : Hero -->
+    <section class="slide slide--hero active" data-slide="1">
+      <div class="slide-content">
+        <div class="hero-badge animate-pop">Formation</div>
+        <h1 class="hero-title">
+          <span class="animate-slide-up" style="--delay: 0.1s">Les <span class="gradient-text">sous-agents</span></span>
+          <span class="animate-slide-up hero-subline" style="--delay: 0.2s">Déléguer intelligemment</span>
+          <span class="animate-slide-up hero-tools" style="--delay: 0.28s">
+            <span class="tool-tag tool-tag--cursor">Cursor</span>
+            <span class="tool-amp">&</span>
+            <span class="tool-tag tool-tag--claude">Claude Code</span>
+          </span>
+        </h1>
+        <p class="hero-subtitle animate-fade-in" style="--delay: 0.5s">
+          Parallélisme, isolation du contexte, spécialisation — pourquoi, comment, et quels avantages.
+        </p>
+        <div class="hero-keys animate-fade-in" style="--delay: 0.8s">
+          <kbd>→</kbd> ou <kbd>Espace</kbd> pour avancer
+        </div>
+      </div>
+      <div class="hero-bg-grid"></div>
+    </section>
+
+    <!-- SLIDE 2 : Problème -->
+    <section class="slide slide--problem" data-slide="2">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Le problème</div>
+        <h2 class="slide-title animate-slide-up">Pourquoi déléguer ?</h2>
+        <div class="problem-grid">
+          <div class="problem-card animate-card" style="--delay: 0.2s">
+            <div class="problem-icon">📣</div>
+            <h3>Contexte saturé</h3>
+            <p>Exploration du dépôt, logs shell, DOM navigateur : des sorties <strong>bruyantes</strong> qui encombrent le fil principal si tout reste dans une seule conversation.</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.35s">
+            <div class="problem-icon">⏳</div>
+            <h3>Tout en série</h3>
+            <p>Sans parallélisme, chaque étape attend la précédente. Sur un chantier large, le <strong>temps perdu</strong> augmente vite.</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.5s">
+            <div class="problem-icon">🎯</div>
+            <h3>Rôles mélangés</h3>
+            <p>Recherche, design, implémentation et vérif dans le même prompt → moins de clarté, plus d’<strong>erreurs</strong> et d’oublis de contraintes.</p>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.8s">
+          <span class="solution-arrow">→</span>
+          Les <strong>sous-agents</strong> isolent le bruit, permettent le <strong>parallèle</strong> et appliquent des <strong>spécialistes</strong> ciblés.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 : Trois piliers -->
+    <section class="slide slide--pillars" data-slide="3">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Les trois leviers</div>
+        <h2 class="slide-title animate-slide-up">Parallélisme · Isolation · Spécialisation</h2>
+        <div class="hook-types-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="hook-type-card animate-card" style="--delay: 0.15s">
+            <div class="hook-type-icon">🔲</div>
+            <div class="hook-type-name">Isolation</div>
+            <div class="hook-type-availability">Contexte propre</div>
+            <div class="hook-type-desc">Chaque sous-agent dispose de <strong>sa</strong> fenêtre de contexte. <strong>En général</strong>, le parent reçoit surtout une <strong>synthèse ou un résumé</strong> — les intermédiaires volumineux restent à côté (selon l’outil et le mode).</div>
+            <div class="hook-type-tag">Doc Cursor &amp; Anthropic</div>
+          </div>
+          <div class="hook-type-card animate-card" style="--delay: 0.28s">
+            <div class="hook-type-icon">⚡</div>
+            <div class="hook-type-name">Parallélisme</div>
+            <div class="hook-type-availability">Débit</div>
+            <div class="hook-type-desc">Plusieurs délégations <strong>indépendantes</strong> en parallèle (ex. <code>openapi.yaml</code> + section <strong>Installation</strong> du <code>README.md</code>) au lieu d’attendre la fin de chaque étape.</div>
+            <div class="hook-type-tag">Task / messages</div>
+          </div>
+          <div class="hook-type-card animate-card" style="--delay: 0.4s">
+            <div class="hook-type-icon">🧩</div>
+            <div class="hook-type-name">Spécialisation</div>
+            <div class="hook-type-availability">Qualité</div>
+            <div class="hook-type-desc">Prompt système, <strong>outils</strong> et <strong>modèle</strong> adaptés au rôle : exploration en lecture seule, audit, tests, etc.</div>
+            <div class="hook-type-tag">Même équipe, rôles différents</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.65s">
+          💡 Les docs officielles décrivent le même principe : une tâche annexe qui <strong>inonderait</strong> la conversation principale est un bon candidat à la délégation.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 : Mécanisme -->
+    <section class="slide slide--concept" data-slide="4">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Mécanisme</div>
+        <h2 class="slide-title animate-slide-up">Comment ça marche ?</h2>
+        <div class="concept-flow animate-fade-in" style="--delay: 0.25s">
+          <div class="concept-formula">
+            <span class="concept-input">Parent</span>
+            <span class="concept-arrow">→</span>
+            <span class="concept-input">Délégation + contexte utile</span>
+            <span class="concept-arrow">→</span>
+            <span class="concept-input">Sous-agent</span>
+            <span class="concept-arrow">→</span>
+            <span class="concept-output">Résumé / synthèse au parent</span>
+          </div>
+        </div>
+        <p class="concept-desc animate-fade-in" style="--delay: 0.4s">
+          Le sous-agent <strong>repart d’un contexte propre</strong> : il n’a pas l’historique implicite du chat parent. Le parent doit donc <strong>fournir l’essentiel</strong> dans le message de délégation. Après exécution, c’est <strong>souvent</strong> une synthèse ou un résumé structuré qui remonte — le détail dépend de l’outil et du mode.
+        </p>
+        <div class="concept-types animate-fade-in" style="--delay: 0.52s">
+          <div class="concept-type">
+            <div class="concept-type-header concept-type--rules">
+              <span>⏱️</span> Premier plan
+            </div>
+            <div class="concept-type-body">
+              Bloque jusqu’à la fin du sous-agent — idéal quand la suite du travail <strong>dépend</strong> du résultat.
+            </div>
+            <div class="concept-note">Cursor : mode foreground (doc)</div>
+          </div>
+          <div class="concept-type">
+            <div class="concept-type-header concept-type--hooks">
+              <span>🌙</span> Arrière-plan
+            </div>
+            <div class="concept-type-body">
+              Le parent continue ; suivi ou <strong>reprise</strong> plus tard — idéal pour tâches longues ou branches parallèles.
+            </div>
+            <div class="concept-note">Cursor : background + resume</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 : Cursor -->
+    <section class="slide slide--config" data-slide="5">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Cursor</div>
+        <h2 class="slide-title animate-slide-up">Sous-agents dans Cursor</h2>
+        <div class="lifecycle-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 1.25rem;">
+          <div class="lifecycle-category animate-card" style="--delay: 0.15s">
+            <div class="lifecycle-icon">🔎</div>
+            <h3>Explore</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">Recherche codebase</span>
+              <span class="lifecycle-event">Modèle rapide</span>
+              <span class="lifecycle-event">Recherches parallèles</span>
+            </div>
+            <div class="lifecycle-note">Intégré — sans config</div>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.28s">
+            <div class="lifecycle-icon">💻</div>
+            <h3>Bash</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">Série de commandes</span>
+              <span class="lifecycle-event">Sorties isolées</span>
+            </div>
+            <div class="lifecycle-note">Intégré</div>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.4s">
+            <div class="lifecycle-icon">🌐</div>
+            <h3>Browser</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">MCP navigateur</span>
+              <span class="lifecycle-event">DOM filtré</span>
+            </div>
+            <div class="lifecycle-note">Intégré</div>
+          </div>
+        </div>
+        <div class="create-dual">
+          <div class="create-col animate-card" style="--delay: 0.45s">
+            <div class="create-col-header cursor-header">⚡ Fichiers custom</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Markdown + YAML dans <code>.cursor/agents/</code> (projet) ou <code>~/.cursor/agents/</code></div>
+              <div class="cs"><span class="cs-num">2</span> Champs : <code>name</code>, <code>description</code>, <code>model</code>, <code>readonly</code>, <code>is_background</code></div>
+              <div class="cs"><span class="cs-num">3</span> Invocation <code>/nom</code> ou délégation automatique selon la <code>description</code></div>
+            </div>
+          </div>
+          <div class="create-col animate-card" style="--delay: 0.55s">
+            <div class="create-col-header cc-header">🔁 Compat</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Cursor lit aussi <code>.claude/agents/</code> et <code>.codex/agents/</code></div>
+              <div class="cs"><span class="cs-num">2</span> Conflit de noms : <code>.cursor/</code> <strong>prime</strong></div>
+              <div class="cs"><span class="cs-num">3</span> Coût : plusieurs sous-agents = plusieurs contextes (tokens × N)</div>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.65s">
+          📎 Référence : <a href="https://cursor.com/docs/agent/subagents" target="_blank" rel="noopener" style="color: var(--accent-light);">cursor.com/docs/agent/subagents</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 : Claude Code -->
+    <section class="slide slide--config" data-slide="6">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Claude Code</div>
+        <h2 class="slide-title animate-slide-up">Sous-agents dans Claude Code</h2>
+        <div class="lifecycle-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 1.25rem;">
+          <div class="lifecycle-category animate-card" style="--delay: 0.15s">
+            <div class="lifecycle-icon">🔎</div>
+            <h3>Explore</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">Haiku, read-only</span>
+              <span class="lifecycle-event">quick / medium / very thorough</span>
+            </div>
+            <div class="lifecycle-note">Découverte sans écriture</div>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.28s">
+            <div class="lifecycle-icon">📋</div>
+            <h3>Plan</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">Mode plan</span>
+              <span class="lifecycle-event">Recherche read-only</span>
+            </div>
+            <div class="lifecycle-note">Évite d’encombrer le plan</div>
+          </div>
+          <div class="lifecycle-category animate-card" style="--delay: 0.4s">
+            <div class="lifecycle-icon">🛠️</div>
+            <h3>general-purpose</h3>
+            <div class="lifecycle-events">
+              <span class="lifecycle-event">Outils complets</span>
+              <span class="lifecycle-event">Tâches multi-étapes</span>
+            </div>
+            <div class="lifecycle-note">Exploration + modification</div>
+          </div>
+        </div>
+        <div class="create-dual">
+          <div class="create-col animate-card" style="--delay: 0.45s">
+            <div class="create-col-header cc-header">▶ Création &amp; fichiers</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> Commande <code>/agents</code> — bibliothèque, outils, modèle, couleur</div>
+              <div class="cs"><span class="cs-num">2</span> Projet : <code>.claude/agents/</code> (à versionner)</div>
+              <div class="cs"><span class="cs-num">3</span> Perso : <code>~/.claude/agents/</code></div>
+            </div>
+          </div>
+          <div class="create-col animate-card" style="--delay: 0.55s">
+            <div class="create-col-header cursor-header">⚡ Task</div>
+            <div class="create-steps">
+              <div class="cs"><span class="cs-num">1</span> L’agent parent lance un sous-agent typé avec un prompt dédié</div>
+              <div class="cs"><span class="cs-num">2</span> Arrière-plan &amp; reprise selon besoin</div>
+              <div class="cs"><span class="cs-num">3</span> Multi-agents entre sessions → voir <em>agent teams</em> (doc)</div>
+            </div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.65s">
+          📎 Référence : <a href="https://docs.anthropic.com/en/docs/claude-code/sub-agents" target="_blank" rel="noopener" style="color: var(--accent-light);">docs.anthropic.com — sub-agents</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 : Démo Cursor -->
+    <section class="slide slide--config" data-slide="7">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Démo live</div>
+        <h2 class="slide-title animate-slide-up">Démo — Cursor</h2>
+        <div class="create-col animate-fade-in" style="--delay: 0.15s; max-width: 52rem; margin: 0 auto;">
+          <div class="create-col-header cursor-header">Pas à pas (à l’écran)</div>
+          <div class="create-steps">
+            <div class="cs"><span class="cs-num">1</span> Ouvrir le projet de démo ; montrer <code>.cursor/agents/</code> et <strong>un</strong> fichier court (ex. <code>verifier.md</code>).</div>
+            <div class="cs"><span class="cs-num">2</span> Montrer le frontmatter : <code>name</code>, <code>description</code> (intentions concrètes), <code>readonly</code> si agent de vérif.</div>
+            <div class="cs"><span class="cs-num">3</span> Dans le chat Agent : <code>/verifier</code> ou une tâche qui déclenche la délégation auto selon la <code>description</code>.</div>
+            <div class="cs"><span class="cs-num">4</span> Une phrase : le bruit volumineux reste <strong>à côté</strong> ; ce qui remonte est <strong>souvent un résumé</strong> (selon l’outil et le mode).</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.45s; margin-top: 1.25rem;">
+          💡 Garder cette slide visible pour le spectateur ; exécuter les actions dans Cursor en partage d’écran.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 : Démo Claude Code -->
+    <section class="slide slide--config" data-slide="8">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Démo live</div>
+        <h2 class="slide-title animate-slide-up">Démo — Claude Code</h2>
+        <div class="create-col animate-fade-in" style="--delay: 0.15s; max-width: 52rem; margin: 0 auto;">
+          <div class="create-col-header cc-header">Pas à pas (à l’écran)</div>
+          <div class="create-steps">
+            <div class="cs"><span class="cs-num">1</span> Terminal : lancer <code>claude</code> dans le dépôt de démo.</div>
+            <div class="cs"><span class="cs-num">2</span> Taper <code>/agents</code> : parcourir la bibliothèque ; montrer <code>.claude/agents/</code> (à versionner dans Git).</div>
+            <div class="cs"><span class="cs-num">3</span> Lancer un <strong>Explore</strong> ou une <strong>Task</strong> ciblée en lecture seule (ex. cartographier des appels sans modifier les fichiers).</div>
+            <div class="cs"><span class="cs-num">4</span> Optionnel : une phrase sur la <strong>reprise</strong> d’agent en arrière-plan si vous l’utilisez.</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.45s; margin-top: 1.25rem;">
+          📎 Aligné sur le plan de tournage — raccourcir l’étape 3 si le budget temps est serré.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 : Convergence -->
+    <section class="slide slide--compat" data-slide="9">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Synthèse</div>
+        <h2 class="slide-title animate-slide-up">Un concept, deux écosystèmes</h2>
+        <div class="compare-table-wrapper animate-fade-in" style="--delay: 0.25s">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Idée</th>
+                <th><span class="col-badge col--cursor-rules">Cursor</span></th>
+                <th><span class="col-badge col--cc-rules">Claude Code</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="row-label">Délégation</td>
+                <td>Task + agents <code>.cursor/agents/</code></td>
+                <td>Task + <code>/agents</code> + <code>.claude/agents/</code></td>
+              </tr>
+              <tr>
+                <td class="row-label">Interop agents</td>
+                <td colspan="2" style="text-align: center;">Cursor charge aussi <code>.claude/agents/</code> — convention d’équipe à documenter</td>
+              </tr>
+              <tr>
+                <td class="row-label">Exploration légère</td>
+                <td>Explore intégré</td>
+                <td>Explore (Haiku, read-only)</td>
+              </tr>
+              <tr>
+                <td class="row-label">Discipline</td>
+                <td colspan="2" style="text-align: center;">Isolation · parallèle · spécialisation — même intention produit</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.55s">
+          <span class="solution-arrow">→</span>
+          Les détails UI et noms diffèrent ; le <strong>contrat mental</strong> reste : protéger le contexte parent et livrer un <strong>résultat exploitable</strong> (souvent une synthèse ou un résumé, selon l’outil).
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 : Patterns (tabs) -->
+    <section class="slide slide--examples" data-slide="10">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Patterns</div>
+        <h2 class="slide-title animate-slide-up">Trois patterns utiles</h2>
+
+        <div class="examples-tabs animate-fade-in" style="--delay: 0.2s">
+          <button class="tab-btn active" data-tab="verify">✅ Vérificateur</button>
+          <button class="tab-btn" data-tab="orch">🔀 Orchestration</button>
+          <button class="tab-btn" data-tab="para">⚡ Parallèle</button>
+        </div>
+
+        <div class="tab-panel active" id="tab-verify">
+          <div class="example-context">
+            <span class="example-context-label">Cas d’usage</span>
+            <span>Réduire les faux « terminé » : un sous-agent <strong>sceptique</strong> relit et teste.</span>
+          </div>
+          <p class="concept-desc" style="margin-bottom: 1rem;">
+            Sous-agent en <code>readonly</code> (Cursor) ou outils lecture seule (Claude Code) : vérifier que l’implémentation existe, lancer les tests pertinents, signaler ce qui manque. À enchaîner après les tâches de la spec (lien avec la capsule <strong>Spec-driven</strong>).
+          </p>
+          <div class="hook-flow">
+            <div class="hook-flow-step">Feature « done »</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step hook-flow-step--accent">Verifier</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step">Rapport + gaps</div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-orch">
+          <div class="example-context">
+            <span class="example-context-label">Cas d’usage</span>
+            <span>Grand chantier : découper en phases avec remises structurées.</span>
+          </div>
+          <p class="concept-desc" style="margin-bottom: 1rem;">
+            <strong>Plan</strong> (recherche) → <strong>implémentation</strong> (general-purpose ou agent parent) → <strong>vérif</strong>. Chaque phase peut être déléguée pour garder le fil principal lisible.
+          </p>
+          <div class="hook-flow">
+            <div class="hook-flow-step">Plan</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step">Build</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step hook-flow-step--accent">Verify</div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-para">
+          <div class="example-context">
+            <span class="example-context-label">Cas d’usage</span>
+            <span>Deux travaux <strong>indépendants</strong> : même message, deux délégations.</span>
+          </div>
+          <p class="concept-desc" style="margin-bottom: 1rem;">
+            Exemple concret : « Mettez à jour <code>openapi.yaml</code> pour refléter le nouveau endpoint <strong>et</strong>, en parallèle, réécrivez la section <strong>Installation</strong> du <code>README.md</code>. » Deux livrables indépendants, nommés — formulation qui favorise plusieurs sous-tâches lorsque l’outil le permet (voir doc Cursor sur le parallélisme).
+          </p>
+          <div class="hook-flow">
+            <div class="hook-flow-step">Tâche A</div>
+            <div class="hook-flow-arrow">∥</div>
+            <div class="hook-flow-step hook-flow-step--accent">Tâche B</div>
+            <div class="hook-flow-arrow">→</div>
+            <div class="hook-flow-step">Synthèses fusionnées</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11 : Skills vs sous-agents -->
+    <section class="slide slide--concept" data-slide="11">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Décision</div>
+        <h2 class="slide-title animate-slide-up">Sous-agents ou Skills ?</h2>
+        <div class="concept-types animate-fade-in" style="--delay: 0.25s">
+          <div class="concept-type">
+            <div class="concept-type-header concept-type--hooks">
+              <span>🤖</span> Sous-agent
+            </div>
+            <div class="concept-type-body">
+              Isolation de contexte, <strong>parallélisme</strong>, expertise sur <strong>plusieurs étapes</strong>, ou besoin d’une <strong>vérification indépendante</strong>.
+            </div>
+            <div class="concept-note">Recherche lourde, audits, branches longues</div>
+          </div>
+          <div class="concept-type">
+            <div class="concept-type-header concept-type--rules">
+              <span>📎</span> Skill / commande
+            </div>
+            <div class="concept-type-body">
+              Action <strong>courte</strong>, <strong>répétable</strong>, un seul contexte suffit — ex. changelog, formatage ciblé (grille officielle Cursor).
+            </div>
+            <div class="concept-note">Éviter la sur-délégation</div>
+          </div>
+        </div>
+        <div class="create-note animate-fade-in" style="--delay: 0.5s">
+          ⚠️ Anti-patterns (Cursor) : dizaines d’agents <strong>vagues</strong>, descriptions génériques (« aide au code »), prompts <strong>énormes</strong>. Mieux vaut <strong>2–3</strong> sous-agents clairs qu’une armée floue.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 : Bonnes pratiques -->
+    <section class="slide slide--best" data-slide="12">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Bonnes pratiques</div>
+        <h2 class="slide-title animate-slide-up">Six règles d’or</h2>
+        <div class="best-practices-grid">
+          <div class="bp-card animate-card" style="--delay: 0.1s">
+            <div class="bp-number">1</div>
+            <h3>Un rôle par agent</h3>
+            <p>Pas de « helper général » — <strong>une</strong> responsabilité, <strong>clairement</strong> décrite dans la <code>description</code> (signal de routage), sans alourdir le corps du prompt.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.175s">
+            <div class="bp-number">2</div>
+            <h3><code>description</code> = routage</h3>
+            <p>C’est le signal principal pour la délégation automatique — investissez-y deux minutes.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.25s">
+            <div class="bp-number">3</div>
+            <h3>Prompts courts</h3>
+            <p>Corps du fichier : direct, testable ; évitez les pavés de 2&nbsp;000 mots.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.325s">
+            <div class="bp-number">4</div>
+            <h3>Versionner</h3>
+            <p><code>.cursor/agents/</code> et <code>.claude/agents/</code> dans Git pour l’équipe.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.4s">
+            <div class="bp-number">5</div>
+            <h3>Coût conscient</h3>
+            <p>Parallèle = plusieurs contextes ; inutile pour des micro-tâches.</p>
+          </div>
+          <div class="bp-card animate-card" style="--delay: 0.475s">
+            <div class="bp-number">6</div>
+            <h3>Commencer intégré</h3>
+            <p>Explore / Bash / Browser (Cursor) ; Explore / Plan (Claude Code) avant d’empiler du custom.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13 : Conclusion -->
+    <section class="slide slide--conclusion" data-slide="13">
+      <div class="slide-content">
+        <div class="conclusion-box animate-fade-in" style="--delay: 0.2s">
+          <h2>🎯 Récapitulatif</h2>
+          <div class="conclusion-items">
+            <div class="conclusion-item">Déléguer sert surtout à <strong>protéger</strong> le contexte principal, <strong>paralléliser</strong> le travail indépendant et <strong>spécialiser</strong> les comportements.</div>
+            <div class="conclusion-item"><strong>Cursor</strong> et <strong>Claude Code</strong> partagent l’idée ; les chemins (<code>.cursor/agents/</code>, <code>.claude/agents/</code>, <code>/agents</code>, Task) se recoupent en partie.</div>
+            <div class="conclusion-item">Avec Rules, Skills, Hooks et Spec-driven : les sous-agents sont la couche <strong>d’exécution</strong> qui évite l’asphyxie du fil unique.</div>
+          </div>
+          <div class="cta-box">
+            Créez un agent « vérif » en lecture seule et passez-le après votre prochaine feature.<br>
+            <span class="cta-dual">
+              <span>⚡ <code>.cursor/agents/verifier.md</code></span>
+              <span class="cta-sep">|</span>
+              <span>▶ <code>/agents</code> puis équivalent projet</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14 : Ressources -->
+    <section class="slide slide--resources" data-slide="14">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Ressources</div>
+        <h2 class="slide-title animate-slide-up">Pour aller plus loin</h2>
+        <div class="resources-grid">
+          <div class="resource-group animate-card" style="--delay: 0.15s">
+            <div class="resource-group-header">Documentation officielle</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://cursor.com/docs/agent/subagents" target="_blank" rel="noopener">
+                <span class="resource-icon">⚡</span>
+                <div>
+                  <div class="resource-name">Cursor — Subagents</div>
+                  <div class="resource-url">cursor.com/docs/agent/subagents</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://docs.anthropic.com/en/docs/claude-code/sub-agents" target="_blank" rel="noopener">
+                <span class="resource-icon">▶</span>
+                <div>
+                  <div class="resource-name">Anthropic — Sub-agents (Claude Code)</div>
+                  <div class="resource-url">docs.anthropic.com/en/docs/claude-code/sub-agents</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://code.claude.com/docs/en/tools-reference" target="_blank" rel="noopener">
+                <span class="resource-icon">▶</span>
+                <div>
+                  <div class="resource-name">Claude Code — Tools reference</div>
+                  <div class="resource-url">code.claude.com/docs/en/tools-reference</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.25s">
+            <div class="resource-group-header">Pratiques &amp; contexte</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://www.cursor.com/blog/agent-best-practices" target="_blank" rel="noopener">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">Cursor — Agent best practices</div>
+                  <div class="resource-url">cursor.com/blog/agent-best-practices</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://cursor.com/docs/skills" target="_blank" rel="noopener">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">Cursor — Skills</div>
+                  <div class="resource-url">cursor.com/docs/skills</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
