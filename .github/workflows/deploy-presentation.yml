@@ -11,6 +11,7 @@
 #   /spec_driven/            → Spec-Driven AI Coding presentation
 #   /mcp/                    → MCP (Model Context Protocol) presentation
 #   /subagents/              → Sous-agents (délégation) presentation
+#   /model_arena/            → Choisir un modèle (OpenAI & Anthropic)
 #
 # Live URLs:
 #   https://davidthibaulttlm.github.io/Formations/rules
@@ -19,6 +20,7 @@
 #   https://davidthibaulttlm.github.io/Formations/spec_driven
 #   https://davidthibaulttlm.github.io/Formations/mcp
 #   https://davidthibaulttlm.github.io/Formations/subagents
+#   https://davidthibaulttlm.github.io/Formations/model_arena
 
 name: Deploy presentations to GitHub Pages
 
@@ -32,6 +34,7 @@ on:
       - 'spec_driven/presentation/**'
       - 'mcp/presentation/**'
       - 'subagents/presentation/**'
+      - 'model_arena/presentation/**'
       - '.github/workflows/deploy-presentation.yml'
   workflow_dispatch:
 
@@ -59,13 +62,14 @@ jobs:
 
       - name: Build combined site
         run: |
-          mkdir -p _site/rules _site/commands_n_skills _site/hooks _site/spec_driven _site/mcp _site/subagents
+          mkdir -p _site/rules _site/commands_n_skills _site/hooks _site/spec_driven _site/mcp _site/subagents _site/model_arena
           cp rules/presentation/* _site/rules/
           cp commands_n_skills/presentation/* _site/commands_n_skills/
           cp hooks/presentation/* _site/hooks/
           cp spec_driven/presentation/* _site/spec_driven/
           cp mcp/presentation/* _site/mcp/
           cp subagents/presentation/* _site/subagents/
+          cp model_arena/presentation/* _site/model_arena/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -85,3 +89,4 @@ jobs:
           echo "👉 Spec-Driven:        ${{ steps.deployment.outputs.page_url }}spec_driven/"
           echo "👉 MCP:                ${{ steps.deployment.outputs.page_url }}mcp/"
           echo "👉 Sous-agents:        ${{ steps.deployment.outputs.page_url }}subagents/"
+          echo "👉 Modèles (OAI+Anthro): ${{ steps.deployment.outputs.page_url }}model_arena/"

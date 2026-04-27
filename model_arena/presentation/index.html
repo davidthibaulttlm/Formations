@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choisir un modèle (OpenAI &amp; Anthropic) — Formation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav class="slide-nav" id="slideNav">
+    <div class="nav-inner">
+      <span class="nav-title">Modèles OpenAI &amp; Anthropic — API</span>
+      <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" aria-label="Slide précédente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="slide-counter" id="slideCounter">1 / 8</span>
+        <button class="nav-btn" id="nextBtn" aria-label="Slide suivante">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <button class="nav-btn fullscreen-btn" id="fullscreenBtn" aria-label="Plein écran">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="slides-container" id="slidesContainer">
+
+    <!-- 1 : Hero -->
+    <section class="slide slide--hero active" data-slide="1">
+      <div class="slide-content">
+        <div class="hero-badge animate-pop">Formation</div>
+        <h1 class="hero-title">
+          <span class="animate-slide-up" style="--delay: 0.1s">Choisir un <span class="gradient-text">modèle</span></span>
+          <span class="animate-slide-up hero-tools" style="--delay: 0.28s">
+            <span class="tool-tag tool-tag--cursor">OpenAI</span>
+            <span class="tool-amp">&amp;</span>
+            <span class="tool-tag tool-tag--claude">Anthropic</span>
+          </span>
+        </h1>
+        <p class="hero-subtitle animate-fade-in" style="--delay: 0.5s">
+          Coût, vitesse, qualité, garde-fous : une grille de décision pour l’API — avec des <strong>sources officielles</strong>, pas des suppositions.
+        </p>
+        <div class="hero-keys animate-fade-in" style="--delay: 0.75s">
+          <kbd>→</kbd> ou <kbd>Espace</kbd> pour avancer
+        </div>
+      </div>
+      <div class="hero-bg-grid"></div>
+    </section>
+
+    <!-- 2 : Problème + API vs apps -->
+    <section class="slide slide--problem" data-slide="2">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Pourquoi cette capsule</div>
+        <h2 class="slide-title animate-slide-up">Trois erreurs fréquentes</h2>
+        <div class="problem-grid">
+          <div class="problem-card animate-card" style="--delay: 0.2s">
+            <div class="problem-icon">🐘</div>
+            <h3>« Gros » modèle partout</h3>
+            <p>Coût et latence inutiles pour des petites tâches localisées ou du formatage</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.35s">
+            <div class="problem-icon">🐁</div>
+            <h3>« Mini » partout</h3>
+            <p>Échecs sur raisonnement difficile, gros refactors ou contexte énorme mal maîtrisé</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.5s">
+            <div class="problem-icon">🔀</div>
+            <h3>Comparer pommes et poires</h3>
+            <p><strong>ChatGPT / Claude (app)</strong> : abonnement, produit grand public.<br><strong>API</strong> : $/million de tokens, contrats, quotas. Ce cours parle surtout de l’<strong>API</strong>.</p>
+          </div>
+        </div>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.75s">
+          <span class="solution-arrow">→</span>
+          Les chiffres de cette présentation viennent des <strong>pages de tarification et de documentation</strong> des fournisseurs — à <strong>recoller après chaque mise à jour</strong> tarifaire.
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 : Quatre critères -->
+    <section class="slide slide--types" data-slide="3">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Cadre</div>
+        <h2 class="slide-title animate-slide-up">Quatre critères à comparer</h2>
+        <div class="spec-types-grid spec-types-grid--4">
+          <div class="spec-type-card animate-card" style="--delay: 0.1s">
+            <div class="spec-type-icon">💵</div>
+            <div class="spec-type-name">Coût</div>
+            <div class="spec-type-format">Prix public</div>
+            <div class="spec-type-desc">Input / output (et cache si vous l’utilisez) — l’output coûte souvent plus que l’input</div>
+          </div>
+          <div class="spec-type-card animate-card" style="--delay: 0.2s">
+            <div class="spec-type-icon">⚡</div>
+            <div class="spec-type-name">Vitesse</div>
+            <div class="spec-type-format">Mesures</div>
+            <div class="spec-type-desc">Latence, débit : à mesurer sur <strong>votre</strong> charge ou via un banc <strong>citée</strong> (sinon N/D)</div>
+          </div>
+          <div class="spec-type-card animate-card" style="--delay: 0.3s">
+            <div class="spec-type-icon">🎯</div>
+            <div class="spec-type-name">Qualité / adéquation</div>
+            <div class="spec-type-format">Par tâche</div>
+            <div class="spec-type-desc">Code, long contexte, raisonnement : pas un score unique « vérité » — lire les docs &amp; fiches modèles</div>
+          </div>
+          <div class="spec-type-card animate-card" style="--delay: 0.4s">
+            <div class="spec-type-icon">🛡️</div>
+            <div class="spec-type-name">Garde-fous</div>
+            <div class="spec-type-format">API</div>
+            <div class="spec-type-desc">Tool use, JSON structuré, limites de contexte — documentés côté fournisseur</div>
+          </div>
+        </div>
+        <p class="source-note animate-fade-in" style="--delay: 0.55s">Aucun tableau « arena » ici sans source : on cite les pages, pas une légende urbaine.</p>
+      </div>
+    </section>
+
+    <!-- 4 : OpenAI -->
+    <section class="slide slide--scroll slide--table" data-slide="4">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Fournisseur</div>
+        <h2 class="slide-title slide-title--compact animate-slide-up">OpenAI (API) — extraits, tarif standard</h2>
+        <p class="table-lead animate-fade-in" style="--delay: 0.15s">USD par <strong>million de tokens</strong>. Lignes d’exemple : modèles généraux vs série <code>o</code> (raisonnement). <strong>Input « cache »</strong> = prompt cache tel que listé sur la page.</p>
+        <div class="pricing-table-wrap animate-fade-in" style="--delay: 0.25s">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Modèle (API)</th>
+                <th>Rôle (résumé)</th>
+                <th>Input</th>
+                <th>Input (cache)</th>
+                <th>Output</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono">gpt-4o</td>
+                <td>Multimodal, usage général</td>
+                <td class="mono">$2.50</td>
+                <td class="mono">$1.25</td>
+                <td class="mono">$10.00</td>
+              </tr>
+              <tr>
+                <td class="mono">gpt-4o-mini</td>
+                <td>Économique, tâches simples</td>
+                <td class="mono">$0.15</td>
+                <td class="mono">$0.075</td>
+                <td class="mono">$0.60</td>
+              </tr>
+              <tr>
+                <td class="mono">o3</td>
+                <td>Raisonnement avancé (série o)</td>
+                <td class="mono">$2.00</td>
+                <td class="mono">$0.50</td>
+                <td class="mono">$8.00</td>
+              </tr>
+              <tr>
+                <td class="mono">o3-mini</td>
+                <td>Raisonnement, modèle allégé</td>
+                <td class="mono">$1.10</td>
+                <td class="mono">$0.55</td>
+                <td class="mono">$4.40</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">Source : <a href="https://platform.openai.com/docs/pricing" target="_blank" rel="noopener">OpenAI — Pricing</a> (reprise pour la formation, avril 2026). Les montants changent : vérifiez la page avant un budget.</p>
+      </div>
+    </section>
+
+    <!-- 5 : Anthropic -->
+    <section class="slide slide--scroll slide--table" data-slide="5">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Fournisseur</div>
+        <h2 class="slide-title slide-title--compact animate-slide-up">Anthropic (API) — extraits, base input / output</h2>
+        <p class="table-lead animate-fade-in" style="--delay: 0.15s">USD par <strong>million de tokens</strong> (base). Prompt caching, batch et autres lignes : voir la page complète.</p>
+        <div class="pricing-table-wrap animate-fade-in" style="--delay: 0.25s">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Modèle (API)</th>
+                <th>Rôle (résumé)</th>
+                <th>Input</th>
+                <th>Output</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono">Claude Opus 4.6</td>
+                <td>Très haute capacité</td>
+                <td class="mono">$5.00</td>
+                <td class="mono">$25.00</td>
+              </tr>
+              <tr>
+                <td class="mono">Claude Sonnet 4.6</td>
+                <td>Équilibre coût / qualité</td>
+                <td class="mono">$3.00</td>
+                <td class="mono">$15.00</td>
+              </tr>
+              <tr>
+                <td class="mono">Claude Haiku 4.5</td>
+                <td>Rapide, économique</td>
+                <td class="mono">$1.00</td>
+                <td class="mono">$5.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">Source : <a href="https://docs.anthropic.com/en/docs/about-claude/pricing" target="_blank" rel="noopener">Anthropic — Model pricing</a> (reprise pour la formation, avril 2026). Pensez au coût <strong>tool use</strong> (tokens supplémentaires documentés) et au <strong>long contexte</strong> (voir doc).</p>
+      </div>
+    </section>
+
+    <!-- 6 : Matrice tâche → orientation -->
+    <section class="slide slide--scroll slide--table" data-slide="6">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Décision</div>
+        <h2 class="slide-title slide-title--compact animate-slide-up">Tâche → orientation (API)</h2>
+        <p class="table-lead animate-fade-in" style="--delay: 0.15s">Noms d’exemples côté fournisseur — <strong>choisissez le SKU exact</strong> dans la doc du moment.</p>
+        <div class="pricing-table-wrap animate-fade-in" style="--delay: 0.25s">
+          <table class="data-table matrix-table">
+            <thead>
+              <tr>
+                <th>Scénario</th>
+                <th>Orientation</th>
+                <th>Pourquoi (règle de base)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Petit changement localisé, peu de contexte</td>
+                <td>Modèle <strong>économique</strong> (ex. <span class="mono">gpt-4o-mini</span>, <span class="mono">Claude Haiku 4.5</span>)</td>
+                <td class="col-why">Minimiser $ et latence si le risque d’erreur est faible</td>
+              </tr>
+              <tr>
+                <td>Refactor large, architecture, beaucoup de fichiers</td>
+                <td>Modèle <strong>fort</strong> (ex. <span class="mono">Sonnet 4.6</span>, <span class="mono">gpt-4o</span>) + grosse fenêtre</td>
+                <td class="col-why">Meilleure cohérence quand le contexte et la complexité explosent</td>
+              </tr>
+              <tr>
+                <td>Raisonnement difficile, debug bloqué</td>
+                <td>Modèle <strong>raisonnement</strong> (ex. <span class="mono">o3</span> / <span class="mono">o3-mini</span>) ou mode étendu documenté côté Claude</td>
+                <td class="col-why">Plus de compute / thinking tokens — inadapté au « micro-fragment » interactif</td>
+              </tr>
+              <tr>
+                <td>Très grosse base de code ou doc</td>
+                <td>Fenêtre <strong>longue</strong> + <strong>résumé</strong> en amont, caching si répétitif</td>
+                <td class="col-why">Éviter de saturer le contexte : voir limites &amp; pricing cache sur les docs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 : Pièges -->
+    <section class="slide slide--problem" data-slide="7">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Pièges</div>
+        <h2 class="slide-title animate-slide-up">Trois confusions à éviter</h2>
+        <div class="problem-grid">
+          <div class="problem-card animate-card" style="--delay: 0.2s">
+            <div class="problem-icon">🧾</div>
+            <h3>API vs abonnement</h3>
+            <p>Le prix du forfait Claude / ChatGPT Plus ne s’applique pas à l’appel <code>messages</code> / <code>chat.completions</code> côté API</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.35s">
+            <div class="problem-icon">📤</div>
+            <h3>Output &gt; input</h3>
+            <p>Un généré long (JSON, rapport) génère beaucoup de <strong>tokens de sortie</strong> — souvent plus chers</p>
+          </div>
+          <div class="problem-card animate-card" style="--delay: 0.5s">
+            <div class="problem-icon">📊</div>
+            <h3>Benchmark ≠ prod</h3>
+            <p>Le « meilleur » sur un classement public n’est pas forcément le meilleur pour <strong>votre</strong> budget et <strong>votre</strong> latence</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 : Conclusion + ressources -->
+    <section class="slide slide--resources" data-slide="8">
+      <div class="slide-content">
+        <div class="section-label animate-pop">Conclusion</div>
+        <h2 class="slide-title animate-slide-up">Contrainte d’abord, modèle ensuite</h2>
+        <div class="solution-banner animate-fade-in" style="--delay: 0.2s; margin-bottom: 1.5rem">
+          <span class="solution-arrow">→</span>
+          <strong>Budget, délai, risque d’erreur</strong> : fixez-les, puis choisissez le SKU. <strong>Mettez à jour les prix</strong> au fil des changements (trimestriel recommandé).
+        </div>
+        <h3 class="resource-section-title animate-fade-in" style="--delay: 0.3s">Ressources officielles</h3>
+        <div class="resources-grid">
+          <div class="resource-group animate-card" style="--delay: 0.35s">
+            <div class="resource-group-header">OpenAI</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://platform.openai.com/docs/pricing" target="_blank" rel="noopener">
+                <span class="resource-icon">💵</span>
+                <div>
+                  <div class="resource-name">Tarifs API</div>
+                  <div class="resource-url">platform.openai.com/docs/pricing</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://platform.openai.com/docs/models" target="_blank" rel="noopener">
+                <span class="resource-icon">🧩</span>
+                <div>
+                  <div class="resource-name">Modèles</div>
+                  <div class="resource-url">platform.openai.com/docs/models</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.45s">
+            <div class="resource-group-header">Anthropic</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://docs.anthropic.com/en/docs/about-claude/pricing" target="_blank" rel="noopener">
+                <span class="resource-icon">💵</span>
+                <div>
+                  <div class="resource-name">Tarifs API</div>
+                  <div class="resource-url">docs.anthropic.com/…/pricing</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://docs.anthropic.com/en/docs/models-overview" target="_blank" rel="noopener">
+                <span class="resource-icon">🧩</span>
+                <div>
+                  <div class="resource-name">Aperçu des modèles</div>
+                  <div class="resource-url">docs.anthropic.com/…/models-overview</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="resource-group animate-card" style="--delay: 0.55s">
+            <div class="resource-group-header">Méthode</div>
+            <div class="resource-list">
+              <a class="resource-item" href="https://github.com/anthropics/anthropic-cookbook" target="_blank" rel="noopener">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">Anthropic Cookbook</div>
+                <div class="resource-url">github.com/anthropics/anthropic-cookbook</div>
+                </div>
+              </a>
+              <a class="resource-item" href="https://platform.openai.com/docs/guides/prompt-caching" target="_blank" rel="noopener">
+                <span class="resource-icon">📖</span>
+                <div>
+                  <div class="resource-name">OpenAI — Prompt caching</div>
+                  <div class="resource-url">platform.openai.com/docs/guides/prompt-caching</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
